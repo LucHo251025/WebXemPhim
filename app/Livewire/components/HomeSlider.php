@@ -8,6 +8,6 @@ class HomeSlider extends Component
 {
     public function render()
     {
-        return view('livewire.home-slider');
+        return view('livewire.components.home-slider');
     }
 }
