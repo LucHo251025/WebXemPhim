@@ -9,4 +9,10 @@ class Watchlist extends Model
 {
     /** @use HasFactory<\Database\Factories\WatchlistFactory> */
     use HasFactory;
+    protected $fillable = [];
+    protected $casts = [
+        'images' => 'array',
+        'links' => 'array',
+
+    ];
 }

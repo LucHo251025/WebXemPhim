@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('title');
             $table->string('description');
             $table->year('release_year');
+            $table->json('links');
             $table->integer('duration');
             $table->string('rating');
             $table->json('images');
