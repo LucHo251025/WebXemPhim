@@ -1,0 +1,24 @@
+{
+  "resources/css/app.css": {
+    "file": "assets/app-aa75468c.css",
+    "isEntry": true,
+    "src": "resources/css/app.css"
+  },
+  "resources/css/swiper.css": {
+    "file": "assets/swiper-731a2e8d.css",
+    "isEntry": true,
+    "src": "resources/css/swiper.css"
+  },
+  "resources/js/app.css": {
+    "file": "assets/app-59b7e6ed.css",
+    "src": "resources/js/app.css"
+  },
+  "resources/js/app.js": {
+    "css": [
+      "assets/app-59b7e6ed.css"
+    ],
+    "file": "assets/app-2c26a57a.js",
+    "isEntry": true,
+    "src": "resources/js/app.js"
+  }
+}

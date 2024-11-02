@@ -1,3 +1,3 @@
 <div>
-    <h1>This is home Page</h1>
+    <livewire:components.home-slider/>
 </div>
