@@ -8,9 +8,6 @@
     @vite(['resources/css/app.css', 'resources/js/app.js', 'resources/js/swiper.js', 'resources/css/swiper.css' , 'resources/css/play.css'])
 </head>
 <body class="bg-black-theme text-white" style="overflow-x: hidden">
-    <livewire:components.header/>
-    <livewire:components.home-slider/>
-    <livewire:components.small-slider/>
-    <livewire:components.footer/>
+    {{ $slot }}
 </body>
 </html>

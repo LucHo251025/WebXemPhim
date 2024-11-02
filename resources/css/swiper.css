@@ -26,12 +26,6 @@
     background: var(--Transluse2, rgba(48, 0, 119, 0.30));
     --swiper-navigation-color: var(--White, #FFF);
 }
-.swiper-button-prev{
-}
-.swiper-button-next{
-}
-.swiper-button-next{
-}
 .swiper-button-next:after, .swiper-button-prev:after {
     opacity: 0.75;
 }
