@@ -4,7 +4,7 @@
         <div class="swiper latest-swiper" style="width: 100%">
             <div class="swiper-wrapper">
                 @foreach($movies as $movie)
-                    <livewire:components.small-card :movie="$movie" :key="$movie->id"/>
+                    <x-small-card :movie="$movie" />
                 @endforeach
             </div>
         </div>
