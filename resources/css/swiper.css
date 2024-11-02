@@ -1,19 +1,41 @@
-.swiper-pagination-bullet {
+.swiper-pagination-home .swiper-pagination-bullet{
+    --swiper-pagination-bullet-inactive-color: var(--Electric-Violet-200, #DACDFF);
+    --swiper-pagination-bullet-inactive-opacity: 1;
     --swiper-pagination-bullet-horizontal-gap: 29px;
     --swiper-pagination-bullet-size: 32px;
     --swiper-pagination-color: var(--Electric-Violet-200, #7300FF);
-
-}
-.swiper .swiper-pagination .swiper-pagination-bullet{
-    --swiper-pagination-bullet-inactive-color: var(--Electric-Violet-200, #DACDFF);
-    --swiper-pagination-bullet-inactive-opacity: 1;
 }
 
-.swiper-pagination {
+.swiper-pagination-home {
     position: absolute; /* Đặt vị trí của pagination là tuyệt đối */
     bottom: 20px; /* Khoảng cách từ đáy slide */
     left: 50%; /* Đưa nó vào giữa theo chiều ngang */
     transform: translateX(-50%); /* Căn giữa */
     z-index: 10; /* Đảm bảo nó nằm trên các phần tử khác */
+
+}
+
+
+
+
+
+
+/* Styling for navigation buttons */
+.swiper-button-next, .swiper-button-prev {
+    border: 1px solid var(--White, #FFF);
+    background: var(--Transluse2, rgba(48, 0, 119, 0.30));
+    --swiper-navigation-color: var(--White, #FFF);
+}
+.swiper-button-prev{
+}
+.swiper-button-next{
+}
+.swiper-button-next{
+}
+.swiper-button-next:after, .swiper-button-prev:after {
+    opacity: 0.75;
+}
+.swiper-button-lock {
+    display: block !important;
 }
 
