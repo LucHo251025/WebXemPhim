@@ -21,7 +21,7 @@ class Movie extends Model
     ];
     protected $casts = [
         'images' => 'array',
-        // 'links' => 'array',
+         'links' => 'array',
 
     ];
 

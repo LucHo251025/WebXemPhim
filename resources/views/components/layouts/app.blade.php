@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,11 +8,14 @@
 
     @vite(['resources/css/app.css', 'resources/js/app.js', 'resources/js/swiper.js', 'resources/css/swiper.css'])
 </head>
+
 <body class="bg-black-theme text-white">
-    <livewire:components.header/>
-    <main>
-        {{$slot}}
-    </main>
-    <livewire:components.footer/>
-</body>
+
+    <body class="bg-black-theme text-white" style="overflow-x: hidden">
+        <x-header />
+        <main> {{ $slot }}
+        </main>
+        <x-footer />
+    </body>
+
 </html>

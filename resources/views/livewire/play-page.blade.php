@@ -1,7 +1,6 @@
 <div class="w-[1920px] h-[3743px]" style="background: var(--Black-0, #000);">
     <div class="">
-        <div class="h-full"
-            style="background: url({{ Vite::asset('resources/images/play_image/slider.jpg') }}) lightgray 50% / cover no-repeat;">
+        <div class="h-full custom-gradient" style="lightgray 50% / cover no-repeat; aspect-ratio: 16/9; ">
             <div class="flex h-[865px] p-[606px_139px_56px_103px] items-end gap-96 self-stretch">
                 <div name='content' class="content flex w-[757px] flex-col gap-4 self-stretch">
                     <div class="info1 fle flex-col items-start gap-[-24px] self-stretch">
@@ -59,7 +58,7 @@
                 <div class="link flex items-center gap-9">
                     <button
                         class="wishlist-btn text-wish flex w-[151px] h-[44px] p-[10px_22px] flex-col justify-center items-center gap-3">
-                        <div c lass="flex pr-1 items-center gap-2">
+                        <div class="flex pr-1 items-center gap-2">
                             <svg width="21" height="20" viewBox="0 0 21 20" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <g id="akar-icons:download">
@@ -357,3 +356,6 @@
                 </div>
             </div>
         </div>
+    </div>
+
+</div>

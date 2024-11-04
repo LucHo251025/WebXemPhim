@@ -1,3 +1,6 @@
 <div>
-    <livewire:components.home-slider/>
+    <x-header/>
+    <x-home-slider/>
+    <x-small-slider :movies="$movies"/>
 </div>
+

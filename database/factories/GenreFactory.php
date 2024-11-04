@@ -8,11 +8,11 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 class GenreFactory extends Factory
 {
     protected $model = Genre::class;
-
     public function definition(): array
     {
+        $genres = ['Action', 'Comedy', 'Drama', 'Horror', 'Romance', 'Sci-Fi', 'Thriller'];
         return [
-            'name' => $this->faker->unique()->word(),
+            'name' => [array_rand($genres)],
         ];
     }
 }

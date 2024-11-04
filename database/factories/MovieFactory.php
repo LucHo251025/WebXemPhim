@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Genre;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,7 +18,14 @@ class MovieFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'title' => $this->faker->company,
+            'description' => $this->faker->paragraph,
+            'director' => $this->faker->name,
+            'images' => json_encode('resources/demo-images/deadpool.png'),
+            'links' => null,
+            'duration' => $this->faker->numberBetween(60, 200),
+            'release_year' => $this->faker->year(),
+            'rating' => $this->faker->randomFloat(1, 1, 10),
         ];
     }
 }
