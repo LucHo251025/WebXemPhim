@@ -1,4 +1,4 @@
-<div class="w-[1920px] h-[3743px]" style="background: var(--Black-0, #000);">
+<div class="" style="background: var(--Black-0, #000);">
     <div class="">
         <div class="h-full custom-gradient" style="lightgray 50% / cover no-repeat; aspect-ratio: 16/9; ">
             <div class="flex h-[865px] p-[606px_139px_56px_103px] items-end gap-96 self-stretch">
