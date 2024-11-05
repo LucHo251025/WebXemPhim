@@ -2,7 +2,9 @@
 
 use App\Livewire\HomePage;
 use App\Livewire\PlayPage;
+use App\Livewire\SubscriptionPage;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', HomePage::class);
 Route::get('/play-page', PlayPage::class);
+Route::get('/subscription-page',SubscriptionPage::class);
