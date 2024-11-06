@@ -6,7 +6,7 @@
             </a>
         </div>
         <div class="font-bold text-xl flex items-center gap-16">
-            <a href="">Upcoming</a>
+            <a href="/UpcomingMoves-page">Upcoming</a>
             <a href="">Show</a>
             <a href="">Fanart</a>
             <a href="">Plans</a>
