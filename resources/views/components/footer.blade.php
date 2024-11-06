@@ -10,8 +10,8 @@
     </div>
     </div>
 
-    <div class="footer-section flex w-[1920px] pb-20 justify-center content-start gap-24 flex-wrap" style="background:#000;">
-        <div class="sub-c flex w-[1920px] h-[652px] p-[134px_95px] items-start content-start gap-52 flex-shrink-0 flex-wrap" style="border-bottom: 1px solid #C0A6FF;">
+    <div class="footer-section flex w-full pb-20 justify-center  content-start gap-24 flex-wrap" style="background:#000;">
+        <div class="sub-c flex w-full h-[652px] p-[134px_95px] items-start justify-around content-start gap-52 flex-shrink-0 flex-wrap" style="border-bottom: 1px solid #C0A6FF;">
             <div class="heading flex w-[285px] flex-col items-start gap-12 flex-shrink-0">
                 <div class="title flex w-[187px] h-[57px] justify-center items-center">
                     <p

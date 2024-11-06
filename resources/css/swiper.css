@@ -25,12 +25,6 @@
     --swiper-navigation-color: var(--White, #fff);
 }
 
-.swiper-button-prev {
-}
-.swiper-button-next {
-}
-.swiper-button-next {
-}
 .swiper-button-next:after,
 .swiper-button-prev:after {
     .swiper-button-next:after,

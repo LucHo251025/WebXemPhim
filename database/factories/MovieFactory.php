@@ -21,7 +21,7 @@ class MovieFactory extends Factory
             'title' => $this->faker->company,
             'description' => $this->faker->paragraph,
             'director' => $this->faker->name,
-            'images' => json_encode('resources/demo-images/deadpool.png'),
+            'images' => json_encode('resources/images/play_image/phim1.png'),
             'links' => null,
             'duration' => $this->faker->numberBetween(60, 200),
             'release_year' => $this->faker->year(),
