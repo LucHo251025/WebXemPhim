@@ -222,7 +222,7 @@
 
         </div>
 
-        {{-- Movie Card --}}
+        {{-- Film Card --}}
         <div class="movie-card-play flex w-[2097px] flex-col items-start gap-14">
             <p class="self-stretch"
                 style="color: #FFF;-webkit-text-stroke-width: 1;-webkit-text-stroke-color: var(--Black-0, #000);font-family: Poppins;font-size: 37px;font-style: normal;font-weight: 600;line-height: 120%;">

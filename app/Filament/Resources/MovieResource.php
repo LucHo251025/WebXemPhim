@@ -4,7 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\MovieResource\Pages;
 use App\Filament\Resources\MovieResource\RelationManagers;
-use App\Models\Movie;
+use App\Models\Film;
 use Faker\Provider\ar_EG\Text;
 use Filament\Forms;
 use Filament\Forms\Components\DatePicker;
@@ -27,7 +27,7 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class MovieResource extends Resource
 {
-    protected static ?string $model = Movie::class;
+    protected static ?string $model = Film::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 

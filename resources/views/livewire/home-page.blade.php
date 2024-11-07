@@ -1,7 +1,7 @@
 <div>
     <x-home-slider/>
-    <x-small-slider :movies="$movies" title="Latest Releases" />
-    <x-small-slider :movies="$movies" title="Trending Movies & Shows" name="trending" />
-    <x-most-watched :movies="$movies" />
+    <x-small-slider :films="$films" title="Latest Releases" />
+    <x-small-slider :films="$films" title="Trending films & Shows" name="trending" />
+    <livewire:most-watched :films="$films" name="most-watched"/>
 </div>
 
