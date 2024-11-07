@@ -70,49 +70,46 @@ const trendingSwiper = new Swiper(".trending-swiper", {
         },
     },
 });
-
-const actorSwiper = new Swiper(".actor-swiper", {
-    slidesPerView: 3,
-    spaceBetween: 0,
+const mostWatchedSwiper = new Swiper(".most-watched-swiper", {
+    slidesPerView: 'auto',
+    spaceBetween: 40,
+    loop: false,
+    navigation: {
+        nextEl: ".swiper-button-next-most-watched",
+        prevEl: ".swiper-button-prev-most-watched",
+    },
     breakpoints: {
         320: {
-            slidesPerView: 2,
-            spaceBetween: 1,
-        },
-        1300: {
-            slidesPerView: 3,
+            slidesPerView: 1,
             spaceBetween: 10,
         },
-        1600: {
-            slidesPerView: 4,
+        1300: {
+            slidesPerView: 2,
             spaceBetween: 15,
         },
+        1600: {
+            slidesPerView: 2,
+            spaceBetween: 20,
+        },
         1800: {
-            slidesPerView: 4,
+            slidesPerView: 2.1,
+            spaceBetween: 20,
+        },
+        2000: {
+            slidesPerView: 2.2,
             spaceBetween: 20,
         },
     },
 });
 
+const actorSwiper = new Swiper(".actor-swiper", {
+    slidesPerView: 3,
+    spaceBetween: 0,
+
+});
+
 const cartItem = new Swiper(".swiper-cart-items", {
     slidesPerView: 3,
     spaceBetween: 30,
-    breakpoints: {
-        320: {
-            slidesPerView: 2,
-            spaceBetween: 5,
-        },
-        1300: {
-            slidesPerView: 3,
-            spaceBetween: 10,
-        },
-        1600: {
-            slidesPerView: 4,
-            spaceBetween: 15,
-        },
-        1800: {
-            slidesPerView: 5,
-            spaceBetween: 23,
-        },
-    },
+
 });

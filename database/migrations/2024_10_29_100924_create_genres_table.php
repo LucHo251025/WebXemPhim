@@ -1,7 +1,7 @@
 <?php
 
 use App\Models\Genre;
-use App\Models\Movie;
+use App\Models\Film;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -19,10 +19,10 @@ return new class extends Migration
             $table->timestamps();
         });
 
-        Schema::create('movie_genres', function (Blueprint $table) {
-            $table->foreignIdFor(Movie::class)->constrained()->cascadeOnDelete();
+        Schema::create('film_genres', function (Blueprint $table) {
+            $table->foreignIdFor(Film::class)->constrained()->cascadeOnDelete();
             $table->foreignIdFor(Genre::class)->constrained()->cascadeOnDelete();
-            $table->primary(['movie_id', 'genre_id']);
+            $table->primary(['film_id', 'genre_id']);
             $table->timestamps();
         });
 

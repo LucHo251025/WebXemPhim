@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,15 +8,11 @@
 
     @vite(['resources/css/app.css', 'resources/js/app.js', 'resources/js/swiper.js', 'resources/css/swiper.css'])
 </head>
-<body class="bg-black-theme text-white w-full" >
-    <x-header/>
-
-
-<main>
-    {{ $slot }}
-</main>
-
-<!-- Hiển thị footer nếu không phải trang đăng nhập -->
-    <x-footer/>
-</body>
+    <body class="bg-black-theme text-white" style="overflow-x: hidden">
+        <x-header ></x-header>
+        <main>
+            {{ $slot }}
+        </main>
+        <x-footer ></x-footer>
+    </body>
 </html>

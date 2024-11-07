@@ -1,11 +1,11 @@
-@props(['movies', 'title', 'name' => 'latest'])
+@props(['films', 'title', 'name' => 'latest'])
 <div class="flex flex-col items-center gap-16 shrink-0 h-full">
     <div class="flex flex-col justify-center ml-24 mt-14 gap-9 self-stretch">
         <h2 class="font-bold text-3xl">{{ $title ?? 'Title' }}</h2>
         <div class="swiper {{$name}}-swiper" style="width: 100%">
             <div class="swiper-wrapper">
-                @foreach($movies as $movie)
-                    <x-small-card :movie="$movie" />
+                @foreach($films as $film)
+                    <x-small-card :film="$film" />
                 @endforeach
             </div>
         </div>

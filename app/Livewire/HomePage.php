@@ -2,15 +2,15 @@
 
 namespace App\Livewire;
 
-use App\Models\Movie;
+use App\Models\Film;
 use Livewire\Component;
 
 class HomePage extends Component
 {
-    public $movies;
+    public $films;
     public function mount()
     {
-        $this->movies = Movie::all();
+        $this->films = Film::all();
     }
     public function render()
     {
