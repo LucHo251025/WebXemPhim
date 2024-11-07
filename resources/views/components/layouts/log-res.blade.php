@@ -10,6 +10,7 @@
 <body class="bg-black-theme text-white w-full" >
 
 <main>
+
     {{ $slot }}
 </main>
 <!-- Hiển thị footer nếu không phải trang đăng nhập -->
