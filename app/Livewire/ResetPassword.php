@@ -21,6 +21,7 @@ class ResetPassword extends Component
         $this->token = $token;
     }
 
+    //save
     public function save(){
         $this->validate([
             'email' => 'required|email',
