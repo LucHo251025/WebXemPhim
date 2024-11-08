@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Password;
 use Livewire\Attributes\Url;
 use Livewire\Component;
+use Illuminate\Support\Str;
 
 class ResetPassword extends Component
 {
@@ -21,7 +22,7 @@ class ResetPassword extends Component
         $this->token = $token;
     }
 
-    //save
+    //save function
     public function save(){
         $this->validate([
             'email' => 'required|email',
@@ -32,10 +33,10 @@ class ResetPassword extends Component
         $status = Password::reset([
             'email' => $this->email,
             'token' => $this->token,
-            'password' => $this->password.
-                'password.confirm',
+            'password' => $this->password,
+            'password.confirm' => $this->password_confirmation,
         ],
-        function (User $user, Password $password) {
+        function (User $user, string $password) {
             $password = $this->password;
 
             $user->forceFill([
@@ -45,6 +46,8 @@ class ResetPassword extends Component
             event(new PasswordReset($user));
         }
         );
+        return $status === Password::PASSWORD_RESET ? redirect('/login') : back()->withErrors(['email' => [__($status)]]);
+
     }
     public function render()
     {

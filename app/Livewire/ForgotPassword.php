@@ -2,6 +2,9 @@
 
 namespace App\Livewire;
 
+use App\Mail\ForgotPasswordMail;
+use App\Models\User;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Password;
 use Livewire\Component;
 
@@ -17,7 +20,12 @@ class ForgotPassword extends Component
         $status = Password::sendResetLink(['email' => $this->email]);
 
         if($status === Password::RESET_LINK_SENT){
-            $this->email='';
+            $user = User::where('email', $this->email)->first();
+            if($user){
+                $token = Password::createToken($user);
+                Mail::to($this->email)->send(new ForgotPasswordMail($token));
+                $this->email = '';
+            }
         }
     }
     public function render()

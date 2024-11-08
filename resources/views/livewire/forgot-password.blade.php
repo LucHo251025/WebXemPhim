@@ -47,7 +47,7 @@
                         </div>
                         <div class="flex flex-col items-center gap-6 self-stretch">
                             <button type="submit" class="flex h-[53px] p-[16px_50px] justify-center items-center gap-3 self-stretch" style="border-radius: 8px;background: #7300FF;">
-                                <p class="text-white font-poppins font-normal leading-[120%]" style="font-size: 15px;font-weight: 700;">Sign Up</p>
+                                <p class="text-white font-poppins font-normal leading-[120%]" style="font-size: 15px;font-weight: 700;">Reset Password</p>
                             </button>
                         </div>
 
