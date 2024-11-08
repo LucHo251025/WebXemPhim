@@ -1,4 +1,4 @@
-<div style="background: #000000;">
+<div style="background: #000000; color:#fff">
     {{-- Knowing others is intelligence; knowing yourself is true wisdom. --}}
     <div style=" height: 865px;
     background-image: url({{ Vite::asset('resources/images/upcoming_image/movies-main.jpg') }});
@@ -58,7 +58,6 @@
                                  justify-content: end;    display: flex;">
 
                             <div style="width: 151px;
-                                height:  44px;
                                 padding: 10px 22px 10px 22px;
                                 gap: 10px;
                                 border-radius: 0px 16px 0px 16px;
@@ -96,7 +95,6 @@
 
 
                             <div style="width: 151px;
-                    height:  44px;
                     padding: 10px 22px 10px 22px;
                     gap: 10px;
                     border-radius: 0px 16px 0px 16px;
@@ -166,6 +164,7 @@ text-align: left;
 ">
             Upcoming Movies
         </div>
+    <?php foreach ($groupedMovies as $year_month => $movies) {?>
         <div style="margin: 50px 0px">
             <div style="font-family: Poppins, SANS-SERIF;
     font-size: 29px;
@@ -174,7 +173,7 @@ text-align: left;
     text-align: left;
 }
 ">
-                SEPTEMBER
+                {{ convertYearMonthToMonthName($year_month)}}
                 <hr style="    border: #A473FF 1px solid;
     margin: 25px 0px;">
 
@@ -182,17 +181,19 @@ text-align: left;
                     <div style="display: flex;
     flex:1;
   flex-wrap: wrap;
-  flex-direction: column;
-  height:655px;">
-                        <?php for($i=0;$i<6; $i++){ ?>
-                        <div style="display: flex; margin: 10px 0px; width:45%">
+  flex-direction: row;">
+                        
+                    <?php foreach ($movies as $movie) {?>
+                        <div style="display: flex; margin: 10px 10px; width:45%; align-items: center;">
                             <div style="width: 142px;
                     height: 142px;
-                    padding: 29px 25px 29px 32px;   
                     border-radius: 71px;
                     border: 3px;
                     background: var(--Transluse2, #3000774D);
-                    border: 3px solid #7300FF
+                    border: 3px solid #7300FF;
+                        display: flex;
+    justify-content: center;
+    align-items: center;
 
 ">
                                 <div style="width: 68px;
@@ -203,10 +204,11 @@ font-weight: 700;
 line-height: 76.8px;
 text-align: left;
 color: var(--Primary, #7300FF); 
-">14</div>
+text-align: center;
+">{{ $movie->release_day_upcoming }}</div>
                             </div>
                             <div style="margin-left: 20px;">
-                                <img src="{{ Vite::asset('resources/images/upcoming_image/movies14.png') }}" style="width: 134px;
+                                <img src="{{ Vite::asset($movie->links) }}" style="width: 134px;
 height: 125px;
 border-radius: 29px;
 ">
@@ -221,7 +223,7 @@ font-size: 29px;
 font-weight: 600;
 line-height: 34.8px;
 text-align: left;
-">Moana 2</div>
+">{{ $movie->title_upcoming }}</div>
                                 <div style="
 font-family: Poppins,sans-serif;
 font-size: 19px;
@@ -243,170 +245,14 @@ text-align: left;
 
 
         </div>
+        <?php }?>
 
-        <div style="margin: 30px 0px">
-            <div style="font-family: Poppins, SANS-SERIF;
-    font-size: 29px;
-    font-weight: 600;
-    line-height: 34.8px;
-    text-align: left;
-}
-">
-                OCTORBER
-                <hr style="    border: #A473FF 1px solid;
-    margin: 25px 0px;">
+        <div style="margin: 30px 0px 0px 0px">            
 
-                <div style="display: flex">
-                    <div style="display: flex;
-    flex:1;
-  flex-wrap: wrap;
-  flex-direction: column;
-  height:655px;">
-                        <?php for($i=0;$i<5; $i++){ ?>
-                        <div style="display: flex; margin: 10px 0px; width:45%">
-                            <div style="width: 142px;
-                    height: 142px;
-                    padding: 29px 37px 29px 37px;
-                    gap: 10px;
-                    border-radius: 71px;
-                    border: 3px;
-                    opacity: 0px;
-                    background: var(--Transluse2, #3000774D);
-                    border: 3px solid #7300FF
-
-">
-                                <div style="width: 68px;
-height: 77px;
-gap: 0px;
-opacity: 0px;
-font-family: Poppins,sans-serif;
-font-size: 64px;
-font-weight: 700;
-line-height: 76.8px;
-text-align: left;
-
-">14</div>
-                            </div>
-                            <div style="margin-left: 20px;">
-                                <img src="{{ Vite::asset('resources/images/upcoming_image/movies14.png') }}" style="width: 134px;
-height: 125px;
-border-radius: 29px;
-">
-                            </div>
-                            <div style="display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin-left: 20px;">
-                                <div style="
-font-family: Poppins,sans-serif;
-font-size: 29px;
-font-weight: 600;
-line-height: 34.8px;
-text-align: left;
-">Moana 2</div>
-                                <div style="
-font-family: Poppins,sans-serif;
-font-size: 19px;
-font-weight: 400;
-line-height: 22.8px;
-text-align: left;
-">Wordwide</div>
-                            </div>
-
-
-                        </div>
-                        <?php }?>
-                    </div>
-
-                </div>
-            </div>
-
-
-
-
-        </div>
-
-        <div style="margin: 30px 0px 0px 0px">
-            <div style="font-family: Poppins, SANS-SERIF;
-    font-size: 29px;
-    font-weight: 600;
-    line-height: 34.8px;
-    text-align: left;
-}
-">
-                NOVEMBER
-                <hr style="    border: #A473FF 1px solid;
-    margin: 25px 0px;">
-
-                <div style="display: flex">
-                    <div style="display: flex;
-                                flex:1;
-                                flex-wrap: wrap;
-                                flex-direction: column;
-                                height:655px;">
-                        <?php for($i=0;$i<3; $i++){ ?>
-                        <div style="display: flex; margin: 10px 0px; width:45%">
-                            <div style="width: 142px;
-                                        height: 142px;
-                                        padding: 29px 37px 29px 37px;
-                                        gap: 10px;
-                                        border-radius: 71px;
-                                        border: 3px;
-                                        opacity: 0px;
-                                        background: var(--Transluse2, #3000774D);
-                                        border: 3px solid #7300FF
-
-                                                        ">
-                                <div style="width: 68px;
-                                            height: 77px;
-                                            gap: 0px;
-                                            opacity: 0px;
-                                            font-family: Poppins,sans-serif;
-                                            font-size: 64px;
-                                            font-weight: 700;
-                                            line-height: 76.8px;
-                                            text-align: left;
-
-                                                        ">14</div>
-                            </div>
-                            <div style="margin-left: 20px;">
-                                <img src="{{ Vite::asset('resources/images/upcoming_image/movies14.png') }}" style="width: 134px;
-                                                                                                                    height: 125px;
-                                                                                                                    border-radius: 29px;
-                                                                                            ">
-                            </div>
-                            <div style="display: flex;
-                                        flex-direction: column;
-                                        justify-content: center;
-                                        margin-left: 20px;">
-                                <div style="font-family: Poppins,sans-serif;
-                                            font-size: 29px;
-                                            font-weight: 600;
-                                            line-height: 34.8px;
-                                            text-align: left;
-                                                    ">Moana 2</div>
-                                <div style="font-family: Poppins,sans-serif;
-                                            font-size: 19px;
-                                            font-weight: 400;
-                                            line-height: 22.8px;
-                                            text-align: left;
-                                                ">Wordwide</div>
-                            </div>
-
-
-                        </div>
-                        <?php }?>
-
-
-                    </div>
-
-                </div>
-
-                <div style="    height: 119px; width: 100%;
+                <div style="     width: 100%;
                                  justify-content: center;    display: flex;">
 
                     <div style="width: 151px;
-                                height:  44px;
                                 padding: 10px 22px 10px 22px;
                                 gap: 10px;
                                 border-radius: 0px 16px 0px 16px;
