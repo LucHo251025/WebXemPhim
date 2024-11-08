@@ -1,5 +1,6 @@
 <div style="background: #000">
     <div class="">
+        // abc
         <div class="h-full custom-gradient" style="background: url({{ Vite::asset('resources/images/play_image/slider.jpg') }}) lightgray 50% / cover no-repeat;">
             <div class="flex p-[606px_139px_56px_103px] items-end gap-96 self-stretch" style="background: linear-gradient(354deg, #000 9.64%, rgba(0, 0, 0, 0.73) 37.09%, rgba(0, 0, 0, 0.47) 45.71%, rgba(0, 0, 0, 0.00) 54.28%);">
                 <div name='content' class="content flex w-[757px] flex-col gap-4 self-stretch">

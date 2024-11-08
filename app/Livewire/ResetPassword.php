@@ -36,7 +36,7 @@ class ResetPassword extends Component
                 'password.confirm',
         ],
         function (User $user, Password $password) {
-            $password => $this->password;
+            $password = $this->password;
 
             $user->forceFill([
                 'password' => Hash::make($password),
