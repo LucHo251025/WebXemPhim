@@ -64,7 +64,7 @@ backdrop-filter: blur(24.5px);">
                             </div>
                             <div class="password-login flex p-[22px_40px] flex-col items-start gap-3 self-stretch" style="border-radius: 8px;border: 1px solid var(--Electric-Violet-400, #A473FF);background: rgba(48, 0, 119, 0.10);">
                                 <div class="flex justify-between items-center self-stretch">
-                                    <input type="password" id="confirm_password" wire:model="confirm_password"
+                                    <input type="password" id="password_confirmation" wire:model="password_confirmation"
                                            class="text-white font-poppins leading-[120%] bg-transparent border-none focus:outline-none"
                                            style="font-size: 20px; font-weight: 400;"
                                            placeholder="Confirm Password"

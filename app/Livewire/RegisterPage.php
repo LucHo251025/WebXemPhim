@@ -11,24 +11,30 @@ class RegisterPage extends Component
     public $name;
     public $email;
     public $password;
-    public $confirm_password;
+    public $password_confirmation;
 
     public function save()
     {
-        $this->validate([
-            'name' => 'required',
-            'email' => 'required|email|unique:users',
-            'password' => 'required|min:8',
-            'confirm_password' => 'required|same:password',
-        ]);
+//
+//        $this->validate([
+//            'name' => 'required',
+//            'email' => 'required|email|unique:users',
+//            'password' => 'required|min:8|confirmed',
+//        ]);
+
 
         $user = User::create([
             'name' => $this->name,
             'email' => $this->email,
             'password' => Hash::make($this->password),
+            'avatar' => null,
+            'subscription_id' => '1',
+            'subscription_started_at' => null,
+            'subscription_ended_at' => null
+
         ]);
 
-        dd($user);
+//        dd($user);
 //        auth()->login($user);
 
         return redirect()->intended();

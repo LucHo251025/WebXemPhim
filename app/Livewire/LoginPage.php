@@ -9,7 +9,21 @@ use Livewire\Component;
 
 class LoginPage extends Component
 {
+    public $email;
+    public $password;
 
+    public function save(){
+        $this->validate([
+            'email' => 'required|email|exists:users,email',
+            'password' => 'required',
+        ]);
+
+        if(!auth()->attempt(['email' => $this->email, 'password' => $this->password])){
+            return ;
+        }
+
+        return redirect()->intended();
+    }
     public function render()
     {
         return view('livewire.login-page')->layout('components.layouts.log-res');  // Chỉ định layout thông qua phương thức render()

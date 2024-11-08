@@ -10,3 +10,5 @@ Route::get('/play-page', PlayPage::class);
 Route::get('/subscription-page',SubscriptionPage::class);
 Route::get('/login',\App\Livewire\LoginPage::class)->name('login');
 Route::get('/register',\App\Livewire\RegisterPage::class)->name('register');
+Route::get('/forgot-password',\App\Livewire\ForgotPassword::class)->name('password.request');
+Route::get('/reset/{token}',\App\Livewire\ResetPassword::class)->name('password.reset');

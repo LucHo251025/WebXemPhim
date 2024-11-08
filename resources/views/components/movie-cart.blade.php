@@ -2,7 +2,7 @@
 @foreach($movies as $movies)
 <div class="swiper-slide">
     <div class="item-play flex w-[100%] flex-col items-start gap-9">
-        <img src="{{ Vite::asset(json_decode($movies->images)) }}"
+        <img src="{{ Vite::asset(json_decode($movies->images,true)['poster'][0]) }}"
              style="border-radius: 23px;background:100% 101.372% no-repeat;"
              alt="">
         <div class="info-item flex w-[289px] flex-col items-start gap-2">
