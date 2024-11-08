@@ -1,5 +1,7 @@
 import Swiper from "swiper/bundle";
 import "swiper/css/bundle";
+import {Livewire} from "../../public/vendor/livewire/livewire.esm";
+
 
 const homeSwiper = new Swiper(".home-swiper", {
     loop: true,
@@ -100,7 +102,27 @@ const mostWatchedSwiper = new Swiper(".most-watched-swiper", {
             spaceBetween: 20,
         },
     },
+    on: {
+        slideChange: function () {
+            Livewire.dispatch('setCurrentFilmByIndex', { index: this.realIndex });
+        }
+    },
 });
+
+function addButtonDelay(buttonClass) {
+    const button = document.querySelector(buttonClass);
+    if (button) {
+        button.addEventListener('click', function () {
+            button.disabled = true; // Vô hiệu hóa nút
+            setTimeout(() => {
+                button.disabled = false; // Kích hoạt lại sau 500ms
+            }, 800);
+        });
+    }
+}
+
+addButtonDelay('.swiper-button-next-most-watched');
+addButtonDelay('.swiper-button-prev-most-watched');
 
 const actorSwiper = new Swiper(".actor-swiper", {
     slidesPerView: 3,

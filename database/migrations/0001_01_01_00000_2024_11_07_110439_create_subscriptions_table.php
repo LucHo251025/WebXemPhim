@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->enum('name', ['free', 'basic', 'standard', 'premium'])->default('free');
             $table->decimal('price');
-            $table->date('duration_days');
+            $table->integer('duration_days');
             $table->timestamps();
         });
     }
