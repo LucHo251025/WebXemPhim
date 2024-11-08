@@ -8,14 +8,29 @@ use Livewire\Component;
 class MostWatched extends Component
 {
     public $films;
-    public $film;
+    public $currentFilm;
     public $name = 'most-watched';
 
-    public function mount()
+    protected $listeners = ['setCurrentFilmByIndex'];
+
+    public function setCurrentFilmByIndex($index): void
+    {
+        if (isset($this->films[$index])) {
+            $this->currentFilm = $this->films[$index];
+        }
+    }
+
+    public function mount(): void
     {
         $this->films = Film::all();
-            $this->film = $this->films->first();
+        $this->currentFilm = $this->films->first();
     }
+    public function setCurrentFilm(Film $film): void
+    {
+        $this->currentFilm = $film;
+    }
+
+
     public function render()
     {
         return view('livewire.most-watched');
