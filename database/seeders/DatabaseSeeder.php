@@ -21,7 +21,7 @@ class DatabaseSeeder extends Seeder
 
         // Insert genres into the database
         foreach ($genres as $genre) {
-            Genre::create(['name' => $genre]);
+            Genre::create(['name' => $genre, 'images' => json_encode('resources/demo-images/adventure.png')]);
         }
         Film::factory(40)->create()->each(function ($film) {
             // Lấy ngẫu nhiên một số thể loại từ danh sách các thể loại có sẵn

@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('genres', function (Blueprint $table) {
             $table->id();
             $table->string('name')->unique();
+            $table->json('images')->nullable();
             $table->timestamps();
         });
 

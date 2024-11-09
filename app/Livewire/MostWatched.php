@@ -22,14 +22,16 @@ class MostWatched extends Component
 
     public function mount(): void
     {
-        $this->films = Film::all();
+        if (!isset($this->films)) {
+            $this->films = Film::all();
+        }
         $this->currentFilm = $this->films->first();
     }
+
     public function setCurrentFilm(Film $film): void
     {
         $this->currentFilm = $film;
     }
-
 
     public function render()
     {
