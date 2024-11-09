@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class UpcomingMovie extends Model
 {
+    /** @use HasFactory<\Database\Factories\UpcomingMovieFactory> */
     use HasFactory;
     protected $fillable = [
         'title_upcoming',
