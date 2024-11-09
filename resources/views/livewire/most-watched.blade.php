@@ -1,5 +1,5 @@
 <div class="h-[904px] w-full mt-16"
-     style="background: url({{ Vite::asset('resources/demo-images/money-heist.png') }}) no-repeat; background-size: cover; ">
+     style="background: url({{Vite::asset(json_decode($currentFilm->images,true)['background'][0])}}) no-repeat; background-size: cover; ">
     <div class="h-full"
          style="background: var(--Grad-black, linear-gradient(89deg, #000 9.23%, rgba(0, 0, 0, 0.47) 49.67%, rgba(0, 0, 0, 0.00) 61.08%));">
         <div class="w-full h-full flex-col">
@@ -9,22 +9,10 @@
                         <h2 class="text-3xl font-bold" >This month's most watched</h2>
                         <p>Watch this month's most Watched Shows</p>
                     </div>
-                    <div class="flex flex-col items-start gap-4 self-stretch mt-40">
-                        <span class="text-[22px] font-light leading-10">{{ \Carbon\Carbon::parse($currentFilm->release_date)->format('Y') }}</span>
-                        <span class="font-extrabold text-5xl">{{ $currentFilm->title }}</span>
-                        <span class="flex justify-center font-bold">5 Seasons • {{ $currentFilm->genres->pluck('name')->join(' • ') }}</span>
-                        <p style="width: 40vw">
-                            {{ $currentFilm->description }}
-                        </p>
-                        <div class="flex gap-8">
-                            <x-button type="watch" >Play Now</x-button>
-                            <x-button type="trailer">Watch Trailer</x-button>
-                            <x-button type="wishlist">Add to Wishlist</x-button>
-                        </div>
-                    </div>
+                    <x-content :film="$currentFilm" />
                 </div>
-                <div class="swiper {{$name}}-swiper" style="width: 100%" wire:ignore>
-                    <div class="swiper-wrapper w-full" style="height: fit-content">
+                <div class="swiper {{$name}}-swiper " style="width: 100%" wire:ignore>
+                    <div class=" swiper-wrapper w-full " style="height: fit-content">
                         @foreach($films as $film)
                             <div wire:key="{{$film->id}}" class="swiper-slide swiper-slide-most-watched" style="width: fit-content" >
                                 <div class="w-[377px] h-[482px]"
@@ -32,7 +20,7 @@
                             </div>
                         @endforeach
                     </div>
-                    <div class="flex justify-end items-end  px-44 gap-6 -right-4 -bottom-16 w-full h-24 mt-16">
+                    <div  class="flex justify-end items-end  px-44 gap-6 -right-4 -bottom-16 w-full h-24 mt-16">
                         <x-swiper-button name="{{$name}}" type="prev" />
                         <x-swiper-button name="{{$name}}" type="next"/>
                     </div>

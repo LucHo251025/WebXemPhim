@@ -75,6 +75,7 @@ const trendingSwiper = new Swiper(".trending-swiper", {
 const mostWatchedSwiper = new Swiper(".most-watched-swiper", {
     slidesPerView: 'auto',
     spaceBetween: 40,
+    speed: 1000,
     loop: false,
     navigation: {
         nextEl: ".swiper-button-next-most-watched",
@@ -108,14 +109,29 @@ const mostWatchedSwiper = new Swiper(".most-watched-swiper", {
         }
     },
 });
+const genresSwiper = new Swiper(".genres-swiper", {
+    slidesPerView: 'auto',
+    spaceBetween: 67,
+    speed: 1000,
+    loop: true,
+    navigation: {
+        nextEl: ".swiper-button-next-genres",
+        prevEl: ".swiper-button-prev-genres",
+    },
+    on: {
+        slideChange: function () {
+            Livewire.dispatch('setCurrentFilmByIndex', { index: this.realIndex });
+        }
+    },
+});
 
 function addButtonDelay(buttonClass) {
     const button = document.querySelector(buttonClass);
     if (button) {
         button.addEventListener('click', function () {
-            button.disabled = true; // Vô hiệu hóa nút
+            button.disabled = true;
             setTimeout(() => {
-                button.disabled = false; // Kích hoạt lại sau 500ms
+                button.disabled = false;
             }, 800);
         });
     }
