@@ -5,3 +5,55 @@
 .homeSlider{
     background: var(--Grad-black, linear-gradient(89deg, #000 9.23%, rgba(0, 0, 0, 0.47) 49.67%, rgba(0, 0, 0, 0.00) 61.08%));
 }
+
+.card-support{
+    width: 115px;
+    border-top-left-radius: 12px; 
+    border-top-right-radius: 12px
+}
+/* General styling for checkbox */
+.custom-checkbox {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+    border: 2px solid #8A3BFF;
+    background-color: #2C2C2C;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+/* Checked state with bright tick */
+.custom-checkbox:checked {
+    background-color: #8A3BFF;
+    border-color: #8A3BFF;
+}
+
+.custom-checkbox:checked::after {
+    content: '✔';
+    color: #FFD700; /* Bright yellow tick */
+    font-size: 18px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* Hover effect */
+.custom-checkbox:hover {
+    border-color: #A46BFF;
+    box-shadow: 0 0 5px rgba(138, 59, 255, 0.5);
+}
+
+/* Label styling */
+.checkbox-label {
+    margin-left: 10px;
+    color: #DACDFF;
+    font-size: 19px;
+    font-family: Poppins, sans-serif;
+    font-weight: 400;
+    cursor: pointer;
+}
+

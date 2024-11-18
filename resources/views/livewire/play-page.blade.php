@@ -45,7 +45,6 @@
                                             stroke-linejoin="round" />
                                     </g>
                                 </svg>
-
                                 <p
                                     style="    color: #fff;font-family: Poppins;font-size: 15px;font-style: normal;font-weight: 600;line-height: 120%;">
                                     Add to Wishlist</p>

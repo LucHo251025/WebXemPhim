@@ -11,7 +11,7 @@
             <a href="">Fanart</a>
             <a href="">Plans</a>
             <a href="">Community</a>
-            <a href="">Account</a>
+            <a href="/support-page">Account</a>
         </div>
         <div class="flex items-center gap-8">
             <img src="{{ Vite::asset('resources/images/search-interaction.svg') }}"
