@@ -5,13 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ $title ?? 'Page Title' }}</title>
     @vite(['resources/css/app.css', 'resources/js/app.js', 'resources/js/swiper.js', 'resources/css/swiper.css'])
+    @livewireStyles
+
 </head>
 <body class="bg-black-theme text-white w-full" >
-    <x-header/>
-        <main>
+{{--    <x-header/>--}}
+        <main class="">
             {{ $slot }}
         </main>
-{{--    <x-footer/>--}}
+    <x-footer/>
+    @livewireScripts
 
 </body>
 </html>

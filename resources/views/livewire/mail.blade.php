@@ -5,7 +5,7 @@
 </head>
 <body>
 <p>Click the link below to reset your password:</p>
-<a href="{{ url('password/reset', $token) }}">Reset Password</a>
+<a href="{{ route('password.reset', ['token' => $token])  }}">Reset Password</a>
 </body>
 </html>
 

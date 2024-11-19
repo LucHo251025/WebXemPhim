@@ -20,7 +20,6 @@ return new class extends Migration
             $table->enum('type', ['show', 'movie'])->default('movie');            $table->json('links')->nullable();
             $table->integer('duration');
             $table->decimal('rating');
-            $table->json('images');
             $table->json('video_path')->nullable();
             $table->timestamps();
         });

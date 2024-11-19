@@ -37,6 +37,8 @@ class ForgotPasswordMail extends Mailable
     {
         return new Content(
             view: 'livewire.mail',
+            with: ['token' => $this->token],
+
         );
     }
 

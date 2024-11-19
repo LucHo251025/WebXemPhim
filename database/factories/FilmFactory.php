@@ -17,21 +17,19 @@ class FilmFactory extends Factory
      */
     public function definition(): array
     {
-        $images = [
-            "poster" => [
-                'resources/demo-images/deadpool.png',
-                "resources/demo-images/lastofus.png"
-            ],
-            "background" => [
-                "resources/demo-images/money-heist.png",
-                "resources/demo-images/img.png"
-            ]
+        $images_poster = [
+            'public/storage/movies/poster/01JCQFPFJG21WS8RQ22ESYMCTM.png',
+            'public/storage/movies/poster/01JCQFPFJJE9D6WBAWHVZ2CKAV.png',
+            ];
+        $images_background = [
+            'public/storage/backgrounds/01JCQFPFJG21WS8RQ22ESYMCTM.png',
+            'public/storage/backgrounds/01JCQFPFJJE9D6WBAWHVZ2CKAV.png',
         ];
         return [
             'title' => $this->faker->company,
             'description' => $this->faker->paragraph,
             'director' => $this->faker->name,
-            'images' => json_encode($images),
+
             'links' => null,
             'duration' => $this->faker->numberBetween(60, 200),
             'release_date' => $this->faker->dateTimeBetween('1975-01-01', 'now'),

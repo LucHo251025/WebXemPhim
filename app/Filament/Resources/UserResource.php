@@ -4,7 +4,9 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\UserResource\Pages;
 use App\Filament\Resources\UserResource\RelationManagers;
+use App\Models\Subscription;
 use App\Models\User;
+use Carbon\Traits\Date;
 use Filament\Forms;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\FileUpload;
@@ -21,6 +23,8 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Password;
 
 class UserResource extends Resource
 {
@@ -32,31 +36,74 @@ class UserResource extends Resource
     {
         return $form
             ->schema([
-
                 Section::make([
-                    Grid::make()->schema([
+                    Grid::make(2)->schema([
+
                         TextInput::make('name')
                             ->required()
-                            ->label("Name"),
+                            ->label('Name')
+                            ->extraAttributes(['class' => 'mr-4']) // Thêm margin-right cho trường name
+                            ->columnSpan(1),
+
+                        // Avatar Field
+                        FileUpload::make('avatar')
+                            ->image()
+                            ->directory('users')
+                            ->extraAttributes(['class' => 'ml-4']) // Thêm margin-left cho avatar
+                            ->avatar()
+                            ->label('Avatar')
+                            ->columnSpan(1),
+                        TextInput::make('phone')
+                        ->required()
+                        ->columnSpan(1),
+                        DatePicker::make('date_of_birth')
+                        ->nullable()
+                        ->columnSpan(1),
+                        Forms\Components\Select::make('sex')
+                            ->options([
+                                'male' => 'Male',
+                                'female' => 'Female',
+                            ])
+                            ->required()
+                            ->columnSpan(1),
+
+                        // Email Field
                         TextInput::make('email')
                             ->required()
-                            ->label("Email")
-                            ->maxLength(255),
+                            ->label('Email')
+                            ->maxLength(255)
+                            ->columnSpan(1),
+
                         TextInput::make('password')
                             ->password()
-                            ->dehydrated(fn($state) => filled($state))
-                            ->required(fn(Page $livewire): bool => $livewire instanceof CreateRecord),
+                            ->revealable()
+                            ->dehydrateStateUsing(fn (string $state): string => Hash::make($state)),
+
+                        DatePicker::make('subscription_started_at')
+                            ->nullable()
+                            ->label('Subscription Started At')
+                            ->columnSpan(1),
+
+                        DatePicker::make('subscription_ended_at')
+                            ->nullable()
+                            ->label('Subscription Ended At')
+                            ->columnSpan(1),
+
+                        Forms\Components\Select::make('subscription_id')
+                            ->label('Subscription')
+                            ->options(Subscription::all()->pluck('name', 'id'))
+                            ->required()
+                            ->columnSpan(1),
+                        // Email Verified At Field
                         DatePicker::make('email_verified_at')
-                            ->default(now()),
+                            ->default(now())
+                            ->nullable()
+                            ->label('Email Verified At')
+                            ->columnSpan(1),
                     ]),
-
-
-                    FileUpload::make('avatar')
-                        ->image()
-                        ->directory('users')
-                        ->columnSpanFull()
                 ])
-
+                    ->columns(2)
+                    ->columnSpanFull()
             ]);
     }
 
@@ -66,13 +113,25 @@ class UserResource extends Resource
             ->columns([
                 TextColumn::make('name')
                     ->searchable(),
-                ImageColumn::make('image')
+                ImageColumn::make('avatar')
                     ->circular(),
                 TextColumn::make('email')
                     ->searchable(),
+                TextColumn::make('subscription_started_at')
+                    ->dateTime()
+                    ->sortable(),
+                TextColumn::make('password')
+
+                ,
+
+                TextColumn::make('subscription_ended_at')
+                    ->dateTime()
+                    ->sortable(),
+
                 TextColumn::make('email_verified_at')
                     ->dateTime()
                     ->sortable(),
+
                 TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()

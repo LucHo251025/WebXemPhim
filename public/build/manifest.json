@@ -1,23 +1,21 @@
 {
   "resources/css/app.css": {
-    "file": "assets/app-aa75468c.css",
+    "file": "assets/app-91e6b948.css",
     "isEntry": true,
     "src": "resources/css/app.css"
   },
+  "resources/css/filament/admin/theme.css": {
+    "file": "assets/theme-fd1f126a.css",
+    "isEntry": true,
+    "src": "resources/css/filament/admin/theme.css"
+  },
   "resources/css/swiper.css": {
-    "file": "assets/swiper-731a2e8d.css",
+    "file": "assets/swiper-a753075a.css",
     "isEntry": true,
     "src": "resources/css/swiper.css"
   },
-  "resources/js/app.css": {
-    "file": "assets/app-59b7e6ed.css",
-    "src": "resources/js/app.css"
-  },
   "resources/js/app.js": {
-    "css": [
-      "assets/app-59b7e6ed.css"
-    ],
-    "file": "assets/app-2c26a57a.js",
+    "file": "assets/app-4ed993c7.js",
     "isEntry": true,
     "src": "resources/js/app.js"
   }

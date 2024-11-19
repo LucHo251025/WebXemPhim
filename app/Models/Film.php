@@ -13,18 +13,24 @@ class Film extends Model
     protected $fillable = [
         'title',
         'description',
-        'release_year',
+        'director',
+        'release_date',
         'type',
         'video_path',
         'duration',
         'rating',
-        'images',
-    ];
-    protected $casts = [
-        'images' => 'array',
-         'links' => 'array',
 
     ];
+    protected $casts = [
+
+        'video_path' => 'array',
+
+    ];
+    public function filmImages()
+    {
+        return $this->hasMany(FilmImages::class);
+    }
+
 
     public function genres()
     {
@@ -40,4 +46,6 @@ class Film extends Model
     {
         return $this->hasMany(Season::class);
     }
+
+
 }

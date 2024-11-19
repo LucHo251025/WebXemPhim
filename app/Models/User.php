@@ -22,6 +22,9 @@ class User extends Authenticatable
         'email',
         'password',
         'avatar',
+        'sex',
+        'date_of_birth',
+        'phone',
         'subscription_id',
         'subscription_started_at',
         'subscription_ended_at',
@@ -48,5 +51,10 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    public function subscription()
+    {
+        return $this->belongsTo(Subscription::class);
     }
 }

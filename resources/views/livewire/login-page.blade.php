@@ -28,28 +28,49 @@
                 <form wire:submit.prevent="save">
 
                     <div class="flex flex-col items-start gap-8 self-stretch">
-                        <div class="flex flex-col items-start gap-3 self-stretch">
-                            <div class="flex flex-col items-start gap-8 self-stretch">
+                        @if(session('error'))
+                            <div class="w-full flex items-center p-3 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+                                <svg class="flex-shrink-0 inline w-4 h-4 me-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
+                                </svg>
+                                <span class="sr-only">Info</span>
+                                <div>
+                                    <span class="font-medium">{{session('error')}}</span>
+                                </div>
+                            </div>
+                        @endif
+
+                            <div class="flex flex-col items-start gap-3 self-stretch">
+                            <div class="flex flex-col items-start gap-5 self-stretch">
                                 <div class="email-login flex p-[22px_40px] flex-col items-start gap-3 self-stretch" style="border-radius: 8px;border: 1px solid var(--Electric-Violet-400, #A473FF);background: rgba(48, 0, 119, 0.10);">
                                     <div class="flex justify-between items-center self-stretch">
                                         <input type="email" id="email" wire:model="email"
                                                class="text-white font-poppins leading-[120%] bg-transparent border-none focus:outline-none text-lg"
                                                style="font-size: 20px; font-weight: 400;"
                                                placeholder="Email Address"
-                                               required>
+                                               >
                                         <img src="{{ Vite::asset('resources/images/play_image/iconamoon_profile-thin.svg') }}" alt="">
                                     </div>
                                 </div>
+                                @error('email')
+                                <div class="p-1 mb-1 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+                                    <span class="font-medium">{{$message}}</span>
+                                </div>
+                                @enderror
                                 <div class="password-login flex p-[22px_40px] flex-col items-start gap-3 self-stretch" style="border-radius: 8px;border: 1px solid var(--Electric-Violet-400, #A473FF);background: rgba(48, 0, 119, 0.10);">
                                     <div class="flex justify-between items-center self-stretch">
                                         <input type="password" id="password" wire:model="password"
                                                class="text-white font-poppins leading-[120%] bg-transparent border-none focus:outline-none"
                                                style="font-size: 20px; font-weight: 400;"
-                                               placeholder="Password"
-                                               required>
+                                               placeholder="Password">
                                         <img src="{{ Vite::asset('resources/images/play_image/ic_baseline-email.svg') }}" alt="">
                                     </div>
                                 </div>
+                                @error('password')
+                                <div class="p-1 mb-1 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+                                    <span class="font-medium">{{$message}}</span>
+                                </div>
+                                @enderror
 
                             </div>
                             <div class="flex items-center gap-2 w-full h-12px">
