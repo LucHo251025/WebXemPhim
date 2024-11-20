@@ -1,16 +1,17 @@
-<div class="flex flex-col items-center gap-16 shrink-0 relative">
+@props(['films', 'title', 'name' => 'latest'])
+<div class="flex flex-col items-center gap-16 shrink-0 h-full">
     <div class="flex flex-col justify-center ml-24 mt-14 gap-9 self-stretch">
-        <h2 class="font-bold text-3xl">Latest Releases</h2>
-        <div class="swiper latest-swiper" style="width: 100%">
+        <h2 class="font-bold text-3xl">{{ $title ?? 'Title' }}</h2>
+        <div class="swiper {{$name}}-swiper" style="width: 100%">
             <div class="swiper-wrapper">
-                @foreach($movies as $movie)
-                    <x-small-card :movie="$movie" />
+                @foreach($films as $film)
+                    <x-small-card :film="$film" />
                 @endforeach
             </div>
         </div>
     </div>
-    <div class="flex justify-end items-end w-fit px-44 items-center absolute -right-4 -bottom-16">
-        <button class="swiper-button-prev rounded-full" style="width: 80px;height: 80px;position: inherit; left: var(--swiper-navigation-sides-offset, 0px)"></button>
-        <button class="swiper-button-next rounded-full" style="width: 80px;height: 80px;position: inherit; left: var(--swiper-navigation-sides-offset, 100px)"></button>
+    <div class="flex justify-end items-end w-fit px-44 items-center gap-6 -right-4 -bottom-16 w-full h-24">
+        <x-swiper-button name="{{$name}}" type="prev" />
+        <x-swiper-button name="{{$name}}" type="next" />
     </div>
 </div>

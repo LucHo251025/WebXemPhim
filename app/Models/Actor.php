@@ -18,8 +18,8 @@ class Actor extends Model
         'images' => 'array',
     ];
 
-    public function movies()
+    public function films()
     {
-        return $this->belongsToMany(Movie::class, 'movie_actors', 'actor_id', 'movie_id'); // Chú ý thứ tự tham số
+        return $this->belongsToMany(Film::class, 'film_actors', 'actor_id', 'film_id'); // Chú ý thứ tự tham số
     }
 }
