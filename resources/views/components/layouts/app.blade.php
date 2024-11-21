@@ -7,7 +7,7 @@
     @vite(['resources/css/app.css', 'resources/js/app.js', 'resources/js/swiper.js', 'resources/css/swiper.css'])
 </head>
 <body class="bg-black-theme text-white w-full" >
-    <x-header/>
+{{--    <x-header/>--}}
         <main>
             {{ $slot }}
         </main>

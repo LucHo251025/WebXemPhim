@@ -34,6 +34,7 @@ class FilmFactory extends Factory
             'images' => json_encode($images),
             'links' => null,
             'duration' => $this->faker->numberBetween(60, 200),
+            'type' => $this->faker->randomElement(['movie', 'show']),
             'release_date' => $this->faker->dateTimeBetween('1975-01-01', 'now'),
             'rating' => $this->faker->randomFloat(1, 1, 10),
         ];

@@ -22,8 +22,8 @@ class Film extends Model
     ];
     protected $casts = [
         'images' => 'array',
-         'links' => 'array',
-
+        'links' => 'array',
+        'release_date' => 'date',
     ];
 
     public function genres()
@@ -36,6 +36,10 @@ class Film extends Model
         return $this->belongsToMany(Actor::class, 'film_actors', 'film_id', 'actor_id');
     }
 
+    public function date()
+    {
+        return $this->release_date->format('M d, Y');
+    }
     public function seasons()
     {
         return $this->hasMany(Season::class);

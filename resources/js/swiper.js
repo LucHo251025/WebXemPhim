@@ -1,6 +1,6 @@
 import Swiper from "swiper/bundle";
 import "swiper/css/bundle";
-import {Livewire} from "../../public/vendor/livewire/livewire.esm";
+import {Livewire, Alpine} from "../../public/vendor/livewire/livewire.esm";
 
 
 const homeSwiper = new Swiper(".home-swiper", {
