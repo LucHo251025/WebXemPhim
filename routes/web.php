@@ -6,6 +6,9 @@ use App\Livewire\LoginPage;
 use App\Livewire\PlayPage;
 use App\Livewire\RegisterPage;
 use App\Livewire\ResetPassword;
+use App\Livewire\HomeUpcomingMovies;
+use App\Livewire\ShowMoviePage;
+use App\Livewire\SupportMoviePage;
 use App\Livewire\SubscriptionPage;
 use  App\Livewire\Explore;
 use Illuminate\Support\Facades\Route;
@@ -18,6 +21,12 @@ Route::get('/explore/{type}', Explore::class)
 Route::get('/explore', function () {
     return redirect('/explore/movie');
 });
+
+
+Route::get('/UpcomingMoves-page', HomeUpcomingMovies::class);
+Route::get('/support-page', SupportMoviePage::class);
+Route::get('/show-movie-page', ShowMoviePage::class);
+
 
 Route::get('/subscription-page',SubscriptionPage::class);
 Route::get('/login', LoginPage::class)->name('login');
