@@ -57,7 +57,6 @@
                 <div class="flex gap-2.5 shrink-0 h-fit flex-row md:flex-row rounded-[20px] min-h-7 max-md:w-full" style="background: #3C0753">
                     <div class="md:max-w-[500px] w-full relative max-md:min-w-0" id="sortBy-container">
                         <select id="sortBy" class="text-violet-400" @change="$wire.updateSortBy($event.target.value)" >
-                            <option value="popular">Popular</option>
                             <option value="rating">Rating</option>
                             <option value="a-z">Title (A-Z)</option>
                             <option value="z-a">Title (Z-A)</option>

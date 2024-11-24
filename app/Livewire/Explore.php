@@ -47,7 +47,6 @@ class Explore extends Component
             ->when($this->sortBy === 'rating', fn($query) => $query->orderBy('rating', 'desc'))
             ->when($this->sortBy === 'a-z', fn($query) => $query->orderBy('title', 'asc'))
             ->when($this->sortBy === 'z-a', fn($query) => $query->orderBy('title', 'desc'))
-            ->when($this->sortBy === 'popular', fn($query) => $query->orderBy('popularity', 'desc'))
             ->paginate($this->page);
 
         return view('livewire.explore', ['films' => $films]);
