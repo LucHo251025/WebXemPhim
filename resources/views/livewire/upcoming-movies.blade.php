@@ -17,21 +17,37 @@
 
                     <div class="flex justify-center items-center flex-1">
                         <div class="h-[119px] w-full flex justify-end mt-[70px]">
-                            <div class="w-[151px] py-[10px] px-[22px] gap-2 border-2 border-white rounded-tr-[16px] rounded-br-[16px] bg-[#3000774D] ml-[33px] mt-[70px]">
+                            <div id="dropdownButtonOptionforMovies" class="relative hover:cursor-pointer w-[151px] py-[10px] px-[22px] gap-2 border-2 border-white rounded-tr-[16px] rounded-br-[16px] bg-[#3000774D] ml-[33px] mt-[70px]">
                                 <div class="flex items-center justify-center font-poppins text-sm font-semibold leading-5">
-                                    Movies
+                                    {{ $selected_genre ? $selected_genre->name:"Movies" }}
+                                    
                                     <div class="w-[17px] h-[11px] ml-2">
                                         <img src="{{ Vite::asset('resources/images/upcoming_image/Vector 3.png') }}" alt="Icon" />
                                     </div>
                                 </div>
+                                <!-- Dropdown Menu -->
+                                <div id="dropdownMenuOptionforMovies" class="absolute right-0 mt-5 w-48 rounded shadow-lg hidden bg-gray-800">
+                                    @foreach($genreMovies as $genre)
+                                    <a href="?genre={{ $genre->id }}&year={{ $selected_year }}" class="block px-4 py-2 text-white hover:bg-sky-700"> {{ $genre->name }}</a>
+                                 @endforeach
+                                </div>
+
                             </div>
 
-                            <div class="w-[151px] py-[10px] px-[22px] gap-2 border-2 border-white rounded-tr-[16px] rounded-br-[16px] bg-[#3000774D] ml-[33px] mt-[70px]">
+                            <div id="dropdownButtonOptionforYears" class="relative hover:cursor-pointer w-[151px] py-[10px] px-[22px] gap-2 border-2 border-white rounded-tr-[16px] rounded-br-[16px] bg-[#3000774D] ml-[33px] mt-[70px]">
                                 <div class="flex items-center justify-center font-poppins text-sm font-semibold leading-5">
-                                    2024
+                                    {{ $selected_year }}
                                     <div class="w-[17px] h-[11px] ml-2">
                                         <img src="{{ Vite::asset('resources/images/upcoming_image/Vector 3.png') }}" alt="Icon" />
                                     </div>
+                                </div>
+                                <!-- Dropdown Menu -->
+                                <div id="dropdownMenuOptionforYears" class="absolute right-0 mt-5 w-48 rounded shadow-lg hidden bg-gray-800">
+                                    @foreach ( $groupYearsMovies as $years )
+                                    <a href="?year={{ $years->release_year }} {{ $selected_genre ? "&genre=".$selected_genre->id:"" }}" class="block px-4 py-2 text-white hover:bg-sky-700">{{ $years->release_year }}</a>
+                                  
+                                    @endforeach
+                                   
                                 </div>
                             </div>
                         </div>
@@ -46,9 +62,9 @@
             Upcoming Movies
         </div>
 
-        <?php foreach ($groupedMovies as $year_month => $movies) { ?>
+       @foreach($groupedMovies as $year_month => $movies) 
             <x-upcoming-month :item="['year_month' => $year_month, 'movies' => $movies]" />
-        <?php } ?>
+        @endforeach
 
         <div class="mt-8 pb-8">
             <div class="flex justify-center">

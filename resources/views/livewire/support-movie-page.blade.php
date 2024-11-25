@@ -14,13 +14,17 @@
                 <div class="w-[500px] h-[509px] p-[10px] bg-black rounded-[27px] border-[12px] border-[#1A0B28] overflow-hidden inline-flex relative justify-start items-start gap-[10px]">
                     <div class="w-[513px] h-[483px] transform rotate-[-18.72deg] origin-[0_0] flex flex-col justify-start items-start gap-[23px] absolute right-[102px] top-[-16px] pr-[33px]">
                         <!-- PHP loop to generate images can remain as is -->
-                        <?php for($i=0;$i<4;$i++){ ?>
-                            <div class="flex justify-start items-center gap-[23px] inline-flex">
-                                <?php for($j=0;$j<5;$j++){ ?>
-                                    <img class="card-support" src="{{ Vite::asset($items->count() > $i*5+$j? $items[$i*5+$j]->links : 'resources/images/support-images/135x168.png') }}" />
-                                <?php } ?>
-                            </div>
-                        <?php } ?>
+                        @foreach(range(0, 3) as $i)  {{-- Loop for 4 rows --}}
+                        <div class="flex gap-6">
+                            @foreach(range(0, 4) as $j)  {{-- Loop for 5 images per row --}}
+                                @php
+                                    $index = $i * 5 + $j;
+                                    $imageSrc = $items->count() > $index ? Vite::asset($items[$index]->links) : 'resources/images/support-images/135x168.png';
+                                @endphp
+                                <img class="card-support" src="{{ $imageSrc }}" />
+                            @endforeach
+                        </div>
+                    @endforeach
                     </div>
                 </div>
             </div>

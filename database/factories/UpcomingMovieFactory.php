@@ -19,9 +19,9 @@ class UpcomingMovieFactory extends Factory
     {
         return [
             'title_upcoming' => $this->faker->company,
-            'release_month_upcoming' => $this->faker->numberBetween(6, 12),
+            'release_month_upcoming' => $this->faker->numberBetween(1, 12),
             'release_day_upcoming' => $this->faker->numberBetween(1, 30),
-            'release_year_upcoming' => 2024,
+            'release_year_upcoming' => $this->faker->numberBetween(2024, 2030),
             'links' => 'resources/images/upcoming_image/movie'.$this->faker->numberBetween(1, 7).'.jpg',
             
         ];

@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('upcoming', function (Blueprint $table) {
+        Schema::create('upcoming_movies', function (Blueprint $table) {
             $table->id();
             $table->string('title_upcoming'); 
             $table->integer('release_month_upcoming');
@@ -27,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('upcoming');
+        Schema::dropIfExists('upcoming_movies');
     }
 };
