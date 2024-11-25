@@ -3,6 +3,7 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Database\Factories\UserSubscriptionsFactory;
 use Filament\Models\Contracts\FilamentUser;
 use Filament\Panel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -27,9 +28,6 @@ class User extends Authenticatable implements FilamentUser
         'sex',
         'date_of_birth',
         'phone',
-        'subscription_id',
-        'subscription_started_at',
-        'subscription_ended_at',
     ];
 
     /**
@@ -57,7 +55,7 @@ class User extends Authenticatable implements FilamentUser
 
     public function subscription()
     {
-        return $this->belongsTo(Subscription::class);
+        return $this->belongsTo(UserSubscriptions::class)->subscription;
     }
     public function canAccessPanel(Panel $panel): bool
     {

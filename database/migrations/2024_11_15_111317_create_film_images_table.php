@@ -14,7 +14,7 @@ return new class extends Migration
     {
         Schema::create('film_images', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('film_id')->constrained()->cascadeOnDelete(); // Liên kết với bảng films
+            $table->foreignId('film_id')->unique()->constrained()->cascadeOnDelete();
             $table->json('backgrounds');
             $table->json('posters');
             $table->timestamps();

@@ -18,14 +18,15 @@ class Film extends Model
         'type',
         'video_path',
         'duration',
-        'rating',
-
+        'average_rating',
     ];
+
     protected $casts = [
         'release_date' => 'date',
         'video_path' => 'array',
     ];
-    public function filmImages()
+
+    public function images()
     {
         return $this->hasOne(FilmImages::class);
     }
@@ -45,8 +46,10 @@ class Film extends Model
     {
         return $this->release_date->format('M d, Y');
     }
+
     public function seasons()
     {
         return $this->hasMany(Season::class);
     }
+
 }

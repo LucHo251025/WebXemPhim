@@ -25,7 +25,7 @@ class FilmImagesFactory extends Factory
             'public/storage/backgrounds/01JCQFPFJJE9D6WBAWHVZ2CKAV.png',
         ];
         return [
-            'posters' => json_encode($images_poster), // 'images_poster'
+            'posters' => json_encode($images_poster),
             'backgrounds'=>json_encode($images_background),
         ];
     }

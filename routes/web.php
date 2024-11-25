@@ -44,8 +44,8 @@ Route::get('/subscription-page/{name}',\App\Livewire\Service::class);
 
 
 //Route::middleware('auth')->group(function () {
-
-});
+//
+//});
 
 Route::get('/login', LoginPage::class)->name('login');
 Route::get('/register', RegisterPage::class)->name('register');
