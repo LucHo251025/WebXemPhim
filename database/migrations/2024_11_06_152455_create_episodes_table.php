@@ -15,7 +15,7 @@ return new class extends Migration
         Schema::create('episodes', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(Season::class)->constrained()->cascadeOnDelete();
-            $table->integer('episode_number');
+            $table->integer('episode_number')->unsigned();
             $table->string('title');
             $table->string('description');
             $table->date('release_date');

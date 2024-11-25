@@ -2,11 +2,12 @@
 
 namespace Database\Seeders;
 
+use App\Models\FilmImages;
 use App\Models\Genre;
 use App\Models\Film;
 use App\Models\FilmGenre;
+use App\Models\UpcomingMovie;
 use App\Models\User;
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -16,7 +17,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
+         User::factory(10)->create();
         $genres = ['Action', 'Comedy', 'Drama', 'Horror', 'Romance', 'Sci-Fi', 'Thriller'];
 
         // Insert genres into the database
@@ -34,5 +35,9 @@ class DatabaseSeeder extends Seeder
                     'genre_id' => $genreId,
                 ]);
             }
-        });    }
+            FilmImages::factory()->create(['film_id' => $film->id]);
+        });
+
+        UpcomingMovie::factory(30)->create();
+    }
 }

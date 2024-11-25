@@ -17,6 +17,9 @@ return new class extends Migration
             $table->id();
             $table->foreignIdFor(User::class)->constrained()->cascadeOnDelete();
             $table->foreignIdFor(Film::class)->constrained()->cascadeOnDelete();
+            $table->integer('last_watched_episode')->nullable();
+            $table->integer('watch_time')->default(0);
+            $table->boolean('watched')->default(false);
             $table->timestamps();
         });
     }

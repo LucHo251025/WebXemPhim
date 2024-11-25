@@ -9,12 +9,9 @@ use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
 use Kirschbaum\PowerJoins\JoinsHelper;
-use Kirschbaum\PowerJoins\PowerJoins;
 
 class RelationshipJoiner
 {
-    use PowerJoins;
-
     public function leftJoinRelationship(Builder $query, string $relationship): Builder
     {
         if (str($relationship)->contains('.')) {
@@ -91,6 +88,19 @@ class RelationshipJoiner
             $relationshipQuery
                 ->distinct()
                 ->select($relationshipQuery->getModel()->getTable() . '.*');
+
+            /** @phpstan-ignore-next-line */
+            foreach (($relationshipQuery->getQuery()->orders ?? []) as $order) {
+                if (! array_key_exists('column', $order)) {
+                    continue;
+                }
+
+                if (str($order['column'])->startsWith("{$relationshipQuery->getModel()->getTable()}.")) {
+                    continue;
+                }
+
+                $relationshipQuery->addSelect($order['column']);
+            }
         }
 
         return $relationshipQuery;
