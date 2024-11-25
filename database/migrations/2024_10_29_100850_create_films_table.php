@@ -21,7 +21,7 @@ return new class extends Migration
             $table->integer('duration');
             $table->decimal('average_rating', 2, 1)->default(0);
             $table->json('video_path')->nullable();
-            $table->string('slug')->unique()->after('title');
+            $table->string('slug')->unique();
             $table->timestamps();
         });
     }
