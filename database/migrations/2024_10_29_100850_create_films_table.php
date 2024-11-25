@@ -17,9 +17,10 @@ return new class extends Migration
             $table->string('director');
             $table->mediumText('description');
             $table->date('release_date');
-            $table->enum('type', ['show', 'movie'])->default('movie');            $table->json('links')->nullable();
+            $table->enum('type', ['show', 'movie'])->default('movie');
+            $table->json('links')->nullable();
             $table->integer('duration');
-            $table->decimal('rating');
+            $table->decimal('average_rating', 2, 1)->default(0);
             $table->json('images');
             $table->json('video_path')->nullable();
             $table->timestamps();
