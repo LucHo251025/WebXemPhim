@@ -5,7 +5,9 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\MovieResource\Pages;
 use App\Filament\Resources\MovieResource\RelationManagers;
 use App\Models\Film;
+use App\Models\FilmImages;
 use Faker\Provider\ar_EG\Text;
+use Filament\Actions\CreateAction;
 use Filament\Forms;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\FileUpload;
@@ -37,116 +39,237 @@ class MovieResource extends Resource
             ->schema([
                 Group::make()
                     ->schema([
-                        Section::make([
-                            TextInput::make('title')
-                                ->required()
-                                ->maxLength(255)
-                                ->columnSpanFull(), // Full width
 
-                            DatePicker::make('release_year')
-                                ->format('Y')
-                                ->required()
-                                ->columnSpanFull(), // Full width
+                        Section::make('Movie Information')
+                            ->schema([
+                                Grid::make(2)
+                                ->schema([
+                                    TextInput::make('title')
+                                        ->label('Title')
+                                        ->required()
+                                        ->maxLength(255)
+                                        ->columnSpan(1),
 
-                            Select::make('genre_id')
-                                ->multiple()
-                                ->required()
-                                ->preload()
-                                ->relationship('genres', 'name')
-                                ->columnSpanFull(), // Full width
+                                    TextInput::make('director')
+                                        ->label('Director')
+                                        ->required()
+                                        ->maxLength(255)
+                                        ->columnSpan(1),
+                                    DatePicker::make('release_date')
+                                        ->label('Release Year')
+                                        ->required()
+                                        ->columnSpan(1),
 
-                            TextInput::make('duration')
-                                ->label('Duration (in minutes)')
-                                ->required()
-                                ->numeric()
-                                ->minValue(1)
-                                ->maxValue(600)
-                                ->columnSpanFull(), // Full width
+                                    Select::make('genre_id')
+                                        ->label('Genre')
+                                        ->multiple()
+                                        ->required()
+                                        ->preload()
+                                        ->relationship('genres', 'name')
+                                        ->columnSpan(2),
 
-                            TextInput::make('rating')
-                                ->required()
-                                ->columnSpanFull(), // Full width
+                                    TextInput::make('duration')
+                                        ->label('Duration (in minutes)')
+                                        ->required()
+                                        ->numeric()
+                                        ->minValue(1)
+                                        ->maxValue(600)
+                                        ->columnSpan(1),
 
-                            Select::make('actor_id')
-                                ->multiple()
-                                ->required()
-                                ->preload()
-                                ->relationship('actors', 'name')
-                                ->columnSpanFull(), // Full width
+                                    TextInput::make('rating')
+                                        ->label('Rating')
+                                        ->required()
+                                        ->columnSpan(1),
 
-                        ])
-                            ->columns(2) // This sets the section into 2 columns
-                            ->columnSpanFull()
+                                    Select::make('actor_id')
+                                        ->label('Actors')
+                                        ->multiple()
+                                        ->required()
+                                        ->preload()
+                                        ->relationship('actors', 'name')
+                                        ->columnSpan(1),
+                                    Select::make('type')
+                                        ->options([
+                                            'show' => 'Show',
+                                            'movie' => 'Movie',
+                                        ])
+                                        ->required()
+                                        ->columnSpan(1),
+                                    MarkdownEditor::make('description')
+                                        ->label('Description')
+                                        ->columnSpanFull(),
+                                ]),
+                            ])
+                            ->columns(2)
+                            ->columnSpanFull(),
                     ]),
+
+
                 Group::make()
                     ->schema([
-                        Repeater::make('links')
-                            ->label('Links')
+                        Section::make('Additional Details')
                             ->schema([
-                                TextInput::make('url')
-                                    ->label('Link')
-                                    ->required()
-                                    ->url(),
-                            ])
-                            ->defaultItems(1),
-                        FileUpload::make('images')
-                            ->image()
-                            ->multiple()
-                            ->directory('movies'),
-                        MarkdownEditor::make('description')
-                            ->columnSpanFull()
-                    ])
-                    ->columnSpanFull()
+                                Grid::make(2)
+                                ->schema([
+                                    Repeater::make('video_path')
+                                        ->label('Path')
+                                        ->schema([
+                                            TextInput::make('url')
+                                                ->label('Path')
+                                                ->required()
+                                                ->url(),
+                                        ])
+                                        ->defaultItems(1)
+                                        ->columnSpan(2),
+                                    Forms\Components\Repeater::make('film_images')
+                                        ->relationship('filmImages')  // Liên kết với FilmImage
+                                        ->schema([
+                                            // Tải nhiều ảnh cho backgrounds
+                                            Forms\Components\FileUpload::make('backgrounds')
+                                                ->multiple()  // Cho phép tải nhiều ảnh
+                                                ->directory('backgrounds')
+                                                ->image()
+                                                ->maxSize(1024)
+                                                ->required()
+                                                ->columnSpan(1),
 
+                                            // Tải nhiều ảnh cho posters
+                                            Forms\Components\FileUpload::make('posters')
+                                                ->multiple()  // Cho phép tải nhiều ảnh
+                                                ->directory('posters')
+                                                ->image()
+                                                ->maxSize(1024)
+                                                ->required()
+                                                ->columnSpan(1),
+
+                                        ])
+                                        ->collapsible()  // Cho phép gập lại mỗi mục
+                                    ->columnSpan(2),
+                                ]),
+
+
+                            ])
+                            ->columnSpanFull(),
+                    ]),
 
             ]);
     }
+
+    public static function mutateFormDataBeforeCreate(array $data): array
+    {
+        $film = Film::create($data);
+
+        // Sau khi tạo phim xong, lấy ID của phim vừa tạo
+        // và tạo bản ghi mới trong bảng film_images
+        FilmImages::create([
+            'film_id' => $film->id, // Gán ID của phim vào cột film_id
+            'backgrounds' => $data['backgrounds'], // Lưu backgrounds từ $data
+            'posters' => $data['posters'],         // Lưu posters từ $data
+        ]);
+
+        // Trả về $data
+        return $data;
+    }
+    public static function mutateFormDataBeforeSave(array $data): array
+    {
+        // Tìm phim hiện tại dựa trên ID trong $data
+        $film = Film::find($data['id']);
+
+        // Kiểm tra xem đã có bản ghi trong bảng film_images chưa
+        $filmImages = $film->filmImages()->first();
+
+        // Nếu đã có, thì cập nhật backgrounds và posters
+        if ($filmImages) {
+            $filmImages->update([
+                'backgrounds' => $data['backgrounds'], // Cập nhật backgrounds
+                'posters' => $data['posters'],         // Cập nhật posters
+            ]);
+        } else {
+            // Nếu chưa có, thì tạo bản ghi mới
+            FilmImages::create([
+                'film_id' => $film->id,   // Gán ID của phim
+                'backgrounds' => $data['backgrounds'],
+                'posters' => $data['posters'],
+            ]);
+        }
+
+        // Trả về $data
+        return $data;
+    }
+
 
     public static function table(Table $table): Table
     {
         return $table
             ->columns([
                 TextColumn::make('title')->searchable(),
-                TextColumn::make('release_year'),
+                TextColumn::make('release_date'),
                 TextColumn::make('duration')->sortable(),
                 TextColumn::make('rating'),
-                TextColumn::make('links')
+                TextColumn::make('director')->searchable(),
+                TextColumn::make('video_path')
                     ->formatStateUsing(function ($record) {
-                        // Giải mã JSON để lấy mảng
                         $links = json_decode($record->links, true);
 
-                        // Kiểm tra xem có phải là mảng không
                         if (is_array($links)) {
-                            // Lấy ra các URL từ mảng và kết hợp chúng thành một chuỗi
                             return implode(', ', array_column($links, 'url'));
                         }
 
                         return ''; // Trả về chuỗi rỗng nếu không có liên kết
-                    }),
+                    })
+                ->hidden(fn () => true),
 
-                ImageColumn::make('images'),
+                ImageColumn::make('backgrounds')
+                    ->label('Background Images')
+                    ->getStateUsing(function ($record) {
+                        $backgrounds = json_decode($record->backgrounds, true);
+                        return is_array($backgrounds) && count($backgrounds) > 0 ? $backgrounds[0] : null;
+                    })
+                    ->size(50)
+                    ->circular()
+                    ->hidden(fn () => true),
+
+
+
+                ImageColumn::make('posters')
+                    ->label('Poster Images')
+                    ->size(50)
+                    ->getStateUsing(function ($record) {
+                        $posters = json_decode($record->posters, true);
+
+                        return is_array($posters) && count($posters) > 0 ? $posters[0] : null;
+                    })
+                    ->circular()
+                    ->hidden(fn () => true),
+
                 TextColumn::make('genres')
                     ->label('Genres')
                     ->formatStateUsing(function ($record) {
-                        return $record->genres->pluck('name')->join(', '); // Hiển thị genres
+                        return $record->genres->pluck('name')->join(', ');
                     })
                     ->sortable()
                     ->searchable(),
-                TextColumn::make('description'),
-                ImageColumn::make('actors.images') // Chỉ định trường images từ mối quan hệ actors
+                TextColumn::make('type')
+                    ->label('Type')
+                    ->sortable()
+                    ->searchable(),
+                TextColumn::make('description')
+                    ->hidden(fn () => true),
+                ImageColumn::make('actors.images')
                     ->label('Actors')
                     ->circular()
                     ->stacked()
-                    ->limit(1) // Giới hạn số lượng hình ảnh hiển thị nếu cần
-
-
+                    ->limit(1)
             ])
             ->filters([
                 //
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
-            ])
+                Tables\Actions\ActionGroup::make([
+                    Tables\Actions\EditAction::make(),
+                    Tables\Actions\ViewAction::make(),
+                    Tables\Actions\DeleteAction::make(),
+                ]),            ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
                     Tables\Actions\DeleteBulkAction::make(),

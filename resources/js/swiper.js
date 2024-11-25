@@ -142,13 +142,56 @@ addButtonDelay('.swiper-button-prev-most-watched');
 
 const actorSwiper = new Swiper(".actor-swiper", {
     slidesPerView: 3,
-    spaceBetween: 0,
-
+    spaceBetween: 16,
+    breakpoints: {
+        320: {
+            slidesPerView: 3,
+            spaceBetween: 10,
+        },
+        1300: {
+            slidesPerView: 4,
+            spaceBetween: 15,
+        },
+        1600: {
+            slidesPerView: 5,
+            spaceBetween: 30,
+        },
+        1800: {
+            slidesPerView: 6,
+            spaceBetween: 20,
+        },
+        2000: {
+            slidesPerView: 5,
+            spaceBetween: 24,
+        },
+    },
 });
 
 const cartItem = new Swiper(".swiper-cart-items", {
     slidesPerView: 3,
-    spaceBetween: 30,
+    spaceBetween: 20,
+    breakpoints: {
+        320: {
+            slidesPerView: 1,
+            spaceBetween: 1,
+        },
+        1300: {
+            slidesPerView: 1,
+            spaceBetween: 4,
+        },
+        1600: {
+            slidesPerView: 2,
+            spaceBetween: 5,
+        },
+        1800: {
+            slidesPerView: 4,
+            spaceBetween: 7,
+        },
+        2000: {
+            slidesPerView: 4,
+            spaceBetween: 12,
+        },
+    },
 
 });
 const  relativeMovieSwiper = new Swiper(".relative-movie-swiper", {

@@ -15,7 +15,8 @@ return new class extends Migration
             $table->id();
             $table->enum('name', ['free', 'basic', 'standard', 'premium'])->default('free');
             $table->decimal('price');
-            $table->string('description');
+            $table->json('endow');
+            $table->enum('duration',['1 month','3 months','6 months','12 month']);
             $table->timestamps();
         });
     }
@@ -27,4 +28,5 @@ return new class extends Migration
     {
         Schema::dropIfExists('subscriptions');
     }
+
 };

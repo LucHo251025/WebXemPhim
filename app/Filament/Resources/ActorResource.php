@@ -31,8 +31,8 @@ class ActorResource extends Resource
                     TextInput::make('name')
                         ->label("Name")->columnSpanFull(),
                     FileUpload::make('images')
-                        ->image()
                         ->directory('actors')
+                        ->image()
                         ->label("Image")->columnSpanFull()
 
                 ]

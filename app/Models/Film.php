@@ -13,18 +13,23 @@ class Film extends Model
     protected $fillable = [
         'title',
         'description',
-        'release_year',
+        'director',
+        'release_date',
         'type',
         'video_path',
         'duration',
         'rating',
-        'images',
+
     ];
     protected $casts = [
-        'images' => 'array',
-        'links' => 'array',
         'release_date' => 'date',
+        'video_path' => 'array',
     ];
+    public function filmImages()
+    {
+        return $this->hasOne(FilmImages::class);
+    }
+
 
     public function genres()
     {

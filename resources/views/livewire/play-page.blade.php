@@ -1,6 +1,5 @@
 <div style="background: #000">
     <div class="">
-        // abc
         <div class="h-full custom-gradient" style="background: url({{ Vite::asset('resources/images/play_image/slider.jpg') }}) lightgray 50% / cover no-repeat;">
             <div class="flex p-[606px_139px_56px_103px] items-end gap-96 self-stretch" style="background: linear-gradient(354deg, #000 9.64%, rgba(0, 0, 0, 0.73) 37.09%, rgba(0, 0, 0, 0.47) 45.71%, rgba(0, 0, 0, 0.00) 54.28%);">
                 <div name='content' class="content flex w-[757px] flex-col gap-4 self-stretch">
@@ -227,131 +226,10 @@
             </p>
 
             <div class="swiper w-full swiper-cart-items card-items-play flex items-center gap-16 self-stretch">
-                <div class="swiper-wrapper">
+                <div class="swiper-wrapper ">
 
                     <x-movie-cart :movies="$movies"></x-movie-cart>
 
-{{--                    <div class="swiper-slide">--}}
-{{--                        <div class="item-play flex w-[100%] flex-col items-start gap-9">--}}
-{{--                            <img src="{{ Vite::asset('resources/images/play_image/phim1.png') }}"--}}
-{{--                                 style="border-radius: 23px;background:lightgray 1.909px 1.308px / 100% 101.372% no-repeat;"--}}
-{{--                                 alt="">--}}
-{{--                            <div class="info-item flex w-[289px] flex-col items-start gap-2">--}}
-{{--                                <p class="self-stretch"--}}
-{{--                                   style="color: #FFF;font-family: Poppins;font-size: 23px;font-style: normal;font-weight: 700;line-height: 120%;">--}}
-{{--                                    Squid Game</p>--}}
-{{--                                <div class="flex items-center gap-2 self-stretch">--}}
-{{--                                    <img src="{{ Vite::asset('resources\images\play_image\iconamoon_star-fill.svg') }}"--}}
-{{--                                         class="w-[29px] h-[29px]" alt="">--}}
-{{--                                    <p class="w-[254px]"--}}
-{{--                                       style="color: #C0A6FF;font-family: Poppins;font-size: 23px;font-style: normal;font-weight: 700;line-height: 120%;">--}}
-{{--                                        4.9 | Thriller • Crime--}}
-{{--                                    </p>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                    <div class="swiper-slide">--}}
-{{--                        <div class="item-play flex w-[100%] flex-col items-start gap-9">--}}
-{{--                            <img src="{{ Vite::asset('resources/images/play_image/phim2.png') }}"--}}
-{{--                                 style="border-radius: 23px;background:lightgray 1.909px 1.308px / 100% 101.372% no-repeat;"--}}
-{{--                                 alt="">--}}
-{{--                            <div class="info-item flex w-[289px] flex-col items-start gap-2">--}}
-{{--                                <p class="self-stretch"--}}
-{{--                                   style="color: #FFF;font-family: Poppins;font-size: 23px;font-style: normal;font-weight: 700;line-height: 120%;">--}}
-{{--                                    Money Heist</p>--}}
-{{--                                <div class="flex items-center gap-2 self-stretch">--}}
-{{--                                    <img src="{{ Vite::asset('resources\images\play_image\iconamoon_star-fill.svg') }}"--}}
-{{--                                         class="w-[29px] h-[29px]" alt="">--}}
-{{--                                    <p class="w-[254px]"--}}
-{{--                                       style="color:#C0A6FF;font-family: Poppins;font-size: 23px;font-style: normal;font-weight: 700;line-height: 120%;">--}}
-{{--                                        4.9 | Thriller • Crime--}}
-{{--                                    </p>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                    <div class="swiper-slide">--}}
-{{--                        <div class="item-play flex w-[100%] flex-col items-start gap-9">--}}
-{{--                            <img src="{{ Vite::asset('resources/images/play_image/phim3.png') }}"--}}
-{{--                                 style="border-radius: 23px;background:lightgray 1.909px 1.308px / 100% 101.372% no-repeat;"--}}
-{{--                                 alt="">--}}
-{{--                            <div class="info-item flex w-[289px] flex-col items-start gap-2">--}}
-{{--                                <p class="self-stretch"--}}
-{{--                                   style="color: #FFF;font-family: Poppins;font-size: 23px;font-style: normal;font-weight: 700;line-height: 120%;">--}}
-{{--                                    Loki</p>--}}
-{{--                                <div class="flex items-center gap-2 self-stretch">--}}
-{{--                                    <img src="{{ Vite::asset('resources\images\play_image\iconamoon_star-fill.svg') }}"--}}
-{{--                                         class="w-[29px] h-[29px]" alt="">--}}
-{{--                                    <p class="w-[254px]"--}}
-{{--                                       style="color:#C0A6FF;font-family: Poppins;font-size: 23px;font-style: normal;font-weight: 700;line-height: 120%;">--}}
-{{--                                        4.9 | Thriller • Crime--}}
-{{--                                    </p>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-
-{{--                    <div class="swiper-slide">--}}
-{{--                        <div class="item-play flex w-[100%] flex-col items-start gap-9">--}}
-{{--                            <img src="{{ Vite::asset('resources/images/play_image/phim3.png') }}"--}}
-{{--                                 style="border-radius: 23px;background:lightgray 1.909px 1.308px / 100% 101.372% no-repeat;"--}}
-{{--                                 alt="">--}}
-{{--                            <div class="info-item flex w-[289px] flex-col items-start gap-2">--}}
-{{--                                <p class="self-stretch"--}}
-{{--                                   style="color: #FFF;font-family: Poppins;font-size: 23px;font-style: normal;font-weight: 700;line-height: 120%;">--}}
-{{--                                    Loki</p>--}}
-{{--                                <div class="flex items-center gap-2 self-stretch">--}}
-{{--                                    <img src="{{ Vite::asset('resources\images\play_image\iconamoon_star-fill.svg') }}"--}}
-{{--                                         class="w-[29px] h-[29px]" alt="">--}}
-{{--                                    <p class="w-[254px]"--}}
-{{--                                       style="color:#C0A6FF;font-family: Poppins;font-size: 23px;font-style: normal;font-weight: 700;line-height: 120%;">--}}
-{{--                                        4.9 | Thriller • Crime--}}
-{{--                                    </p>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                    <div class="swiper-slide">--}}
-{{--                        <div class="item-play flex w-[100%] flex-col items-start gap-9">--}}
-{{--                            <img src="{{ Vite::asset('resources/images/play_image/phim3.png') }}"--}}
-{{--                                 style="border-radius: 23px;background:lightgray 1.909px 1.308px / 100% 101.372% no-repeat;"--}}
-{{--                                 alt="">--}}
-{{--                            <div class="info-item flex w-[289px] flex-col items-start gap-2">--}}
-{{--                                <p class="self-stretch"--}}
-{{--                                   style="color: #FFF;font-family: Poppins;font-size: 23px;font-style: normal;font-weight: 700;line-height: 120%;">--}}
-{{--                                    Loki</p>--}}
-{{--                                <div class="flex items-center gap-2 self-stretch">--}}
-{{--                                    <img src="{{ Vite::asset('resources\images\play_image\iconamoon_star-fill.svg') }}"--}}
-{{--                                         class="w-[29px] h-[29px]" alt="">--}}
-{{--                                    <p class="w-[254px]"--}}
-{{--                                       style="color: #C0A6FF;font-family: Poppins;font-size: 23px;font-style: normal;font-weight: 700;line-height: 120%;">--}}
-{{--                                        4.9 | Thriller • Crime--}}
-{{--                                    </p>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                    <div class="swiper-slide">--}}
-{{--                        <div class="item-play flex w-[100%] flex-col items-start gap-9">--}}
-{{--                            <img src="{{ Vite::asset('resources/images/play_image/phim3.png') }}"--}}
-{{--                                 style="border-radius: 23px;background:lightgray 1.909px 1.308px / 100% 101.372% no-repeat;"--}}
-{{--                                 alt="">--}}
-{{--                            <div class="info-item flex w-[289px] flex-col items-start gap-2">--}}
-{{--                                <p class="self-stretch"--}}
-{{--                                   style="color: #FFF;font-family: Poppins;font-size: 23px;font-style: normal;font-weight: 700;line-height: 120%;">--}}
-{{--                                    Loki</p>--}}
-{{--                                <div class="flex items-center gap-2 self-stretch">--}}
-{{--                                    <img src="{{ Vite::asset('resources\images\play_image\iconamoon_star-fill.svg') }}"--}}
-{{--                                         class="w-[29px] h-[29px]" alt="">--}}
-{{--                                    <p class="w-[254px]"--}}
-{{--                                       style="color:#C0A6FF;font-family: Poppins;font-size: 23px;font-style: normal;font-weight: 700;line-height: 120%;">--}}
-{{--                                        4.9 | Thriller • Crime--}}
-{{--                                    </p>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
                 </div>
             </div>
         </div>

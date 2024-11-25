@@ -1,8 +1,13 @@
 {
   "resources/css/app.css": {
-    "file": "assets/app-9c4e60bc.css",
+    "file": "assets/app-a6336053.css",
     "isEntry": true,
     "src": "resources/css/app.css"
+  },
+  "resources/css/filament/admin/theme.css": {
+    "file": "assets/theme-aac44a58.css",
+    "isEntry": true,
+    "src": "resources/css/filament/admin/theme.css"
   },
   "resources/css/swiper.css": {
     "file": "assets/swiper-a753075a.css",

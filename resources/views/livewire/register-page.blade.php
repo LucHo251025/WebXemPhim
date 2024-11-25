@@ -11,7 +11,7 @@
     </div>
 
 
-    <div class="flex w-[777px] h-[872px] p-[88px_154px] justify-center items-center gap-3 flex-shrink-0" style="border-radius: 30px;border: 2px solid rgba(255, 255, 255, 0.10);background: var(--Glass, rgba(89, 77, 91, 0.20));
+    <div class="flex w-[800px] h-[1070px] p-[88px_154px] justify-center items-center gap-3 flex-shrink-0" style="border-radius: 30px;border: 2px solid rgba(255, 255, 255, 0.10);background: var(--Glass, rgba(89, 77, 91, 0.20));
 backdrop-filter: blur(24.5px);">
         <div class="flex w-[408px] flex-col items-center gap-3 flex-shrink-0">
             <div class="flex w-[356px] flex-col items-center gap-5">
@@ -28,50 +28,70 @@ backdrop-filter: blur(24.5px);">
                 </div>
             </div>
             <form wire:submit.prevent="save">
-
                 <div class="flex flex-col items-start gap-8 self-stretch">
+
                     <div class="flex flex-col items-start gap-3 self-stretch">
-                        <div class="flex flex-col items-start gap-8 self-stretch">
+                        <div class="flex flex-col items-start gap-4 self-stretch">
                             <div class="email-login flex p-[22px_40px] flex-col items-start gap-3 self-stretch" style="border-radius: 8px;border: 1px solid var(--Electric-Violet-400, #A473FF);background: rgba(48, 0, 119, 0.10);">
                                 <div class="flex justify-between items-center self-stretch">
                                     <input type="text" id="name" wire:model="name"
                                            class="text-white font-poppins leading-[120%] bg-transparent border-none focus:outline-none text-lg"
                                            style="font-size: 20px; font-weight: 400;"
                                            placeholder="User Name"
-                                           required>
+                                           >
                                     <img src="{{ Vite::asset('resources/images/play_image/iconamoon_profile-thin.svg') }}" alt="">
                                 </div>
                             </div>
+                            @error('name')
+                            <div class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+                                <span class="font-medium">{{$message}}</span>
+                            </div>
+                            @enderror
                             <div class="password-login flex p-[22px_40px] flex-col items-start gap-3 self-stretch" style="border-radius: 8px;border: 1px solid var(--Electric-Violet-400, #A473FF);background: rgba(48, 0, 119, 0.10);">
                                 <div class="flex justify-between items-center self-stretch">
                                     <input type="email" id="email" wire:model="email"
                                            class="text-white font-poppins leading-[120%] bg-transparent border-none focus:outline-none"
                                            style="font-size: 20px; font-weight: 400;"
                                            placeholder="Email Address"
-                                           required>
+                                           >
                                     <img src="{{ Vite::asset('resources/images/play_image/ic_baseline-email.svg') }}" alt="">
                                 </div>
                             </div>
+                            @error('email')
+                            <div class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+                                <span class="font-medium">{{$message}}</span>
+                            </div>
+                            @enderror
                             <div class="password-login flex p-[22px_40px] flex-col items-start gap-3 self-stretch" style="border-radius: 8px;border: 1px solid var(--Electric-Violet-400, #A473FF);background: rgba(48, 0, 119, 0.10);">
                                 <div class="flex justify-between items-center self-stretch">
                                     <input type="password" id="password" wire:model ='password'
                                            class="text-white font-poppins leading-[120%] bg-transparent border-none focus:outline-none"
                                            style="font-size: 20px; font-weight: 400;"
                                            placeholder="Password"
-                                           required>
+                                           >
                                     <img src="{{ Vite::asset('resources/images/play_image/tabler_lock-filled.svg') }}" alt="">
                                 </div>
                             </div>
+                            @error('password')
+                            <div class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+                                <span class="font-medium">{{$message}}</span>
+                            </div>
+                            @enderror
                             <div class="password-login flex p-[22px_40px] flex-col items-start gap-3 self-stretch" style="border-radius: 8px;border: 1px solid var(--Electric-Violet-400, #A473FF);background: rgba(48, 0, 119, 0.10);">
                                 <div class="flex justify-between items-center self-stretch">
                                     <input type="password" id="password_confirmation" wire:model="password_confirmation"
                                            class="text-white font-poppins leading-[120%] bg-transparent border-none focus:outline-none"
                                            style="font-size: 20px; font-weight: 400;"
                                            placeholder="Confirm Password"
-                                           required>
+                                           >
                                     <img src="{{ Vite::asset('resources/images/play_image/tabler_lock-filled.svg') }}" alt="">
                                 </div>
                             </div>
+                            @error('password-confirmation')
+                            <div class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+                                <span class="font-medium">{{$message}}</span>
+                            </div>
+                            @enderror
 
                         </div>
                         <div class="flex items-center gap-3">

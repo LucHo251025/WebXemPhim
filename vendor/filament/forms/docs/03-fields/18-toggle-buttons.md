@@ -38,10 +38,9 @@ ToggleButtons::make('status')
         'scheduled' => 'warning',
         'published' => 'success',
     ])
-])
 ```
 
-If you are using an enum for the options, you can use the [`HasColor` interface](../../support/enums#enum-colors) to define icons instead.
+If you are using an enum for the options, you can use the [`HasColor` interface](../../support/enums#enum-colors) to define colors instead.
 
 <AutoScreenshot name="forms/fields/toggle-buttons/colors" alt="Toggle buttons with different colors" version="3.x" />
 
@@ -63,7 +62,6 @@ ToggleButtons::make('status')
         'scheduled' => 'heroicon-o-clock',
         'published' => 'heroicon-o-check-circle',
     ])
-])
 ```
 
 If you are using an enum for the options, you can use the [`HasIcon` interface](../../support/enums#enum-icons) to define icons instead.
@@ -76,7 +74,7 @@ If you want a simple boolean toggle button group, with "Yes" and "No" options, y
 
 ```php
 ToggleButtons::make('feedback')
-    ->label('Like this post??')
+    ->label('Like this post?')
     ->boolean()
 ```
 
@@ -90,7 +88,7 @@ You may wish to display the options `inline()` with each other:
 
 ```php
 ToggleButtons::make('feedback')
-    ->label('Like this post??')
+    ->label('Like this post?')
     ->boolean()
     ->inline()
 ```
@@ -102,12 +100,9 @@ ToggleButtons::make('feedback')
 You may wish to group option buttons together so they are more compact, using the `grouped()` method. This also makes them appear horizontally inline with each other:
 
 ```php
-ToggleButtons::make('status')
-    ->options([
-        'draft' => 'Draft',
-        'scheduled' => 'Scheduled',
-        'published' => 'Published'
-    ])
+ToggleButtons::make('feedback')
+    ->label('Like this post?')
+    ->boolean()
     ->grouped()
 ```
 
