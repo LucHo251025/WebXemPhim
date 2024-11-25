@@ -11,7 +11,7 @@ Route::get('/', HomePage::class);
 Route::get('/play-page', PlayPage::class);
 Route::get('/subscription-page',SubscriptionPage::class);
 Route::get('/profile-page/{id}',ProfilePage::class);
-Route::get('/subscription-page/service',\App\Livewire\Service::class);
+Route::get('/subscription-page/{name}',\App\Livewire\Service::class);
 
 
 //Route::middleware('guest')->group(function () {

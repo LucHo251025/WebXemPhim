@@ -11,6 +11,10 @@ class Subscription extends Model
     protected $fillable=[
         'name',
         'price',
-        'duration_days',
+        'endow',
+        'duration',
+    ];
+    protected $casts = [
+        'endow' => 'array',
     ];
 }

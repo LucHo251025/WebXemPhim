@@ -127,7 +127,7 @@ class MovieResource extends Resource
                                             // Tải nhiều ảnh cho backgrounds
                                             Forms\Components\FileUpload::make('backgrounds')
                                                 ->multiple()  // Cho phép tải nhiều ảnh
-                                                ->disk('public')
+                                                ->directory('backgrounds')
                                                 ->image()
                                                 ->maxSize(1024)
                                                 ->required()
@@ -136,7 +136,7 @@ class MovieResource extends Resource
                                             // Tải nhiều ảnh cho posters
                                             Forms\Components\FileUpload::make('posters')
                                                 ->multiple()  // Cho phép tải nhiều ảnh
-                                                ->disk('public')
+                                                ->directory('posters')
                                                 ->image()
                                                 ->maxSize(1024)
                                                 ->required()

@@ -28,7 +28,7 @@ class Film extends Model
     ];
     public function filmImages()
     {
-        return $this->hasMany(FilmImages::class);
+        return $this->hasOne(FilmImages::class);
     }
 
 

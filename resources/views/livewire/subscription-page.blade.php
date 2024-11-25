@@ -18,102 +18,38 @@
             <x-button type="">
                 Most Popular
             </x-button>
-
         <div class="plan-sub flex items-center gap-20">
-
-
+            @foreach($services as $service)
             <div class="basic-sub flex w-[489px] h-[708px] p-[48px_56px] items-center gap-2" style="border-radius: 0px 42px;border: 4px solid #7300FF;">
                 <div class="feature-sub flex w-[376px] flex-col items-center gap-20 flex-shrink-0">
                     <div class="flex w-299px flex-col items-center gap-5">
-                        <p class="self-stretch text-center font-poppins text-[29px] text-[600] leading-[120%]" style="color: #7300FF;">Basic</p>
+                        <p class="self-stretch text-center font-poppins text-[29px] text-[600] leading-[120%] capitalize" style="color: #7300FF;">{{$service->name}}</p>
                         <div class="flex flex-col items-end gap-6 self-stretch">
-                            <p class="self-stretch text-white font-poppins font-normal leading-[120%]" style="font-weight: 700;font-size: 64px;">$10.99<span class="text-white font-poppins leading-[120%]" style="font-size: 23px;font-weight: 400;">/ month</span></p>
+                            <p class="self-stretch text-white font-poppins font-normal leading-[120%]" style="font-weight: 700;font-size: 64px;">${{$service->price}}<span class="text-white font-poppins leading-[120%]" style="font-size: 23px;font-weight: 400;">/ month</span></p>
                             <div class="w-[299px] h-[1px]" style="background: #8A3BFF;"></div>
                         </div>
                     </div>
+
                     <div class="sub-feature flex flex-col items-end gap-7 self-stretch">
-                        <div class="flex items-start gap-3 self-stretch">
-                            <img src="{{Vite::asset('resources/images/play_image/teenyicons_tick-circle-solid.svg')}}" alt="">
-                            <p class="w-[411] text-white font-poppins font-normal leading-[120%]" style="font-size: 19px;font-weight: 400;">Access to SD (Standard Definition) streaming quality.</p>
-                        </div>
-                        <div class="flex items-start gap-3 self-stretch">
-                            <img src="{{Vite::asset('resources/images/play_image/teenyicons_tick-circle-solid.svg')}}" alt="">
-                            <p class="w-[411] text-white font-poppins font-normal leading-[120%]" style="font-size: 19px;font-weight: 400;">Watch on 1 device at a time.</p>
-                        </div>
-                        <div class="flex items-start gap-3 self-stretch">
-                            <img src="{{Vite::asset('resources/images/play_image/teenyicons_tick-circle-solid.svg')}}" alt="">
-                            <p class="w-[411] text-white font-poppins font-normal leading-[120%]" style="font-size: 19px;font-weight: 400;">Limited ads.</p>
-                        </div>
-                        <div class="flex items-start gap-3 self-stretch">
-                            <img src="{{Vite::asset('resources/images/play_image/teenyicons_tick-circle-solid.svg')}}" alt="">
-                            <p class="w-[411] text-white font-poppins font-normal leading-[120%]" style="font-size: 19px;font-weight: 400;">Offline downloads for up to 5 titles.</p>
-                        </div>
+
+                        @foreach($service->endow as $en)
+                            @if(is_array($en) && isset($en['value']))  <!-- Kiểm tra xem mỗi phần tử là mảng và có khóa 'value' -->
+                            <div class="flex items-start gap-3 self-stretch">
+                                <img src="{{ Vite::asset('resources/images/play_image/teenyicons_tick-circle-solid.svg') }}" alt="">
+                                <!-- Truyền dữ liệu vào thẻ p -->
+                                <p class="w-[411] text-white font-poppins font-normal leading-[120%]" style="font-size: 19px; font-weight: 400;">
+                                    {{ $en['value'] }}  <!-- Truy cập đúng khóa 'value' -->
+                                </p>
+                            </div>
+                            @endif
+                        @endforeach
+
                     </div>
-                    <x-button type="">Get Started</x-button>
+                    <x-button type="" url="/subscription-page/{{$service->name}}" >Get Started</x-button>
                 </div>
             </div>
-            <div class="standard-sub flex w-[489px] h-[708px] p-[48px_56px] items-center gap-2" style="border-radius: 0px 42px;border: 4px solid #7300FF;">
-                <div class="feature-sub flex w-[376px] flex-col items-center gap-20 flex-shrink-0">
-                    <div class="flex w-299px flex-col items-center gap-5">
-                        <p class="self-stretch text-center font-poppins text-[29px] text-[600] leading-[120%]" style="color: #7300FF;">Standard</p>
-                        <div class="flex flex-col items-end gap-6 self-stretch">
-                            <p class="self-stretch text-white font-poppins font-normal leading-[120%]" style="font-weight: 700;font-size: 64px;">$16.99<span class="text-white font-poppins leading-[120%]" style="font-size: 23px;font-weight: 400;">/ month</span></p>
-                            <div class="w-[299px] h-[1px]" style="background: #8A3BFF;"></div>
-                        </div>
-                    </div>
-                    <div class="sub-feature flex flex-col items-end gap-7 self-stretch">
-                        <div class="flex items-start gap-3 self-stretch">
-                            <img src="{{Vite::asset('resources/images/play_image/teenyicons_tick-circle-solid.svg')}}" alt="">
-                            <p class="w-[411] text-white font-poppins font-normal leading-[120%]" style="font-size: 19px;font-weight: 400;">Access to SD (Standard Definition) streaming quality.</p>
-                        </div>
-                        <div class="flex items-start gap-3 self-stretch">
-                            <img src="{{Vite::asset('resources/images/play_image/teenyicons_tick-circle-solid.svg')}}" alt="">
-                            <p class="w-[411] text-white font-poppins font-normal leading-[120%]" style="font-size: 19px;font-weight: 400;">Watch on 2 device at a time.</p>
-                        </div>
-                        <div class="flex items-start gap-3 self-stretch">
-                            <img src="{{Vite::asset('resources/images/play_image/teenyicons_tick-circle-solid.svg')}}" alt="">
-                            <p class="w-[411] text-white font-poppins font-normal leading-[120%]" style="font-size: 19px;font-weight: 400;">Ad-free experience.</p>
-                        </div>
-                        <div class="flex items-start gap-3 self-stretch">
-                            <img src="{{Vite::asset('resources/images/play_image/teenyicons_tick-circle-solid.svg')}}" alt="">
-                            <p class="w-[411] text-white font-poppins font-normal leading-[120%]" style="font-size: 19px;font-weight: 400;">Unlimited offline downloads.</p>
-                        </div>
-                    </div>
-                    <x-button type="">Get Started</x-button>
-                </div>
-            </div>
-            <div class="premium-sub flex w-[489px] h-[708px] p-[48px_56px] items-center gap-2" style="border-radius: 0px 42px;border: 4px solid #7300FF;">
-                <div class="feature-sub flex w-[376px] flex-col items-center gap-20 flex-shrink-0">
-                    <div class="flex w-299px flex-col items-center gap-5">
-                        <p class="self-stretch text-center font-poppins text-[29px] text-[600] leading-[120%]" style="color: #7300FF;">Premium</p>
-                        <div class="flex flex-col items-end gap-6 self-stretch">
-                            <p class="self-stretch text-white font-poppins font-normal leading-[120%]" style="font-weight: 700;font-size: 64px;">$25.99<span class="text-white font-poppins leading-[120%]" style="font-size: 23px;font-weight: 400;">/ month</span></p>
-                            <div class="w-[299px] h-[1px]" style="background: #8A3BFF;"></div>
-                        </div>
-                    </div>
-                    <div class="sub-feature flex flex-col items-end gap-7 self-stretch">
-                        <div class="flex items-start gap-3 self-stretch">
-                            <img src="{{Vite::asset('resources/images/play_image/teenyicons_tick-circle-solid.svg')}}" alt="">
-                            <p class="w-[411] text-white font-poppins font-normal leading-[120%]" style="font-size: 19px;font-weight: 400;">Access to SD (Standard Definition) streaming quality.</p>
-                        </div>
-                        <div class="flex items-start gap-3 self-stretch">
-                            <img src="{{Vite::asset('resources/images/play_image/teenyicons_tick-circle-solid.svg')}}" alt="">
-                            <p class="w-[411] text-white font-poppins font-normal leading-[120%]" style="font-size: 19px;font-weight: 400;">Watch on 4 device at a time.</p>
-                        </div>
-                        <div class="flex items-start gap-3 self-stretch">
-                            <img src="{{Vite::asset('resources/images/play_image/teenyicons_tick-circle-solid.svg')}}" alt="">
-                            <p class="w-[411] text-white font-poppins font-normal leading-[120%]" style="font-size: 19px;font-weight: 400;">Full library access</p>
-                        </div>
-                        <div class="flex items-start gap-3 self-stretch">
-                            <img src="{{Vite::asset('resources/images/play_image/teenyicons_tick-circle-solid.svg')}}" alt="">
-                            <p class="w-[411] text-white font-poppins font-normal leading-[120%]" style="font-size: 19px;font-weight: 400;">Includes all Standard Subscription features.</p>
-                        </div>
-                    </div>
-                    <x-button type="">Get Started</x-button>
-                </div>
-            </div>
-        </div>
+            @endforeach
         </div>
     </div>
 </div>
-
+</div>
