@@ -28,7 +28,7 @@ Route::get('/explore', function () {
 Route::get('/UpcomingMoves-page', HomeUpcomingMovies::class);
 Route::get('/support-page', SupportMoviePage::class);
 Route::get('/show-movie-page', ShowMoviePage::class);
-
+Route::post('/vnpay',[\App\Http\Controllers\VNPay::class,'payment'])->name('vnpay');
 
 Route::get('/subscription-page',SubscriptionPage::class);
 Route::get('/profile-page/{id}',ProfilePage::class);
