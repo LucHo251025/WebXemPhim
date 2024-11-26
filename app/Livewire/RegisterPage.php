@@ -15,12 +15,13 @@ class RegisterPage extends Component
 
     public function save()
     {
-//
-//        $this->validate([
-//            'name' => 'required',
-//            'email' => 'required|email|unique:users',
-//            'password' => 'required|min:8|confirmed',
-//        ]);
+
+        $this->validate([
+            'name' => 'required',
+            'email' => 'required|email|unique:users',
+            'password' => 'required|min:8|confirmed',
+
+        ]);
 
 
         $user = User::create([
@@ -33,9 +34,11 @@ class RegisterPage extends Component
             'subscription_ended_at' => null
 
         ]);
+        $user->password = Hash::make($this->password);
+        $user->save();
 
 //        dd($user);
-//        auth()->login($user);
+        auth()->login($user);
 
         return redirect()->intended();
     }

@@ -10,7 +10,7 @@ class PlayPage extends Component
 {
     public $movies;
     public function mount(){
-        $this->movies = Film::all();
+        $this->movies = Film::with('filmImages')->get();
     }
     public function render()
     {

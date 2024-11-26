@@ -16,6 +16,7 @@ return new class extends Migration
             $table->id();
             $table->foreignIdFor(Film::class)->constrained()->cascadeOnDelete();
             $table->integer('season_number');
+            $table->integer('episodes_count');
             $table->timestamps();
         });
     }
