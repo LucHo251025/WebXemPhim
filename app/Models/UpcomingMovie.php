@@ -18,5 +18,9 @@ class UpcomingMovie extends Model
         'links'
     ];
 
-    protected $table="upcoming";
+
+    public function genres()
+    {
+        return $this->belongsToMany(Genre::class, 'upcoming_movie_genres', 'upcoming_movie_id', 'genre_id');
+    }
 }

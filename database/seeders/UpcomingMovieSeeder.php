@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\UpcomingMovie;
+use App\Models\UpcomingMovieGenre;
 
 class UpcomingMovieSeeder extends Seeder
 {
@@ -13,6 +14,7 @@ class UpcomingMovieSeeder extends Seeder
      */
     public function run(): void
     {
-        UpcomingMovie::factory(30)->create();
+        //UpcomingMovie::factory(30)->create();
+        UpcomingMovieGenre::factory(60)->create();
     }
 }
