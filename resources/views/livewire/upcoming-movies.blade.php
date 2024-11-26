@@ -70,7 +70,7 @@
             <div class="flex justify-center">
                 <div class="w-[151px] py-[10px] px-[22px] gap-2 border-2 border-white rounded-tr-[16px] rounded-br-[16px] bg-[#3000774D]">
                     <div class="flex items-center justify-center font-poppins text-sm font-semibold leading-5">
-                        Show more
+                   <a href="?show=all&year={{  $selected_year }}{{ $selected_genre ? "&genre=".$selected_genre->id:"" }}"> Show more</a>    
                         <div class="w-[17px] h-[11px] ml-2">
                             <img src="{{ Vite::asset('resources/images/upcoming_image/Vector 3.png') }}" alt="Icon" />
                         </div>

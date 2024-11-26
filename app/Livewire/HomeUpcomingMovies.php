@@ -56,8 +56,14 @@ class HomeUpcomingMovies extends Component
             return $movie->release_year_upcoming.str_pad($movie->release_month_upcoming, 2, '0', STR_PAD_LEFT);
         });
 
-        // Order by year and month
         $this->groupedMovies = $groupedMovies->sortKeys();
+
+        $show_all = request()->query('show');
+        if(! $show_all || $show_all != 'all')
+       {
+        $this->groupedMovies = $this->groupedMovies->take(3);
+       }
+       
 
 
   
