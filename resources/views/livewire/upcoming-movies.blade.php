@@ -44,7 +44,7 @@
                                 <!-- Dropdown Menu -->
                                 <div id="dropdownMenuOptionforYears" class="absolute right-0 mt-5 w-48 rounded shadow-lg hidden bg-gray-800">
                                     @foreach ( $groupYearsMovies as $years )
-                                    <a href="?year={{ $years->release_year }} {{ $selected_genre ? "&genre=".$selected_genre->id:"" }}" class="block px-4 py-2 text-white hover:bg-sky-700">{{ $years->release_year }}</a>
+                                    <a href="?year={{ $years->release_year }}{{ $selected_genre ? "&genre=".$selected_genre->id:"" }}" class="block px-4 py-2 text-white hover:bg-sky-700">{{ $years->release_year }}</a>
                                   
                                     @endforeach
                                    

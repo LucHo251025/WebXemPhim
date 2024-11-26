@@ -7,6 +7,7 @@ use App\Models\Genre;
 use App\Models\Movie;
 use Livewire\Component;
 use App\Models\UpcomingMovie;
+use App\Models\UpcomingMovieGenre;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Collection;
 use Carbon\Carbon;
@@ -23,7 +24,6 @@ class HomeUpcomingMovies extends Component
     public function mount()
     {
         $this->genreMovies = Genre::all();
-
         
         $this->groupYearsMovies = UpcomingMovie::selectRaw('release_year_upcoming as release_year')
         ->distinct()
@@ -38,9 +38,17 @@ class HomeUpcomingMovies extends Component
 
         $genreId = request()->query('genre');
 
-        $this->selected_genre =  $this->genreMovies->firstWhere('id', $genreId); ;
+        $this->selected_genre =  $this->genreMovies->firstWhere('id', $genreId);
 
-        $dataMovies = collect(UpcomingMovie::where('release_year_upcoming', '=', $this->selected_year) // Exclude current year
+        $filterMovies = UpcomingMovie::where('release_year_upcoming', '=', $this->selected_year);
+
+        if( $this->selected_genre){
+            $filterMovies->whereHas('genres', function ($query) use ($genreId) {
+                $query->where('genre_id', $genreId);
+            });
+        }
+
+        $dataMovies = collect($filterMovies // Exclude current year
         ->get());
     
         // Group by both year and month

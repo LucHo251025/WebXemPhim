@@ -15,6 +15,6 @@ class UpcomingMovieGenre extends Model
     ];
     public function upcomings()
     {
-        return $this->belongsToMany(UpcomingMovie::class, 'upcoming_genre', 'upcoming_movie_id', 'genre_id');
+        return $this->belongsToMany(UpcomingMovie::class, 'upcoming_movie_genres', 'upcoming_movie_id', 'genre_id');
     }
 }
