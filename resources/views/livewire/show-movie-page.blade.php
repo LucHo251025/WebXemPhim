@@ -133,10 +133,10 @@
                         </div>
 
                         <!-- Dropdown Menu -->
-                        <div id="dropdownMenuOptionforComment" class="absolute right-0 mt-0 w-48 rounded shadow-lg hidden bg-gray-800">
-                            <a href="#" class="block px-4 py-2 text-white">Option 1</a>
-                            <a href="#" class="block px-4 py-2 text-white">Option 2</a>
-                            <a href="#" class="block px-4 py-2 text-white">Option 3</a>
+                        <div id="dropdownMenuOptionforComment" class="absolute right-0 mt-0 w-48 rounded shadow-lg hidden bg-black-800">
+                            <a href="#" class="block px-4 py-2 text-white">Nhiều like nhất</a>
+                            <a href="#" class="block px-4 py-2 text-white">Mới nhất</a>
+                            <a href="#" class="block px-4 py-2 text-white">Cũ nhất</a>
                         </div>
                     </div>
                 </div>       

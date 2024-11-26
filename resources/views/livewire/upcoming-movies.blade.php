@@ -26,7 +26,7 @@
                                     </div>
                                 </div>
                                 <!-- Dropdown Menu -->
-                                <div id="dropdownMenuOptionforMovies" class="absolute right-0 mt-5 w-48 rounded shadow-lg hidden bg-gray-800">
+                                <div id="dropdownMenuOptionforMovies" class="absolute right-0 mt-5 w-48 rounded shadow-lg hidden " style="background-color: black">
                                     @foreach($genreMovies as $genre)
                                     <a href="?genre={{ $genre->id }}&year={{ $selected_year }}" class="block px-4 py-2 text-white hover:bg-sky-700"> {{ $genre->name }}</a>
                                  @endforeach
@@ -42,7 +42,7 @@
                                     </div>
                                 </div>
                                 <!-- Dropdown Menu -->
-                                <div id="dropdownMenuOptionforYears" class="absolute right-0 mt-5 w-48 rounded shadow-lg hidden bg-gray-800">
+                                <div id="dropdownMenuOptionforYears" class="absolute right-0 mt-5 w-48 rounded shadow-lg hidden" style="background-color: black">
                                     @foreach ( $groupYearsMovies as $years )
                                     <a href="?year={{ $years->release_year }}{{ $selected_genre ? "&genre=".$selected_genre->id:"" }}" class="block px-4 py-2 text-white hover:bg-sky-700">{{ $years->release_year }}</a>
                                   
