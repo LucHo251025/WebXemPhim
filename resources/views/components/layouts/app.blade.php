@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ $title ?? 'Page Title' }}</title>
-    @vite(['resources/css/app.css', 'resources/js/app.js', 'resources/js/swiper.js', 'resources/css/swiper.css'])
+    @vite(['resources/css/app.css', 'resources/js/app.js', 'resources/js/swiper.js',  'resources/js/watch.js','resources/css/swiper.css'])
     @livewireStyles
 
 </head>
