@@ -106,6 +106,10 @@ class MovieResource extends Resource
                                         ])
                                         ->required()
                                         ->columnSpan(1),
+                                    Forms\Components\Toggle::make('status')
+                                        ->label('Status')
+                                        ->default(true)
+                                        ->columnSpan(1),
                                     MarkdownEditor::make('description')
                                         ->label('Description')
                                         ->columnSpanFull(),
@@ -126,7 +130,7 @@ class MovieResource extends Resource
                                         ->label('Path')
                                         ->schema([
                                             TextInput::make('url')
-                                                ->label('Path')
+                                                ->label('Video Link')
                                                 ->required()
                                                 ->url(),
                                         ])
@@ -271,6 +275,9 @@ class MovieResource extends Resource
                     ->circular()
                     ->stacked()
                     ->limit(1)
+                    ->hidden(fn () => true),
+                Tables\Columns\IconColumn::make('status')
+                ->boolean(),
             ])
             ->filters([
                 //

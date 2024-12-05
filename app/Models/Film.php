@@ -17,6 +17,7 @@ class Film extends Model
         'slug' ,
         'release_date',
         'type',
+        'status',
         'video_path',
         'duration',
         'average_rating',

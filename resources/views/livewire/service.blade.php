@@ -111,35 +111,35 @@
                 <h2 class="text-xl font-bold mb-4">Chọn hình thức thanh toán</h2>
 
                 <!-- Payment Option 1 -->
-                <div class="p-4 rounded-md flex justify-center items-center gap-3" style="background-color: #161616;">
-                    <label class="relative flex items-center w-fit cursor-pointer" for="html12month">
+                <div class="p-4 rounded-md flex justify-self-start items-center gap-3 w-full cursor-pointer" style="background-color: #161616;">
+                    <label class="relative flex items-center w-full cursor-pointer" for="vn-pay">
                         <!-- Outer radio circle -->
-                        <input value="shoppeepay" name="payment" type="radio" class="peer mr-2 h-5 w-5 cursor-pointer appearance-none border-2  rounded-full checked:border-[#ff6500] border-[#3c3c3c] transition-all " id="html12month">
+                        <input wire:model="option" wire:click="$set('option', 'VNBANK')" value="VNBANK" name="option" type="radio" class="peer mr-2 h-5 w-5 cursor-pointer appearance-none border-2  rounded-full checked:border-[#ff6500] border-[#3c3c3c] transition-all" id="vn-pay">
+
                         <!-- Inner active state -->
                         <span class="absolute bg-[#ff6500] w-3 h-3 rounded-full opacity-0 peer-checked:opacity-100 transition-opacity duration-200 top-1/2 left-2.5 transform -translate-x-1/2 -translate-y-1/2"></span>
+                        <div class="ml-3">
+                            <span class="font-bold text-white">Domestic payment</span>
+                        </div>
                     </label>
-                    <img class="w-[50px] h-[50px]" src="{{ Vite::asset('resources/images/play_image/shopeepay.png') }}" alt="">
-                    <div class="">
-                        <span class="font-bold">Ví ShopeePay</span>
-                        <p class="text-sm text-gray-400">Giảm ngay 10% - Giảm tối đa 20.000Đ (đơn tối thiểu 20.000Đ) khi thanh toán qua ShopeePay.</p>
-                    </div>
+
                 </div>
 
 
 
 
-                <div class="p-4 rounded-md flex justify-center items-center gap-3" style="background-color: #161616;">
-                    <label class="relative flex items-center w-fit cursor-pointer" for="html12month">
+                <div class="p-4 rounded-md flex justify-self-start items-center gap-3 w-full cursor-pointer" style="background-color: #161616;">
+                    <label class="relative flex items-center w-full cursor-pointer" for="int-card">
                         <!-- Outer radio circle -->
-                        <input value="shoppeepay" name="payment" type="radio" class="peer mr-2 h-5 w-5 cursor-pointer appearance-none border-2  rounded-full checked:border-[#ff6500] border-[#3c3c3c] transition-all " id="html12month">
+                        <input wire:model="option" wire:click="$set('option', 'INTCARD')" value="INTCARD" name="option" type="radio" class="peer mr-2 h-5 w-5 cursor-pointer appearance-none border-2  rounded-full checked:border-[#ff6500] border-[#3c3c3c] transition-all" id="int-card">
+
                         <!-- Inner active state -->
                         <span class="absolute bg-[#ff6500] w-3 h-3 rounded-full opacity-0 peer-checked:opacity-100 transition-opacity duration-200 top-1/2 left-2.5 transform -translate-x-1/2 -translate-y-1/2"></span>
+                        <div class="ml-3">
+                            <span class="font-bold text-white">International payment</span>
+                        </div>
                     </label>
-                    <img class="w-[50px] h-[50px]" src="{{ Vite::asset('resources/images/play_image/shopeepay.png') }}" alt="">
-                    <div class="">
-                        <span class="font-bold">Ví ShopeePay</span>
-                        <p class="text-sm text-gray-400">Giảm ngay 10% - Giảm tối đa 20.000Đ (đơn tối thiểu 20.000Đ) khi thanh toán qua ShopeePay.</p>
-                    </div>
+
                 </div>
 
 
@@ -189,6 +189,10 @@
                 <!-- Payment Button -->
                 <form action="{{url('vnpay')}}" method="POST">
                     @csrf
+                    <input type="hidden" name="name" value="{{ $name }}">
+                    <input type="hidden" name="amount" value="{{ $this->getTotalPrice() }}">
+                    <input type="hidden" name="option" value="{{$option}}">
+
                     <button type="submit" name="redirect" class="bg-orange-600 text-white w-full mt-4 py-2 rounded-md">Thanh toán</button>
                 </form>
             </div>

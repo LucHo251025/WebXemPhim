@@ -19,9 +19,10 @@ return new class extends Migration
             $table->date('release_date');
             $table->enum('type', ['show', 'movie'])->default('movie');
             $table->integer('duration');
+            $table->boolean('status')->default(true);
             $table->decimal('average_rating', 2, 1)->default(0);
             $table->json('video_path')->nullable();
-            $table->string('slug')->unique()->after('title');
+            $table->string('slug')->unique();
             $table->timestamps();
         });
     }

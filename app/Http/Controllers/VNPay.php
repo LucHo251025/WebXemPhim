@@ -6,20 +6,19 @@ use Illuminate\Http\Request;
 
 class VNPay extends Controller
 {
-    public function payment()
+    public function payment(Request $request)
     {
-        $vnp_TmnCode = "HL26U5W0"; // Your TmnCode
-        $vnp_HashSecret = "DLDUXABQASEWJ3TGPW8LSG85FKWKMW4O"; // Your HashSecret
         $vnp_Url = "https://sandbox.vnpayment.vn/paymentv2/vpcpay.html";
         $vnp_Returnurl = "https://localhost/vnpay_php/vnpay_return.php";
+        $vnp_TmnCode = "RN9DBPK7";//Mã website tại VNPAY
+        $vnp_HashSecret = "TW447RCZQGP77KGYLXNUBGON9ETR888H"; //Chuỗi bí mật
 
-
-        $vnp_TxnRef = '123'; //Mã đơn hàng. Trong thực tế Merchant cần insert đơn hàng vào DB và gửi mã nàysang VNPAY
-    $vnp_OrderInfo = 'THANH TOAN';
+        $vnp_TxnRef = '4242'; //Mã đơn hàng. Trong thực tế Merchant cần insert đơn hàng vào DB và gửi mã nàsang VNPAY
+    $vnp_OrderInfo = "Payment" .$request->name;
     $vnp_OrderType = 'billpayment';
-    $vnp_Amount = 324234 * 100;
-    $vnp_Locale = 'vn';
-    $vnp_BankCode = 'NCB';
+    $vnp_Amount = $request->amount * 100;
+    $vnp_Locale = 'USD';
+    $vnp_BankCode = $request->option;
     $vnp_IpAddr = $_SERVER['REMOTE_ADDR'];
     //Add Params of 2.0.1 Version
 //    $vnp_ExpireDate = $_POST['txtexpire'];
@@ -38,7 +37,8 @@ class VNPay extends Controller
         "vnp_OrderType" => $vnp_OrderType,
         "vnp_ReturnUrl" => $vnp_Returnurl,
         "vnp_TxnRef" => $vnp_TxnRef,
-       got
+//        "vnp_ExpireDate" => $vnp_ExpireDate,
+
     );
 
     if (isset($vnp_BankCode) && $vnp_BankCode != "") {
@@ -65,7 +65,7 @@ class VNPay extends Controller
 
     $vnp_Url = $vnp_Url . "?" . $query;
     if (isset($vnp_HashSecret)) {
-        $vnpSecureHash =   hash_hmac('sha512', $hashdata, $vnp_HashSecret);//
+        $vnpSecureHash = hash_hmac('sha512', $hashdata, $vnp_HashSecret);//
         $vnp_Url .= 'vnp_SecureHash=' . $vnpSecureHash;
     }
     $returnData = array('code' => '00'
@@ -77,5 +77,6 @@ class VNPay extends Controller
         } else {
             echo json_encode($returnData);
         }
-    }
+        }
+
 }

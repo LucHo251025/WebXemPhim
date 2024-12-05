@@ -30,9 +30,10 @@ Route::get('/support-page', SupportMoviePage::class);
 Route::get('/show-movie-page', ShowMoviePage::class);
 Route::post('/vnpay',[\App\Http\Controllers\VNPay::class,'payment'])->name('vnpay');
 
+
 Route::get('/subscription-page',SubscriptionPage::class);
 Route::get('/profile-page/{id}',ProfilePage::class);
-Route::get('/subscription-page/{name}',\App\Livewire\Service::class);
+Route::match(['get', 'post'],'/subscription-page/{name}',\App\Livewire\Service::class);
 
 
 //Route::middleware('guest')->group(function () {
@@ -47,7 +48,4 @@ Route::get('/subscription-page/{name}',\App\Livewire\Service::class);
 //
 //});
 
-Route::get('/login', LoginPage::class)->name('login');
-Route::get('/register', RegisterPage::class)->name('register');
-Route::get('/forgot-password', ForgotPassword::class)->name('password.request');
-Route::get('/reset/{token}', ResetPassword::class)->name('password.reset');
+
