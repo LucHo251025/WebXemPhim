@@ -18,6 +18,7 @@ class Service extends Component
     public $discountCode;
     public $discountAmount;
     public $total;
+    public $option;
 
     public $showModal = false;
     public $timeRemaining = 540; // 9 minutes
@@ -59,6 +60,7 @@ class Service extends Component
         $this->updatePrice();
     }
 
+
     private function updatePrice()
     {
         $subscription = Subscription::query()
@@ -85,10 +87,7 @@ class Service extends Component
     }
 
 
-    public function pay()
-    {
-        $this->showModal = true;
-    }
+
     public function render()
     {
         return view('livewire.service',[

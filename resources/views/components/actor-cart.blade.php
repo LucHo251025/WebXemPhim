@@ -1,17 +1,23 @@
 @props(['actors'=>null]))
 
 @foreach($actors as $actor)
+
     <div class="swiper-slide swiper-slide-actor">
-        <div class="cart-item flex items-center gap-9">
-            <img class="w-[120px] h-[120px]" style="border-radius: 120px;"
-                 src="{{ asset('storage/' . $actors->image)  }}" alt="">
-            <div class="flex w-[146px] flex-col items-start gap-1">
-                <h5 class="items-stretch"
-                    style="color:#FFF; font-family: Poppins; font-size: 19px; font-style: normal; font-weight: 600; line-height: 120%;">
-                    {{$actor->name}}}</h5>
-                <p class="self-stretch"
-                   style="color: #C0A6FF; font-family: Poppins; font-size: 15px; font-style: normal; font-weight: 400; line-height: 120%;">
-                    </p>
+        <div class="cart-item flex items-center gap-9 sm:gap-4">
+
+                @php
+                    $images = is_string($actor->images) ? json_decode($actor->images, true) : $actor->images;
+
+                    if (!$images) {
+                        // Nếu $images chỉ là chuỗi đơn (không phải JSON), chuyển thành mảng
+                        $images = [$actor->images];
+                    }
+                    @endphp
+
+                    <img class="w-[120px] h-[120px] md:w-[90px] md:h-[90px] sm:w-[70px] sm:h-[70px] rounded-full" src="{{ asset('storage/' . $images[0]) }}" alt="">
+                <div class="flex w-[146px] sm:w-[100px] flex-col items-start gap-1">
+                <h5 class="text-white font-poppins text-[19px] font-semibold leading-[120%] sm:text-[16px]">{{$actor->name}}</h5>
+                <p class="text-[#C0A6FF] font-poppins text-[15px] font-normal leading-[120%] sm:text-[13px]">Walter White</p>
             </div>
         </div>
     </div>
