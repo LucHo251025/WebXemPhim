@@ -6,7 +6,8 @@ line-height: 34.8px;
 text-align: left;
 }
 ">
-        {{ convertYearMonthToMonthName($item['year_month'])}}
+
+{{--        {{ convertYearMonthToMonthName($item['year_month'])}}--}}
         <hr style="    border: #A473FF 1px solid;
 margin: 25px 0px;">
 
@@ -15,7 +16,7 @@ margin: 25px 0px;">
 flex:1;
 flex-wrap: wrap;
 flex-direction: row;">
-                
+
             <?php foreach ($item['movies'] as $movie) {?>
                 <x-upcoming-film-info :movie="$movie"  />
                 <?php }?>

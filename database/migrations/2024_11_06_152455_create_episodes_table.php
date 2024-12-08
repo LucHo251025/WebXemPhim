@@ -17,6 +17,7 @@ return new class extends Migration
             $table->foreignIdFor(Season::class)->constrained()->cascadeOnDelete();
             $table->integer('episode_number')->unsigned();
             $table->string('title');
+            $table->boolean('status')->default(true);
             $table->string('description');
             $table->date('release_date');
             $table->integer('duration');
