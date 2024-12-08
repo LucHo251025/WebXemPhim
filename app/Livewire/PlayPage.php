@@ -4,18 +4,23 @@ namespace App\Livewire;
 
 use App\Models\Actor;
 use App\Models\Film;
-use App\Models\Movie;
 use Livewire\Component;
 
 class PlayPage extends Component
 {
-    public $movies;
+    public $films;
+    public $film;
     public $actors;
     public $isCollapsed = true;
     public $text;
     public $limit;
-    public function mount($text,$limit = 100){
-        $this->movies = Film::with('filmImages')->get();
+    public function mount($slug, $text, $limit = 100){
+        $this->films = Film::all();
+        // get film by slug
+        $this->film = Film::get()->where('slug', $slug)->first();
+        if (!$this->film) {
+            abort(404);
+        }
         $this->actors =Actor::query()->get();
         $this->text = $text;
         $this->limit = $limit;

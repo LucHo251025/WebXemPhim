@@ -1,5 +1,5 @@
 <div class="h-[904px] w-full mt-16"
-     style="background: url({{Vite::asset(json_decode($currentFilm->images,true)['background'][0])}}) no-repeat; background-size: cover; ">
+     style="background: url({{  $currentFilm->backgrounds[0] }}) no-repeat; background-size: cover; ">
     <div class="h-full"
          style="background: var(--Grad-black, linear-gradient(89deg, #000 9.23%, rgba(0, 0, 0, 0.47) 49.67%, rgba(0, 0, 0, 0.00) 61.08%));">
         <div class="w-full h-full flex-col">
@@ -16,7 +16,7 @@
                         @foreach($films as $film)
                             <div wire:key="{{$film->id}}" class="swiper-slide swiper-slide-most-watched" style="width: fit-content" >
                                 <div class="w-[377px] h-[482px]"
-                                     style="background: url({{ Vite::asset(json_decode($film->images,true)['poster'][1]) }}) lightgray 0px -21px / 100% 106.846% no-repeat;border: 5px solid var(--Primary, #7300FF); border-radius: 0px 35px;"></div>
+                                     style="background: url({{ $film->posters[1] }}) lightgray 0px -21px / 100% 106.846% no-repeat;border: 5px solid var(--Primary, #7300FF); border-radius: 0px 35px;"></div>
                             </div>
                         @endforeach
                     </div>

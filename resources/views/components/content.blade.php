@@ -14,7 +14,7 @@
 
 <div class="{{ $class }}">
     <div class="flex flex-col items-start gap-4 self-stretch">
-        <span class="text-[22px] font-light leading-10">{{ \Carbon\Carbon::parse($film->release_date)->format('Y') }}</span>
+        <span class="text-[22px] font-light leading-10">{{ $film->releaseYear() }}</span>
         <span class="font-extrabold text-5xl">{{ $film->title }}</span>
         <span class="flex justify-center font-bold">5 Seasons • {{ $film->genres->pluck('name')->join(' • ') }}</span>
         <p class="overflow-hidden h-12" style="width: 40vw; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical">

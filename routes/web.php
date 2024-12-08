@@ -16,7 +16,8 @@ use  App\Livewire\Explore;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', HomePage::class);
-Route::get('/play-page', PlayPage::class);
+Route::get('/watch/{slug}', PlayPage::class);
+Route::get('/play-page', PlayPage::class)->defaults('slug', 'sawayn-llc');
 Route::get('/explore/{type}', Explore::class)
     ->where('type', 'movie|show')
     ->name('{type}');

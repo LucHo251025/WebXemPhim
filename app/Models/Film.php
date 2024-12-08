@@ -7,14 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Film extends Model
 {
-    /** @use HasFactory<\Database\Factories\FilmFactory> */
     use HasFactory;
 
     protected $fillable = [
         'title',
         'description',
         'director',
-        'slug' ,
+        'slug',
         'release_date',
         'type',
         'status',
@@ -25,6 +24,7 @@ class Film extends Model
 
     protected $casts = [
         'video_path' => 'array',
+        'release_date' => 'date',
     ];
 
     public function filmImages()
@@ -32,6 +32,15 @@ class Film extends Model
         return $this->hasOne(FilmImages::class);
     }
 
+    public function getBackgroundsAttribute()
+    {
+        return $this->filmImages ? json_decode($this->filmImages->backgrounds, true) : [];
+    }
+
+    public function getPostersAttribute()
+    {
+        return $this->filmImages ? json_decode($this->filmImages->posters, true) : [];
+    }
 
     public function genres()
     {
@@ -46,6 +55,11 @@ class Film extends Model
     public function date()
     {
         return $this->release_date->format('M d, Y');
+    }
+
+    public function releaseYear()
+    {
+        return $this->release_date->format('Y');
     }
 
     public function seasons()

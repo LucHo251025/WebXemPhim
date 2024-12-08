@@ -12,7 +12,7 @@ class GenresSlider extends Component
     public $genres;
     public $selectedFilms = [];
 
-    protected $listeners = ['setCurrentFilmByIndex'];
+    protected $listeners = ['setCurrentFilmByIndexGenres'];
 
     public function mount()
     {
@@ -33,7 +33,7 @@ class GenresSlider extends Component
 
     private function getUniqueFilmForGenre($genre, $existingFilmIds)
     {
-        $films = $genre->films()->orderByDesc('rating')->get();
+        $films = $genre->films()->orderByDesc('average_rating')->get();
 
         foreach ($films as $film) {
             if (!in_array($film->id, $existingFilmIds)) {
@@ -44,7 +44,7 @@ class GenresSlider extends Component
         return null;
     }
 
-    public function setCurrentFilmByIndex($index)
+    public function setCurrentFilmByIndexGenres($index)
     {
         if (isset($this->selectedFilms[$index])) {
             $this->currentFilm = $this->selectedFilms[$index];
