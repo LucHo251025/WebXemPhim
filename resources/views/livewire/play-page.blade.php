@@ -78,47 +78,6 @@
                 <div class="swiper-wrapper w-full">
                     <!-- Cast Item -->
                     <x-actor-cart :actors="$actors"></x-actor-cart>
-{{--                    <div class="swiper-slide swiper-slide-actor">--}}
-{{--                        <div class="cart-item flex items-center gap-9 sm:gap-4">--}}
-{{--                            <img class="w-[120px] h-[120px] md:w-[90px] md:h-[90px] sm:w-[70px] sm:h-[70px] rounded-full" src="{{ Vite::asset('resources/images/play_image/anh1.png') }}" alt="">--}}
-{{--                            <div class="flex w-[146px] sm:w-[100px] flex-col items-start gap-1">--}}
-{{--                                <h5 class="text-white font-poppins text-[19px] font-semibold leading-[120%] sm:text-[16px]">Brian Cranston</h5>--}}
-{{--                                <p class="text-[#C0A6FF] font-poppins text-[15px] font-normal leading-[120%] sm:text-[13px]">Walter White</p>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-
-{{--                    <div class="swiper-slide swiper-slide-actor">--}}
-{{--                        <div class="cart-item flex items-center gap-9 sm:gap-4">--}}
-{{--                            <img class="w-[120px] h-[120px] md:w-[90px] md:h-[90px] sm:w-[70px] sm:h-[70px] rounded-full" src="{{ Vite::asset('resources/images/play_image/anh1.png') }}" alt="">--}}
-{{--                            <div class="flex w-[146px] sm:w-[100px] flex-col items-start gap-1">--}}
-{{--                                <h5 class="text-white font-poppins text-[19px] font-semibold leading-[120%] sm:text-[16px]">Brian Cranston</h5>--}}
-{{--                                <p class="text-[#C0A6FF] font-poppins text-[15px] font-normal leading-[120%] sm:text-[13px]">Walter White</p>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-
-{{--                    <div class="swiper-slide swiper-slide-actor">--}}
-{{--                        <div class="cart-item flex items-center gap-9 sm:gap-4">--}}
-{{--                            <img class="w-[120px] h-[120px] md:w-[90px] md:h-[90px] sm:w-[70px] sm:h-[70px] rounded-full" src="{{ Vite::asset('resources/images/play_image/anh1.png') }}" alt="">--}}
-{{--                            <div class="flex w-[146px] sm:w-[100px] flex-col items-start gap-1">--}}
-{{--                                <h5 class="text-white font-poppins text-[19px] font-semibold leading-[120%] sm:text-[16px]">Brian Cranston</h5>--}}
-{{--                                <p class="text-[#C0A6FF] font-poppins text-[15px] font-normal leading-[120%] sm:text-[13px]">Walter White</p>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-
-{{--                    <div class="swiper-slide swiper-slide-actor">--}}
-{{--                        <div class="cart-item flex items-center gap-9 sm:gap-4">--}}
-{{--                            <img class="w-[120px] h-[120px] md:w-[90px] md:h-[90px] sm:w-[70px] sm:h-[70px] rounded-full" src="{{ Vite::asset('resources/images/play_image/anh1.png') }}" alt="">--}}
-{{--                            <div class="flex w-[146px] sm:w-[100px] flex-col items-start gap-1">--}}
-{{--                                <h5 class="text-white font-poppins text-[19px] font-semibold leading-[120%] sm:text-[16px]">Brian Cranston</h5>--}}
-{{--                                <p class="text-[#C0A6FF] font-poppins text-[15px] font-normal leading-[120%] sm:text-[13px]">Walter White</p>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-
-                    <!-- More cast items... -->
                 </div>
             </div>
         </div>
