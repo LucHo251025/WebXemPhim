@@ -1,6 +1,6 @@
 <div class="my-12">
     <div class="font-poppins text-2xl font-semibold leading-9 text-left">
-        {{ convertYearMonthToMonthName($item['year_month']) }}
+        {{ $this->convertYearMonthToMonthName($item['year_month']) }}
         <hr class="border-[#A473FF] border-1 my-6">
         
         <div class="flex">
