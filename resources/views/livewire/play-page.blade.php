@@ -91,7 +91,7 @@
             <div class="swiper w-full swiper-cart-items card-items-play flex items-center gap-16">
                 <div class="swiper-wrapper">
                     <!-- Movie card loop -->
-                    <x-movie-cart :movies="$movies"></x-movie-cart>
+                    <x-movie-card :movies="$movies"></x-movie-card>
                 </div>
             </div>
         </div>
