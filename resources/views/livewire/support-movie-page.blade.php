@@ -94,7 +94,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="bg-[rgba(48,0,119,0.30)] p-[20px] rounded-[20px] flex flex-col justify-center items-center gap-[50px]" 
+                <div class="bg-[rgba(48,0,119,0.30)] p-[20px] rounded-[20px] flex flex-col justify-center items-center gap-[50px]"
                 >
                     <div class="flex justify-between items-center w-full px-[30px]">
                         <div class="flex-1 text-white text-[37px] font-normal leading-[44.4px]">Can I download movies and shows to watch offline?</div>
@@ -103,7 +103,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="bg-[rgba(48,0,119,0.30)] p-[20px] rounded-[20px] flex flex-col justify-center items-center gap-[50px]"     style=" width: 100%;"   
+                <div class="bg-[rgba(48,0,119,0.30)] p-[20px] rounded-[20px] flex flex-col justify-center items-center gap-[50px]"     style=" width: 100%;"
                 >
                     <div class="flex justify-between items-center w-full px-[30px]">
                         <div class="flex-1 text-white text-[37px] font-normal leading-[44.4px]">Can I share my account with others?</div>

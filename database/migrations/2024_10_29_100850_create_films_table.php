@@ -20,6 +20,7 @@ return new class extends Migration
             $table->enum('type', ['show', 'movie'])->default('movie');
             $table->boolean('status')->default(true);
             $table->integer('duration');
+            $table->boolean('status')->default(true);
             $table->decimal('average_rating', 2, 1)->default(0);
             $table->json('video_path')->nullable();
             $table->string('slug')->unique();
