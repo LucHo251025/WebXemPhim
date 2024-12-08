@@ -14,19 +14,20 @@ class Film extends Model
         'title',
         'description',
         'director',
+        'slug' ,
         'release_date',
         'type',
+        'status',
         'video_path',
         'duration',
         'average_rating',
     ];
 
     protected $casts = [
-        'release_date' => 'date',
         'video_path' => 'array',
     ];
 
-    public function images()
+    public function filmImages()
     {
         return $this->hasOne(FilmImages::class);
     }

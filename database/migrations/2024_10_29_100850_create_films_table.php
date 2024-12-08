@@ -18,6 +18,7 @@ return new class extends Migration
             $table->mediumText('description');
             $table->date('release_date');
             $table->enum('type', ['show', 'movie'])->default('movie');
+            $table->boolean('status')->default(true);
             $table->integer('duration');
             $table->decimal('average_rating', 2, 1)->default(0);
             $table->json('video_path')->nullable();
