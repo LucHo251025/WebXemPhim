@@ -8,4 +8,6 @@ export default defineConfig({
             refresh: true,
         }),
     ],
+    // Cấu hình để xử lý file SVG
+    assetsInclude: ['**/*.svg'],
 });

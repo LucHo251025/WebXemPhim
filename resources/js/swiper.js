@@ -173,23 +173,23 @@ const cartItem = new Swiper(".swiper-cart-items", {
     breakpoints: {
         320: {
             slidesPerView: 1,
-            spaceBetween: 1,
+            spaceBetween: 10, // Khoảng cách rộng hơn cho màn hình nhỏ để dễ nhìn
         },
-        1300: {
-            slidesPerView: 1,
-            spaceBetween: 4,
+        768: {
+            slidesPerView: 2,
+            spaceBetween: 15, // Tăng số lượng slides trên màn hình máy tính bảng
+        },
+        1024: {
+            slidesPerView: 3,
+            spaceBetween: 20, // Tương thích với màn hình máy tính
         },
         1600: {
-            slidesPerView: 2,
-            spaceBetween: 5,
-        },
-        1800: {
             slidesPerView: 4,
-            spaceBetween: 7,
+            spaceBetween: 25, // Màn hình lớn hiển thị nhiều sản phẩm hơn
         },
         2000: {
-            slidesPerView: 4,
-            spaceBetween: 12,
+            slidesPerView: 6,
+            spaceBetween: 30, // Màn hình cực lớn, hiển thị tối đa các sản phẩm
         },
     },
 

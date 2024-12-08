@@ -24,8 +24,10 @@ use Filament\Tables;
 use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
+use Hamcrest\Core\Set;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Illuminate\Support\Str;
 
 class MovieResource extends Resource
 {
@@ -48,7 +50,16 @@ class MovieResource extends Resource
                                         ->label('Title')
                                         ->required()
                                         ->maxLength(255)
-                                        ->columnSpan(1),
+                                        ->columnSpan(1)
+                                        ->live(onBlur: true)
+                                    ->afterStateUpdated(fn(string $operation,$state,Forms\Set $set)=>$operation==='create'? $set('slug',Str::slug($state)):null),
+                                    TextInput::make('slug')
+            ->disabled()
+            ->maxLength(255)
+            ->required()
+            ->dehydrated()
+            ->unique(Film::class,'slug',ignoreRecord: true),
+
 
                                     TextInput::make('director')
                                         ->label('Director')
@@ -95,6 +106,10 @@ class MovieResource extends Resource
                                         ])
                                         ->required()
                                         ->columnSpan(1),
+                                    Forms\Components\Toggle::make('status')
+                                        ->label('Status')
+                                        ->default(true)
+                                        ->columnSpan(1),
                                     MarkdownEditor::make('description')
                                         ->label('Description')
                                         ->columnSpanFull(),
@@ -115,7 +130,7 @@ class MovieResource extends Resource
                                         ->label('Path')
                                         ->schema([
                                             TextInput::make('url')
-                                                ->label('Path')
+                                                ->label('Video Link')
                                                 ->required()
                                                 ->url(),
                                         ])
@@ -260,6 +275,9 @@ class MovieResource extends Resource
                     ->circular()
                     ->stacked()
                     ->limit(1)
+                    ->hidden(fn () => true),
+                Tables\Columns\IconColumn::make('status')
+                ->boolean(),
             ])
             ->filters([
                 //
