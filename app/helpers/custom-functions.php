@@ -1,5 +1,5 @@
 <?php
-function convertYearMonthToMonthName($yearMonth) {
+function convertYearMonthToMonthName1($yearMonth) {
 
     // Ensure the input is exactly 6 characters and numeric
     if (strlen($yearMonth) !== 6 || !is_numeric($yearMonth)) {
