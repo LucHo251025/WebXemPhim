@@ -32,7 +32,7 @@ class HomeUpcomingMovies extends Component
         ->orderBy('release_year', 'asc')
         ->get();
 
-
+        
         $year = request()->query('year');
 
         $this->selected_year = $year ?? Carbon::now()->year; 
@@ -42,6 +42,10 @@ class HomeUpcomingMovies extends Component
         $this->selected_genre =  $this->genreMovies->firstWhere('id', $genreId);
 
         $filterMovies = UpcomingMovie::where('release_year_upcoming', '=', $this->selected_year);
+
+        if(Carbon::now()->year == $this->selected_year){
+            $filterMovies = $filterMovies->where('release_month_upcoming', '>=', Carbon::now()->month);
+        }
 
         if( $this->selected_genre){
             $filterMovies->whereHas('genres', function ($query) use ($genreId) {
@@ -57,6 +61,12 @@ class HomeUpcomingMovies extends Component
             return $movie->release_year_upcoming.str_pad($movie->release_month_upcoming, 2, '0', STR_PAD_LEFT);
         });
 
+        // Now, sort movies within each group by the actual release date
+        $groupedMovies = $groupedMovies->map(function ($movies) {
+            // Assuming you have a `release_date` field, sort the movies by date
+            return $movies->sortBy('release_day_upcoming');  // or 'release_day_upcoming' if you have a specific day field
+        });
+
         $this->groupedMovies = $groupedMovies->sortKeys();
 
         $show_all = request()->query('show');
@@ -64,10 +74,6 @@ class HomeUpcomingMovies extends Component
        {
         $this->groupedMovies = $this->groupedMovies->take(3);
        }
-       
-
-
-  
         
     }
 
