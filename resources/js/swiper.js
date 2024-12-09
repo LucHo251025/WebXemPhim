@@ -12,7 +12,7 @@ const homeSwiper = new Swiper(".home-swiper", {
 });
 const latestSwiper = new Swiper(".latest-swiper", {
     slidesPerView: 6,
-    spaceBetween: 40,
+    spaceBetween: 20,
     loop: true,
     navigation: {
         nextEl: ".swiper-button-next-latest",
@@ -43,7 +43,7 @@ const latestSwiper = new Swiper(".latest-swiper", {
 });
 const trendingSwiper = new Swiper(".trending-swiper", {
     slidesPerView: 6,
-    spaceBetween: 40,
+    spaceBetween: 20,
     loop: true,
     navigation: {
         nextEl: ".swiper-button-next-trending",
@@ -108,6 +108,14 @@ const mostWatchedSwiper = new Swiper(".most-watched-swiper", {
             Livewire.dispatch('setCurrentFilmByIndex', { index: this.realIndex });
         }
     },
+});
+const moviesSwiper = new Swiper(".movies-swiper", {
+    slidesPerView: "auto",
+    spaceBetween: 20,
+});
+const showsSwiper = new Swiper(".shows-swiper", {
+    slidesPerView: "auto",
+    spaceBetween: 20,
 });
 const genresSwiper = new Swiper(".genres-swiper", {
     slidesPerView: 'auto',

@@ -54,7 +54,7 @@
 
 
 {{-- Container --}}
-    <div class="inline-flex w-full flex-col items-start gap-20 px-[103px] pb-[50px]">
+    <div class="inline-flex w-full flex-col gap-20 px-[103px] pb-[50px]">
         <!-- Synopsis Section -->
         <div class="synopsis flex flex-col items-start gap-8">
             <h4 class="self-stretch text-white font-poppins text-[37px] font-semibold leading-[120%] md:text-[25px]">Synopsis</h4>
@@ -79,13 +79,7 @@
         </div>
 
         <!-- Movie Card Section -->
-        <div class="movie-card-play flex flex-col w-full items-start gap-14">
-            <p class="self-stretch text-white text-shadow-sm font-poppins text-[37px] font-semibold leading-[120%] md:text-[25px]">
-                Similar Shows for you
-            </p>
-
-            <x-medium-slider :films="$films" name="similarShows"></x-medium-slider>
-        </div>
+        <x-medium-slider :films="$films" name="similarShows" title="Similar Shows for you" />
     </div>
 
 </div>
