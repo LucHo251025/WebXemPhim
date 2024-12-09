@@ -12,7 +12,7 @@ class HomePage extends Component
     public $shows;
     public function mount()
     {
-        $this->films = Film::all();
+        $this->films = Film::take(20)->get();;
         $this->movies = $this->films->where('type', 'movie');
         $this->shows = $this->films->where('type', 'show');
     }

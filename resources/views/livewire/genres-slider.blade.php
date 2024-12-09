@@ -1,5 +1,5 @@
 <div class="h-[904px] w-full mt-16"
-     style="background: url({{ $currentFilm->backgrounds[1] }}) no-repeat; background-size: cover; ">
+     style="background: url({{ $currentFilm->backgrounds[0] }}) no-repeat; background-size: cover; ">
     <div class="h-full"
          style="background: var(--Grad-black, linear-gradient(89deg, #000 9.23%, rgba(0, 0, 0, 0.47) 49.67%, rgba(0, 0, 0, 0.00) 61.08%));">
         <div class="w-full h-full flex-col">
