@@ -15,13 +15,13 @@ class PlayPage extends Component
     public $text;
     public $limit;
     public function mount($slug, $text, $limit = 100){
-        $this->films = Film::all();
+        $this->films = Film::take(20)->get();
         // get film by slug
         $this->film = Film::get()->where('slug', $slug)->first();
         if (!$this->film) {
             abort(404);
         }
-        $this->actors =Actor::query()->get();
+        $this->actors =$this->film->actors;
         $this->text = $text;
         $this->limit = $limit;
     }

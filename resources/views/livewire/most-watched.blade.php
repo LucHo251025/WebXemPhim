@@ -16,7 +16,7 @@
                         @foreach($films as $film)
                             <div wire:key="{{$film->id}}" class="swiper-slide swiper-slide-most-watched" style="width: fit-content" >
                                 <div class="w-[377px] h-[482px]"
-                                     style="background: url({{ $film->posters[1] }}) lightgray 0px -21px / 100% 106.846% no-repeat;border: 5px solid var(--Primary, #7300FF); border-radius: 0px 35px;"></div>
+                                     style="background: url({{ $film->posters[0] }}) lightgray 0px -21px / 100% 106.846% no-repeat;border: 5px solid var(--Primary, #7300FF); border-radius: 0px 35px;"></div>
                             </div>
                         @endforeach
                     </div>

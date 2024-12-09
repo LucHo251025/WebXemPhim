@@ -8,7 +8,7 @@
     @livewireStyles
 
 </head>
-<body class="bg-black text-white w-full" >
+<body class="bg-black-theme text-white w-full" >
 {{--    <x-header/>--}}
         <main class="">
             {{ $slot }}
