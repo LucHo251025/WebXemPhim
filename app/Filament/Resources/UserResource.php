@@ -100,6 +100,13 @@ class UserResource extends Resource
                             ->nullable()
                             ->label('Email Verified At')
                             ->columnSpan(1),
+                       Forms\Components\Select::make('role')
+                            ->options([
+                                'user' => 'User',
+                                'admin' => 'Admin',
+                            ])
+                            ->required()
+                            ->columnSpan(1),
                     ]),
                 ])
                     ->columns(2)

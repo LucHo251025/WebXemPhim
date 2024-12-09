@@ -16,7 +16,8 @@ use  App\Livewire\Explore;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', HomePage::class);
-Route::get('/play-page', PlayPage::class);
+Route::get('/watch/{slug}', PlayPage::class);
+Route::get('/play-page', PlayPage::class)->defaults('slug', 'sawayn-llc');
 Route::get('/explore/{type}', Explore::class)
     ->where('type', 'movie|show')
     ->name('{type}');
@@ -36,13 +37,18 @@ Route::get('/profile-page/{id}',ProfilePage::class);
 Route::match(['get', 'post'],'/subscription-page/{name}',\App\Livewire\Service::class);
 
 
-//Route::middleware('guest')->group(function () {
+Route::middleware('guest')->group(function () {
     Route::get('/login',\App\Livewire\LoginPage::class)->name('login');
     Route::get('/register',\App\Livewire\RegisterPage::class)->name('register');
     Route::get('/forgot-password',\App\Livewire\ForgotPassword::class)->name('password.request');
     Route::get('/reset/{token}/{email}',\App\Livewire\ResetPassword::class)->name('password.reset');
-//});
+});
 
+Route::middleware(['role'=>'admin'])->group(function () {
+    Route::get('/filament', function () {
+        return \Filament\Facades\Filament::render();
+    });
+});
 
 //Route::middleware('auth')->group(function () {
 //

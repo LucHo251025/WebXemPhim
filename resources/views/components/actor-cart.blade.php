@@ -1,4 +1,4 @@
-@props(['actors'=>null]))
+@props(['actors'=>null])
 
 @foreach($actors as $actor)
 

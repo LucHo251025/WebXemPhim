@@ -27,7 +27,7 @@ class FilmFactory extends Factory
             'status' => true ,
             'duration' => $this->faker->numberBetween(60, 200),
             'average_rating' => $this->faker->randomFloat(2, 1, 10),
-            'slug' => Str::slug($this->faker->company), // Tạo slug từ title
+            'slug' => Str::slug($this->faker->unique()->company),
             'video_path' => null,
 
         ];

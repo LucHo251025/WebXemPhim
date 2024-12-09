@@ -1,27 +1,30 @@
 <div class="bg-black">
     <div class="relative">
         <div class="h-full bg-cover bg-no-repeat bg-center sm:bg-lightgray sm:bg-50% md:bg-lightgray md:bg-50% custom-gradient"
-             style="background: url({{ Vite::asset('resources/images/play_image/slider.jpg') }}) lightgray 50% / cover no-repeat;">
+             style="background: url({{ $film->backgrounds[0] }}) lightgray 50% / cover no-repeat;">
             <div class="flex flex-col sm:flex-row p-8 sm:p-[606px_139px_56px_103px] md:p-[606px_139px_56px_103px] items-end justify-between bg-gradient-to-r from-black via-black/70 to-transparent sm:bg-none md:bg-none">
                 <div name='content' class="flex flex-col gap-4 w-full sm:w-[500px] md:w-[757px]">
                     <div class="info1 flex flex-col items-start gap-[-24px]">
                         <p class="text-white text-base sm:text-lg md:text-lg font-light leading-[2]">
-                            2008
+                            {{ $film->releaseYear() }}
                         </p>
                         <h2 class="text-white text-3xl sm:text-4xl md:text-5xl font-semibold leading-[1.2]">
-                            Breaking Bad
+                            {{ $film->title }}
                         </h2>
                     </div>
 
                     <p class="text-white text-sm sm:text-md md:text-lg font-semibold leading-[1.2]">
-                        5 Seasons • Crime • Thriller
+                        {{ $film->genres->pluck('name')->join(' • ') }}
                     </p>
 
                     <div class="watch flex flex-col sm:flex-row items-center gap-4">
-                        <button class="w-full sm:w-auto md:w-auto flex items-center justify-center py-2 px-4 bg-purple-700 text-white rounded-md">
-                            <span class="text-sm font-semibold">Continue Watching</span>
-                        </button>
+{{--                        <button class="w-full sm:w-auto md:w-auto flex items-center justify-center py-2 px-4 bg-purple-700 text-white rounded-md">--}}
+{{--                            <span class="text-sm font-semibold">Continue Watching</span>--}}
+{{--                        </button>--}}
 
+                        <x-button  type="trailer">
+                            Contrinue Watching
+                        </x-button>
                         <button class="w-full sm:w-auto md:w-auto flex items-center justify-center py-2 px-4 border border-white bg-purple-900/30 text-white rounded-md">
                             <span class="text-sm font-semibold">Add to Wishlist</span>
                         </button>
@@ -54,22 +57,22 @@
 
 
 {{-- Container --}}
-    <div class="inline-flex w-full flex-col items-start gap-20 px-[103px] pb-[50px]">
+    <div class="inline-flex w-full flex-col gap-20 px-[103px] pb-[50px]">
         <!-- Synopsis Section -->
         <div class="synopsis flex flex-col items-start gap-8">
             <h4 class="self-stretch text-white font-poppins text-[37px] font-semibold leading-[120%] md:text-[25px]">Synopsis</h4>
-            <p class="self-stretch text-white font-poppins text-[23px] font-normal leading-[120%] md:text-[17px]">
-                {{ $isCollapsed ? Str::limit($text, $limit) : $text }}
-                Walter White is a chemistry genius but works as a chemistry teacher at a high school in Albuquerque, New Mexico.
-                His life drastically changes when he's diagnosed with stage III terminal lung cancer and given a prognosis of
-                two years to live. To ensure that his pregnant wife and handicapped teenage son have a financial future, he uses
-                his chemistry background to create and sell the world's finest crystal methamphetamine. To sell his signature
-                "blue meth", he teams up with Jesse Pinkman, a former student of his. The meth makes them...
-                <span class="text-[#7300ff] font-semibold cursor-pointer" wire:click="toggle">
-            {{ $isCollapsed ? 'More' : 'Less' }}
-        </span>
+            <input type="checkbox" id="toggle" class="hidden peer" />
+
+            <p class="max-h-20 overflow-hidden transition-all duration-500 peer-checked:max-h-screen">
+                {{ $film->description }}
             </p>
+
+            <label for="toggle" class="text-[#7300ff] font-semibold cursor-pointer block mt-2 text-right">
+                <span class="peer-checked:hidden">More</span>
+                <span class="hidden peer-checked:inline">Less</span>
+            </label>
         </div>
+
 
         <!-- Cast Section -->
         <div class="flex w-full flex-col gap-8">
@@ -83,18 +86,7 @@
         </div>
 
         <!-- Movie Card Section -->
-        <div class="movie-card-play flex flex-col w-full items-start gap-14">
-            <p class="self-stretch text-white text-shadow-sm font-poppins text-[37px] font-semibold leading-[120%] md:text-[25px]">
-                Similar Shows for you
-            </p>
-
-            <div class="swiper w-full swiper-cart-items card-items-play flex items-center gap-16">
-                <div class="swiper-wrapper">
-                    <!-- Movie card loop -->
-                    <x-movie-card :movies="$movies"></x-movie-card>
-                </div>
-            </div>
-        </div>
+        <x-medium-slider :films="$films" name="similarShows" title="Similar Shows for you" />
     </div>
 
 </div>

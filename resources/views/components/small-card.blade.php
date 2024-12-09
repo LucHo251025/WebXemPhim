@@ -1,9 +1,11 @@
 @props(['film' => null])
 <div class="swiper-slide">
-    <a href="#">
+    <div class="w-[250px]">
+        <a href="{{ '/watch/' . $film->slug }}">
+            <img class="w-[250px] h-[318px]" src="{{ $film->posters[rand(0,1)] }}" alt="{{ $film->title .'-poster' }}" style="border-radius: 0px 28px;">
+            <h3 class="mt-5 text-2xl w-full overflow-hidden" style="-webkit-line-clamp: 1; display: -webkit-box;-webkit-box-orient: vertical;">{{ $film->title }}</h3>
+            <p class="text-violet-400 text-sm w-full">{{ $film->genres->pluck('name')->join(' • ') }}</p>
+        </a>
+    </div>
 
-{{--        <img class="w-[267px] h-[318px]" src="{{ Vite::asset(json_decode($film->images,true)['poster'][0]) }}" alt="{{ $film->title }}">--}}
-        <h3 class="mt-5 text-2xl">{{ $film->title }}</h3>
-        <p class="text-violet-400 text-sm">{{ $film->genres->pluck('name')->join(' • ') }}</p>
-    </a>
 </div>

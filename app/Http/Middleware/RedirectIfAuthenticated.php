@@ -17,11 +17,10 @@ class RedirectIfAuthenticated
      */
     public function handle(Request $request, Closure $next, string ...$guards): Response
     {
-        $guards = empty($guards) ? [null] : $guards;
-
         foreach ($guards as $guard) {
             if (Auth::guard($guard)->check()) {
-                return redirect(RouteServiceProvider::HOME);
+                // Nếu người dùng đã đăng nhập, chuyển hướng họ đến trang chủ (hoặc trang bạn muốn)
+                return redirect('/'); // Thay '/' bằng đường dẫn bạn muốn chuyển hướng đến, ví dụ: '/dashboard'
             }
         }
 

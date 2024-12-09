@@ -1,24 +1,4 @@
-<div x-data="{
-        initRatingCard(card) {
-            const rating = parseFloat(card.getAttribute('data-rating'));
-            const progressBar = card.querySelector('.CircularProgressbar-path');
-            const ratingText = card.querySelector('.rating-text');
-
-            const circumference = 2 * Math.PI * 46;
-            const offset = ((10 - rating) / 10) * circumference;
-            progressBar.style.strokeDashoffset = offset;
-
-            if (rating < 5) {
-                progressBar.style.stroke = 'red';
-            } else if (rating < 7) {
-                progressBar.style.stroke = 'orange';
-            } else {
-                progressBar.style.stroke = 'green';
-            }
-
-            ratingText.textContent = rating;
-        }
-    }">
+<div>
     <div class="pr-5 pt-24 mx-auto max-w-[1200px] w-full min-h-[700px]" >
         <div class="flex justify-between max-md:flex-col mb-6">
             <div class="text-[24px] leading-8 text-white max-md:mb-5">Explore {{ $type === 'show' ? 'Shows' : 'Movies'}}</div>
@@ -57,7 +37,6 @@
                 <div class="flex gap-2.5 shrink-0 h-fit flex-row md:flex-row rounded-[20px] min-h-7 max-md:w-full" style="background: #3C0753">
                     <div class="md:max-w-[500px] w-full relative max-md:min-w-0" id="sortBy-container">
                         <select id="sortBy" class="text-violet-400" @change="$wire.updateSortBy($event.target.value)" >
-                            <option value="popular">Popular</option>
                             <option value="rating">Rating</option>
                             <option value="a-z">Title (A-Z)</option>
                             <option value="z-a">Title (Z-A)</option>

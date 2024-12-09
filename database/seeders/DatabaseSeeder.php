@@ -24,7 +24,7 @@ class DatabaseSeeder extends Seeder
         foreach ($genres as $genre) {
             Genre::create(['name' => $genre, 'images' => json_encode('resources/demo-images/adventure.png')]);
         }
-        Film::factory(40)->create()->each(function ($film) {
+        Film::factory(100)->create()->each(function ($film) {
             // Lấy ngẫu nhiên một số thể loại từ danh sách các thể loại có sẵn
             $genreIds = Genre::inRandomOrder()->take(rand(1, 4))->pluck('id');
 
