@@ -59,12 +59,11 @@ class FetchTrendingMovies implements ShouldQueue
                 ['title' => $filmData['title']], // Check for duplicates by title
                 [
                     'description' => $filmData['overview'],
-                    'director' => 'Unknown',
                     'slug' => \Str::slug($filmData['title']) . '-' . \Str::random(6),
                     'release_date' => Carbon::parse($filmData['release_date'])->toDateString(),
                     'type' => 'movie',
                     'status' => true,
-                    'video_path' => json_encode('https://example.com/path/to/movie.mp4'),
+                    'video_path' => json_encode(['https://share.nplayervn.workers.dev/0:/08.%20J2TEAM%20MOVIE/Bumblebee/Bumblebee.mp4']),
                     'duration' => rand(90, 180),
                     'average_rating' => $filmData['vote_average'],
                 ]
@@ -101,8 +100,12 @@ class FetchTrendingMovies implements ShouldQueue
         if ($response->ok()) {
             $credits = $response->json();
             $cast = $credits['cast'] ?? [];
-
-            foreach (array_slice($cast, 0, 5) as $actorData) {
+            $i=0;
+            foreach ($cast as $actorData) {
+                $i++;
+                if($i>5){
+                    break;
+                }
                 $actor = Actor::updateOrCreate(
                     ['id' => $actorData['id']], // Unique ID from TMDb
                     [

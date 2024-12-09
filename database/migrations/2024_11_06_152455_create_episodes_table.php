@@ -18,7 +18,7 @@ return new class extends Migration
             $table->integer('episode_number')->unsigned();
             $table->string('title');
             $table->boolean('status')->default(true);
-            $table->string('description');
+            $table->text('description');
             $table->date('release_date');
             $table->integer('duration');
             $table->string('video_path');

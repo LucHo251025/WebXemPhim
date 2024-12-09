@@ -8,25 +8,43 @@
                     <div class="md:max-w-[500px] w-full relative max-md:min-w-0" id="genres-container">
                         <select id="genres" multiple class="text-violet-400"
                                 @change="$wire.updateGenres(Array.from($event.target.selectedOptions).map(option => option.value))">
-                            <option value="Action">Action</option>
-                            <option value="Adventure">Adventure</option>
-                            <option value="Animation">Animation</option>
-                            <option value="Comedy">Comedy</option>
-                            <option value="Crime">Crime</option>
-                            <option value="Documentary">Documentary</option>
-                            <option value="Drama">Drama</option>
-                            <option value="Family">Family</option>
-                            <option value="Fantasy">Fantasy</option>
-                            <option value="History">History</option>
-                            <option value="Horror">Horror</option>
-                            <option value="Music">Music</option>
-                            <option value="Mystery">Mystery</option>
-                            <option value="Romance">Romance</option>
-                            <option value="Science Fiction">Science Fiction</option>
-                            <option value="TV Movie">TV Movie</option>
-                            <option value="Thriller">Thriller</option>
-                            <option value="War">War</option>
-                            <option value="Western">Western</option>
+                            @if($type === 'show')
+                                <option value="Animation">Animation</option>
+                                <option value="Comedy">Comedy</option>
+                                <option value="Crime">Crime</option>
+                                <option value="Documentary">Documentary</option>
+                                <option value="Drama">Drama</option>
+                                <option value="Family">Family</option>
+                                <option value="Kids">Kids</option>
+                                <option value="Mystery">Mystery</option>
+                                <option value="News">News</option>
+                                <option value="Reality">Reality</option>
+                                <option value="Sci-Fi & Fantasy">Sci-Fi & Fantasy</option>
+                                <option value="Soap">Soap</option>
+                                <option value="Talk">Talk</option>
+                                <option value="War & Politics">War & Politics</option>
+                                <option value="Western">Western</option>
+                            @else
+                                <option value="Action">Action</option>
+                                <option value="Adventure">Adventure</option>
+                                <option value="Animation">Animation</option>
+                                <option value="Comedy">Comedy</option>
+                                <option value="Crime">Crime</option>
+                                <option value="Documentary">Documentary</option>
+                                <option value="Drama">Drama</option>
+                                <option value="Family">Family</option>
+                                <option value="Fantasy">Fantasy</option>
+                                <option value="History">History</option>
+                                <option value="Horror">Horror</option>
+                                <option value="Music">Music</option>
+                                <option value="Mystery">Mystery</option>
+                                <option value="Romance">Romance</option>
+                                <option value="Science Fiction">Science Fiction</option>
+                                <option value="TV Movie">TV Movie</option>
+                                <option value="Thriller">Thriller</option>
+                                <option value="War">War</option>
+                                <option value="Western">Western</option>
+                            @endif
                         </select>
                     </div>
                     <div class="items-center flex shrink-0 self-stretch">

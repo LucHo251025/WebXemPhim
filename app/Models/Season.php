@@ -9,7 +9,10 @@ class Season extends Model
 {
     use HasFactory;
     protected $fillable = [
+        'film_id',
         'season_number',
+        'episodes_count',
+        'status',
     ];
 
     public function episodes()

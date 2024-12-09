@@ -9,6 +9,7 @@ class Episode extends Model
 {
     use HasFactory;
     protected $fillable = [
+        'season_id',
         'episode_number',
         'title',
         'description',
