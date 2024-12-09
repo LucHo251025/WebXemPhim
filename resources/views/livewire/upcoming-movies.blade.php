@@ -15,10 +15,10 @@
                         </div>
                     </div>
 
-                    <div class="flex justify-center items-center flex-1">
-                        <div class="h-[119px] w-full flex justify-end mt-[70px]">
-                            <div id="dropdownButtonOptionforMovies" class="relative hover:cursor-pointer w-[151px] py-[10px] px-[22px] gap-2 border-2 border-white rounded-tr-[16px] rounded-br-[16px] bg-[#3000774D] ml-[33px] mt-[70px]">
-                                <div class="flex items-center justify-center font-poppins text-sm font-semibold leading-5">
+                    <div class="flex justify-center items-center flex-1  ">
+                        <div class=" w-full flex justify-end flex-wrap ">
+                            <div id="dropdownButtonOptionforMovies" class="relative hover:cursor-pointer w-[151px] py-[10px] px-[22px] gap-2 border-2 border-white rounded-tr-[16px] rounded-bl-[16px] bg-[#3000774D] ml-[33px] mt-[10px]">
+                                <div class="flex items-center justify-center font-poppins text-sm font-semibold leading-5 pt-0.5 text-[17px]">
                                     {{ $selected_genre ? $selected_genre->name:"Movies" }}
                                     
                                     <div class="w-[17px] h-[11px] ml-2">
@@ -26,23 +26,23 @@
                                     </div>
                                 </div>
                                 <!-- Dropdown Menu -->
-                                <div id="dropdownMenuOptionforMovies" class="absolute right-0 mt-5 w-48 rounded shadow-lg hidden " style="background-color: black">
+                                <div id="dropdownMenuOptionforMovies" class="absolute right-0 w-48 rounded shadow-lg hidden mt-5 left-[1px] " style="background-color: black">
                                     @foreach($genreMovies as $genre)
-                                    <a href="?genre={{ $genre->id }}&year={{ $selected_year }}" class="block px-4 py-2 text-white hover:bg-sky-700"> {{ $genre->name }}</a>
+                                    <a href="?genre={{ $genre->id }}&year={{ $selected_year }}" class="block px-4 py-2 text-white hover:bg-sky-700 "> {{ $genre->name }}</a>
                                  @endforeach
                                 </div>
 
                             </div>
 
-                            <div id="dropdownButtonOptionforYears" class="relative hover:cursor-pointer w-[151px] py-[10px] px-[22px] gap-2 border-2 border-white rounded-tr-[16px] rounded-br-[16px] bg-[#3000774D] ml-[33px] mt-[70px]">
-                                <div class="flex items-center justify-center font-poppins text-sm font-semibold leading-5">
+                            <div id="dropdownButtonOptionforYears" class="relative hover:cursor-pointer w-[151px] py-[10px] px-[22px] gap-2 border-2 border-white rounded-tr-[16px] rounded-bl-[16px] bg-[#3000774D] ml-[33px] mt-[10px]">
+                                <div class="flex items-center justify-center font-poppins text-sm font-semibold leading-5 pt-0.5 text-[17px]">
                                     {{ $selected_year }}
                                     <div class="w-[17px] h-[11px] ml-2">
                                         <img src="{{ Vite::asset('resources/images/upcoming_image/Vector 3.png') }}" alt="Icon" />
                                     </div>
                                 </div>
                                 <!-- Dropdown Menu -->
-                                <div id="dropdownMenuOptionforYears" class="absolute right-0 mt-5 w-48 rounded shadow-lg hidden" style="background-color: black">
+                                <div id="dropdownMenuOptionforYears" class="absolute right-0 mt-5 w-48 rounded shadow-lg hidden left-[1px]" style="background-color: black">
                                     @foreach ( $groupYearsMovies as $years )
                                     <a href="?year={{ $years->release_year }}{{ $selected_genre ? "&genre=".$selected_genre->id:"" }}" class="block px-4 py-2 text-white hover:bg-sky-700">{{ $years->release_year }}</a>
                                   
@@ -52,6 +52,7 @@
                             </div>
                         </div>
                     </div>
+
                 </div>
             </div>
         </div>
@@ -66,17 +67,32 @@
             <x-upcoming-month :item="['year_month' => $year_month, 'movies' => $movies]" />
         @endforeach
 
-        <div class="mt-8 pb-8">
+       
+        <div class=" pb-8 mt-[7rem]">
+            @if(request('show') != 'all')
             <div class="flex justify-center">
                 <div class="w-[151px] py-[10px] px-[22px] gap-2 border-2 border-white rounded-tr-[16px] rounded-br-[16px] bg-[#3000774D]">
-                    <div class="flex items-center justify-center font-poppins text-sm font-semibold leading-5">
-                   <a href="?show=all&year={{  $selected_year }}{{ $selected_genre ? "&genre=".$selected_genre->id:"" }}"> Show more</a>    
+                    <div class="flex items-center justify-center font-poppins text-sm font-semibold leading-5 w-[100px] "> 
+                        <a href="?show=all&year={{  $selected_year }}{{ $selected_genre ? "&genre=".$selected_genre->id:"" }}" > Show all</a>    
                         <div class="w-[17px] h-[11px] ml-2">
                             <img src="{{ Vite::asset('resources/images/upcoming_image/Vector 3.png') }}" alt="Icon" />
                         </div>
                     </div>
                 </div>
             </div>
+            @elseif (request('show') == 'all')
+            <div class="flex justify-center">
+                <div class="w-[151px] py-[10px] px-[22px] gap-2 border-2 border-white rounded-tr-[16px] rounded-br-[16px] bg-[#3000774D]">
+                    <div class="flex items-center justify-center font-poppins text-sm font-semibold leading-5 w-[100px] "> 
+                        <a href="?show=&year={{  $selected_year }}{{ $selected_genre ? "&genre=".$selected_genre->id:"" }}" > Show less</a>    
+                        <div class="w-[17px] h-[11px] ml-2">
+                            <img src="{{ Vite::asset('resources/images/upcoming_image/Vector 3.png') }}" alt="Icon" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @endif
         </div>
+        
     </div>
 </div>
