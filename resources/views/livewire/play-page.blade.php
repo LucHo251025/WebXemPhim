@@ -18,13 +18,11 @@
                     </p>
 
                     <div class="watch flex flex-col sm:flex-row items-center gap-4">
-{{--                        <button class="w-full sm:w-auto md:w-auto flex items-center justify-center py-2 px-4 bg-purple-700 text-white rounded-md">--}}
-{{--                            <span class="text-sm font-semibold">Continue Watching</span>--}}
-{{--                        </button>--}}
+                        <button wire:click="play" class="w-full sm:w-auto md:w-auto flex items-center justify-center py-2 px-4 bg-purple-700 text-white rounded-md">
+                            <span class="text-sm font-semibold">Continue Watching</span>
+                        </button>
 
-                        <x-button  type="trailer">
-                            Contrinue Watching
-                        </x-button>
+
                         <button class="w-full sm:w-auto md:w-auto flex items-center justify-center py-2 px-4 border border-white bg-purple-900/30 text-white rounded-md">
                             <span class="text-sm font-semibold">Add to Wishlist</span>
                         </button>
@@ -87,6 +85,6 @@
 
         <!-- Movie Card Section -->
         <x-medium-slider :films="$films" name="similarShows" title="Similar Shows for you" />
+        <x-comment :comments="$comments"></x-comment>
     </div>
-
 </div>

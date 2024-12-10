@@ -65,5 +65,9 @@ class Film extends Model
     {
         return $this->hasMany(Season::class);
     }
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
 
 }

@@ -56,10 +56,15 @@ class User extends Authenticatable implements FilamentUser
 
     public function subscription()
     {
-        return $this->belongsTo(UserSubscriptions::class)->subscription;
+        return $this->hasOne(UserSubscriptions::class);
     }
+
     public function canAccessPanel(Panel $panel): bool
     {
         return $this->role === 'admin';
+    }
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
     }
 }

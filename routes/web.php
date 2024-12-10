@@ -25,6 +25,11 @@ Route::get('/explore', function () {
     return redirect('/explore/movie');
 });
 
+Route::get('/logout', function () {
+    auth()->logout();
+    return redirect('/');
+});
+
 
 Route::get('/UpcomingMoves-page', HomeUpcomingMovies::class);
 Route::get('/support-page', SupportMoviePage::class);

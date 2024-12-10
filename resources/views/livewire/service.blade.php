@@ -1,39 +1,8 @@
-    <div class="flex max-w-5xl mx-auto p-8 gap-9">
-        @if($showModal)
-            <div class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-75 z-50">
-                <div class="bg-white rounded-lg p-8 max-w-lg mx-auto">
-                    <div class="flex justify-between items-center">
-                        <h2 class="text-xl font-bold">ZaloPay</h2>
-                        <button wire:click="hideModal" class="text-black">&times;</button>
-                    </div>
-
-                    <div class="mt-4">
-                        <!-- QR Code Image -->
-                        <img src="" alt="QR Code" class="w-48 h-48 mx-auto">
-
-                        <p class="text-center mt-4 text-gray-500">
-                            Quét mã QR bằng ứng dụng ZaloPay để thanh toán dịch vụ FPT Play
-                        </p>
-
-                        <ul class="mt-4 text-gray-600 text-sm">
-                            <li><strong>Bước 1:</strong> Mở ứng dụng ZaloPay trên điện thoại.</li>
-                            <li><strong>Bước 2:</strong> Nhấp vào biểu tượng quét mã.</li>
-                            <li><strong>Bước 3:</strong> Sử dụng tính năng để quét mã QR.</li>
-                        </ul>
-
-                        <!-- Countdown Timer -->
-                        <p class="text-center mt-6 font-semibold">
-                            Thời gian còn: <span id="timer">{{ gmdate('i:s', $timeRemaining) }}</span>
-                        </p>
-                    </div>
-                </div>
-            </div>
-        @endif
-
+    <div class="flex max-w-5xl mx-auto p-8 md:flex gap-9 sm:block ">
         <div class="w-full  md:grid-cols-2 gap-8">
 
             <div class="space-y-4 w-full">
-                <h2 class="text-xl font-bold mb-4">Chọn hình thức thanh toán</h2>
+                <h2 class="text-xl font-bold mb-4">Tháng</h2>
 
                 <!-- Payment Option 1 -->
                 <div class="p-4 rounded-md flex items-center gap-3 w-full cursor-pointer" style="background-color: #161616;">
@@ -103,9 +72,6 @@
                 </div>
 
             </div>
-
-
-
             <!-- Left Section - Payment Methods -->
             <div class="space-y-4 w-full">
                 <h2 class="text-xl font-bold mb-4">Chọn hình thức thanh toán</h2>
