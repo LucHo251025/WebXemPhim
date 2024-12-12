@@ -30,22 +30,34 @@
                 </div>
             </div>
             <div class="bg-black lg:w-[50%] w-full ">
-            <div class="mr-10 ml-10 p-[50px] rounded-tl-[60px] rounded-br-[60px] border-2 border-[#7300FF] inline-flex flex-col justify-start items-start"> 
-               
+                <form wire:submit.prevent="sendEmail">
+                <div class="mr-10 ml-10 p-[50px] rounded-tl-[60px] rounded-br-[60px] border-2 border-[#7300FF] inline-flex flex-col justify-start items-start"> 
+                    @if($errors->any())
+                     <x-toast-errors-message :errors="$errors" />
+
+                @endif
+                
+                @if (session()->has('successMessage'))
+                    <div class="p-4 rounded-lg mb-5 font-sans text-green-800 bg-green-100 border border-green-300">
+                        {{ session('successMessage') }}
+                    </div>
+                @endif
+                
+
                     <div class=" justify-start items-start inline-flex w-full flex-wrap ">
                         <div class="flex flex-col justify-start items-start gap-[10px] lg:w-[50%] w-full lg:pr-[20px] pt-[50px]">
                             <div class="text-white text-[19px] font-semibold leading-[22.8px]">First Name</div>
-                            <input type="text" placeholder="Enter First Name" class="bg-black p-[20px] rounded-[8px] border-2 border-[#8A3BFF] text-[#DACDFF] text-[19px] font-normal leading-[22.8px] w-full box-border">
+                            <input wire:model="firstName" type="text" placeholder="Enter First Name" class="bg-black p-[20px] rounded-[8px] border-2 border-[#8A3BFF] text-[#DACDFF] text-[19px] font-normal leading-[22.8px] w-full box-border">
                         </div>
                         <div class="flex flex-col justify-start items-start gap-[10px] lg:w-[50%] w-full lg:pl-[20px] pt-[50px]">
                             <div class="text-white text-[19px] font-semibold leading-[22.8px]">Last Name</div>
-                            <input type="text" placeholder="Enter Last Name" class="bg-black p-[20px] rounded-[8px] border-2 border-[#8A3BFF] text-[#DACDFF] text-[19px] font-normal leading-[22.8px] w-full box-border">
+                            <input wire:model="lastName" type="text" placeholder="Enter Last Name" class="bg-black p-[20px] rounded-[8px] border-2 border-[#8A3BFF] text-[#DACDFF] text-[19px] font-normal leading-[22.8px] w-full box-border">
                         </div>
                     </div>
                     <div class=" justify-start items-start inline-flex w-full flex-wrap">
                         <div class="flex flex-col justify-start items-start gap-[10px]  lg:w-[50%] w-full lg:pr-[20px] pt-[50px]">
                             <div class="text-white text-[19px] font-semibold leading-[22.8px]">Email</div>
-                            <input type="email" placeholder="Enter Your Email" class="bg-black p-[20px] rounded-[8px] border-2 border-[#8A3BFF] text-[#DACDFF] text-[19px] font-normal leading-[22.8px] w-full box-border">
+                            <input wire:model="email" type="email" placeholder="Enter Your Email" class="bg-black p-[20px] rounded-[8px] border-2 border-[#8A3BFF] text-[#DACDFF] text-[19px] font-normal leading-[22.8px] w-full box-border">
                         </div>
                         <div class="flex flex-col justify-start items-start gap-[16px]  lg:w-[50%] w-full lg:pl-[20px] pt-[50px]">
                             <div class="text-white text-[19px] font-semibold leading-[22.8px]">Phone Number</div>
@@ -55,7 +67,7 @@
                                    <img src="{{ Vite::asset("resources/images/support-images/Vector3.png")  }}" alt="" style="    width: 20%;">
                                 </div>
                                 <div class="flex-1 h-[63px] p-[20px] rounded-[8px] border-2 border-[#8A3BFF] flex items-center">
-                                    <input type="text" placeholder="Enter Phone Number" class="w-full text-[#DACDFF] text-[19px] font-normal border-none outline-none bg-transparent leading-[22.8px]">
+                                    <input wire:model="phone" type="text" placeholder="Enter Phone Number" class="w-full text-[#DACDFF] text-[19px] font-normal border-none outline-none bg-transparent leading-[22.8px]">
                                 </div>
                             </div>
                         </div>
@@ -63,22 +75,23 @@
                     <div class="flex flex-col justify-start items-start gap-[16px] h-[202px] pt-[50px]" style="width: 100%; ">
                         <div class="text-white text-[19px] font-semibold leading-[22.8px]">Message</div>
                         <div class="h-[163px] p-[20px] rounded-[8px] border-2 border-[#8A3BFF] flex items-start" style="    width: 100%;">
-                            <textarea placeholder="Enter your query" class="w-full h-full text-[#DACDFF] text-[19px] font-normal border-none outline-none resize-none bg-transparent leading-[22.8px]"></textarea>
+                            <textarea wire:model="messageUser" placeholder="Enter your query" class="w-full h-full text-[#DACDFF] text-[19px] font-normal border-none outline-none resize-none bg-transparent leading-[22.8px]"></textarea>
                         </div>
                     </div>
     
                     <div class=" justify-start items-center inline-flex  w-full flex-wrap">
                         <div class="flex justify-start items-center gap-[10px] lg:w-[50%] w-full pt-[50px]">
-                            <input type="checkbox" id="terms" class="custom-checkbox">
+                            <input wire:model="agree" type="checkbox" id="terms" class="custom-checkbox">
                             <label for="terms" class="checkbox-label">I agree with Terms of Use and Privacy Policy</label>
                         </div>
                         <div class="lg:w-[50%] w-full lg:pl-[20px] pt-[50px]" style="display: flex;justify-content: right;">
                             <div class=" w-full lg:w-[170px] h-[67px] bg-[#7300FF] p-[10px] px-[22px] rounded-[20px] flex justify-center items-center">
-                                <button class="text-white text-[23px] font-semibold leading-[27.6px]">Button</button>
+                                <button type="submit" class="text-white text-[23px] font-semibold leading-[27.6px]">Submit</button>
                             </div>
                         </div>
                     </div>
                 </div>
+            </form>
             </div>
   
         </div>

@@ -14,7 +14,7 @@ if(dropdownButton)
 
 
 window.addEventListener('click', (e) => {
-  if (!dropdownButton.contains(e.target) && !dropdownMenuMovies.contains(e.target)) {
+  if (dropdownButton && !dropdownButton.contains(e.target) && !dropdownMenuMovies.contains(e.target)) {
     dropdownMenuMovies.classList.add('hidden');
   }
 });
@@ -28,7 +28,7 @@ if(dropdownButtonMovies)
 
 
 window.addEventListener('click', (e) => {
-  if (!dropdownButtonMovies.contains(e.target) && !dropdownMenuMovies.contains(e.target)) {
+  if (dropdownButtonMovies && !dropdownButtonMovies.contains(e.target) && !dropdownMenuMovies.contains(e.target)) {
     dropdownMenuMovies.classList.add('hidden');
   }
 });
@@ -41,7 +41,7 @@ if(dropdownButtonYears)
 
 
 window.addEventListener('click', (e) => {
-  if (!dropdownButtonYears.contains(e.target) && !dropdownMenuYears.contains(e.target)) {
+  if (dropdownButtonYears && !dropdownButtonYears.contains(e.target) && !dropdownMenuYears.contains(e.target)) {
     dropdownMenuYears.classList.add('hidden');
   }
 });
