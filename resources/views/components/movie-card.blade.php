@@ -1,12 +1,12 @@
 @props(['film' => null])
 <div class="swiper-slide" style="width: fit-content">
-    <div class="item-play flex flex-col items-start gap-4 sm:gap-6 md:gap-9 w-fit">
-        <a href="{{ '/film/' . $film->slug }}">
+    <div class="item-play flex flex-col items-start gap-4 sm:gap-6 md:gap-9 w-full">
+        <a href="{{ '/watch/' . $film->slug }}">
             <img src="{{ $film->backgrounds[0] }}"
-                 class="w-full h-[269px] rounded-[23px] bg-cover"
+                 class="w-full max-w-[150px] md:max-w-[200px] lg:max-w-[250px] h-auto rounded-[23px] bg-cover"
                  alt="{{ $film->title }}">
 
-            <div class="info-item flex flex-col items-start gap-1 sm:gap-2 w-full pt-9">
+            <div class="info-item flex flex-col items-start gap-1 sm:gap-2 w-full">
                 {{-- Tiêu đề bộ phim --}}
                 <p class="text-white font-poppins text-[18px]  sm:text-[12px] md:text-[15px] font-bold leading-[120%]">
                     {{ $film->title ?? 'No Title' }}

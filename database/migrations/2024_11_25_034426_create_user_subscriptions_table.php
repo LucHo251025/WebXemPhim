@@ -17,6 +17,8 @@ return new class extends Migration
             $table->id();
             $table->foreignIdFor(User::class)->constrained()->cascadeOnDelete();
             $table->foreignIdFor(Subscription::class)->constrained();
+            $table->timestamp('subscribed_at')->nullable(); // Thêm trường subscribed_at
+            $table->timestamp('expiry_date')->nullable();
             $table->timestamps();
         });
     }

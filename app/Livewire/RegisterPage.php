@@ -4,6 +4,7 @@ namespace App\Livewire;
 
 use App\Filament\Resources\UserResource\Pages\CreateUser;
 use App\Models\User;
+use App\Models\UserSubscriptions;
 use Illuminate\Support\Facades\Hash;
 use Livewire\Component;
 class RegisterPage extends Component
@@ -29,12 +30,18 @@ class RegisterPage extends Component
             'email' => $this->email,
             'password' => Hash::make($this->password),
             'avatar' => null,
-            'subscription_id' => '1',
             'subscription_started_at' => null,
             'subscription_ended_at' => null
 
         ]);
         $user->password = Hash::make($this->password);
+        $userSubscription = UserSubscriptions::create([
+            'user_id' => $user->id,
+            'subscription_id' => 1,
+            'subscribed_at' => now(),
+            'expiry_date' => now()->addMonth(1)
+        ]);
+        $userSubscription->save();
         $user->save();
 
 //        dd($user);

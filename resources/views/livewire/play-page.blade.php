@@ -18,8 +18,14 @@
                     </p>
 
                     <div class="watch flex flex-col sm:flex-row items-center gap-4">
-                        <x-button type="watch" url="{{ $film->isMovie() ? '/watch/' . $this->slug : ($film->hasManySeasons() ? '/watch/'.$this->slug.'/season/1/episode/1' : '/watch/'.$this->slug.'/episode/1') }}">Watch Now</x-button>
-                        <x-button type="wishlist">Add to Wishlist</x-button>
+                        <button wire:click="play" class="w-full sm:w-auto md:w-auto flex items-center justify-center py-2 px-4 bg-purple-700 text-white rounded-md">
+                            <span class="text-sm font-semibold">Continue Watching</span>
+                        </button>
+
+
+                        <button class="w-full sm:w-auto md:w-auto flex items-center justify-center py-2 px-4 border border-white bg-purple-900/30 text-white rounded-md">
+                            <span class="text-sm font-semibold">Add to Wishlist</span>
+                        </button>
                     </div>
                 </div>
 
@@ -51,16 +57,30 @@
 {{-- Container --}}
     <div class="inline-flex w-full flex-col gap-20 px-[103px] pb-[50px]">
         <!-- Synopsis Section -->
-        <div class="synopsis flex flex-col items-start gap-8">
+        <div class="synopsis flex flex-col items-start gap-4">
             <h4 class="self-stretch text-white font-poppins text-[37px] font-semibold leading-[120%] md:text-[25px]">Synopsis</h4>
-            <p class="self-stretch text-white font-poppins text-[23px] font-normal leading-[120%] md:text-[17px]">
-                {{ $isCollapsed ? Str::limit($text, $limit) : $text }}
+
+            <!-- Checkbox ẩn để điều khiển hiển thị -->
+            <input type="checkbox" id="toggle" class="hidden peer" />
+
+            <!-- Nội dung phần mô tả -->
+            <p class="relative overflow-hidden transition-all duration-500 max-h-[80px] peer-checked:max-h-screen">
                 {{ $film->description }}
-                <span class="text-[#7300ff] font-semibold cursor-pointer" wire:click="toggle">
-            {{ $isCollapsed ? 'More' : 'Less' }}
-        </span>
+                <!-- Gradient chỉ hiển thị khi checkbox chưa được chọn (trạng thái More) -->
+                <span class="absolute bottom-0 left-0 w-full h-8 bg-gradient-to-t from-black to-transparent peer-checked:hidden"></span>
             </p>
+
+            <!-- Nút điều khiển "More/Less" -->
+            <label for="toggle" class="text-[#7300ff] font-semibold cursor-pointer mt-2 self-end">
+                <!-- More sẽ chỉ hiển thị khi checkbox chưa được chọn -->
+                <span class="peer-checked:hidden">More</span>
+                <!-- Less sẽ chỉ hiển thị khi checkbox được chọn -->
+                <span class="hidden peer-checked:inline">Less</span>
+            </label>
         </div>
+
+
+
 
         <!-- Cast Section -->
         <div class="flex w-full flex-col gap-8">
@@ -68,13 +88,13 @@
             <div class="swiper actor-swiper w-full">
                 <div class="swiper-wrapper w-full">
                     <!-- Cast Item -->
-                    <x-actor-card :actors="$actors"></x-actor-card>
+                    <x-actor-cart :actors="$actors"></x-actor-cart>
                 </div>
             </div>
         </div>
 
         <!-- Movie Card Section -->
         <x-medium-slider :films="$films" name="similarShows" title="Similar Shows for you" />
+        <x-comment :comments="$comments"></x-comment>
     </div>
-
 </div>

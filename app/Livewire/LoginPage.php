@@ -4,6 +4,7 @@ namespace App\Livewire;
 
 use App\Filament\Resources\UserResource\Pages\CreateUser;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Livewire\Component;
 
@@ -18,13 +19,22 @@ class LoginPage extends Component
             'password' => 'required',
         ]);
 
-        if(!auth()->attempt(['email' => $this->email, 'password' => $this->password])){
-            session()->flash('error', 'Invalid credentials');
-            return ;
-        }
+        if (Auth::attempt(['email' => $this->email, 'password' => $this->password])) {
+            $user = Auth::user();
 
-        return redirect()->intended();
+            if ($user->role === 'admin') {
+                // Chuyển hướng admin đến Filament Dashboard
+                return redirect('/admin');
+            }
+
+            // Chuyển hướng người dùng không phải admin đến trang khác
+            return redirect('/');
+        } else {
+            session()->flash('error', 'Invalid credentials');
+        }
     }
+
+
     public function render()
     {
         return view('livewire.login-page')->layout('components.layouts.log-res');  // Chỉ định layout thông qua phương thức render()

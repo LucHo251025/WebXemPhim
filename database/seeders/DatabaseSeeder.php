@@ -57,19 +57,19 @@ class DatabaseSeeder extends Seeder
             Genre::updateOrCreate(['id' => $genre['id']], ['name' => $genre['name'], 'images' => json_encode('resources/demo-images/adventure.png')]);
         }
 
-//        Film::factory(100)->create()->each(function ($film) {
-//            // Lấy ngẫu nhiên một số thể loại từ danh sách các thể loại có sẵn
-//            $genreIds = Genre::inRandomOrder()->take(rand(1, 4))->pluck('id');
-//
-//            // Gán các thể loại vào phim mà không trùng lặp
-//            foreach ($genreIds as $genreId) {
-//                FilmGenre::firstOrCreate([
-//                    'film_id' => $film->id,
-//                    'genre_id' => $genreId,
-//                ]);
-//            }
-//            FilmImages::factory()->create(['film_id' => $film->id]);
-//        });
+        Film::factory(100)->create()->each(function ($film) {
+            // Lấy ngẫu nhiên một số thể loại từ danh sách các thể loại có sẵn
+            $genreIds = Genre::inRandomOrder()->take(rand(1, 4))->pluck('id');
+
+            // Gán các thể loại vào phim mà không trùng lặp
+            foreach ($genreIds as $genreId) {
+                FilmGenre::firstOrCreate([
+                    'film_id' => $film->id,
+                    'genre_id' => $genreId,
+                ]);
+            }
+            FilmImages::factory()->create(['film_id' => $film->id]);
+        });
 
         UpcomingMovie::factory(30)->create();
     }
