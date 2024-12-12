@@ -70,36 +70,14 @@ document.addEventListener("DOMContentLoaded", () => {
 })
 
 document.addEventListener("DOMContentLoaded", () => {
-    const heart = document.getElementById('follow-heart');
-    heart.addEventListener('click', function () {
-        heart.src = heart.src.includes('heart-fill')
-            ? heart.dataset.inactiveSrc
-            : heart.dataset.activeSrc;
+    const heartButton = document.getElementById('follow-heart');
+    const heartImage = heartButton.querySelector('img');
+    heartButton.addEventListener('click', function () {
+        heartImage.src = heartImage.src.includes('heart-fill')
+            ? heartButton.dataset.inactiveSrc
+            : heartButton.dataset.activeSrc;
     });
 });
-
-document.addEventListener("DOMContentLoaded", () => {
-    const readMoreOpen = document.querySelectorAll('.read-more-open');
-    const readMoreClose = document.querySelectorAll('.read-more-close');
-    const textContainers = document.querySelectorAll('.text-container');
-
-    readMoreOpen.forEach((button, index) => {
-        button.addEventListener('click', () => {
-            textContainers[index].style.display = 'block';
-            button.style.display = 'none';
-            readMoreClose[index].style.display = 'block';
-        });
-    });
-
-    readMoreClose.forEach((button, index) => {
-        button.addEventListener('click', () => {
-            textContainers[index].style.display = '-webkit-box';
-            button.style.display = 'none';
-            readMoreOpen[index].style.display = 'block';
-        });
-    });
-});
-
 //More Hide
 document.addEventListener("DOMContentLoaded", function () {
     const container = document.querySelector('.text-container');

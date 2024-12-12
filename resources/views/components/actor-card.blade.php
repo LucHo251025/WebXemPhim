@@ -2,8 +2,8 @@
 
 
 @foreach($actors as $actor)
-    <div class="swiper-slide relative lg:!w-[13%] lg:!mr-[40px] md:!w-1/5 md:!mr-[20px] sm:!mr-[20px] sm:!w-1/5 max-sm:!w-1/5">
-            <div class="relative swiper-slide ">
+    <div class="swiper-slide relative lg:!w-[12%] lg:!mr-[40px] md:!w-1/5 md:!mr-[20px] sm:!mr-[20px] sm:!w-1/5 max-sm:!w-1/5">
+            <div class="relative ">
                 <div class="relative pt-[100%] " style="list-style: none;">
                     <a href="javascript:void(0);"
                        class="rounded-full absolute top-0 right-0 left-0 bottom-0 w-full h-full text-white decoration-0 bg-transparent"

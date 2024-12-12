@@ -16,11 +16,11 @@
                     <div class="relative flex-1 px-4"></div>
                     <div class="text-white p-0 sm:max-w-full sm:flex-[0_0_100%] md:flex-[0_0_100%] md:max-w-full lg:flex-[0_0_33.33333333%] lg:max-w-[33.33333333%] ">
                         <div class="text-xs leading-5 mb-4 flex flex-wrap" style="color: #d2d2d2">
-                            <button class="mr-8 p-0 font-medium text-[14px] border-none flex flex-wrap text-white text-center align-middle leading-[1.35]" style="background: none; box-shadow: none">
-                                <img id="follow-heart"
-                                     data-active-src="{{ Vite::asset('/resources/images/heart-fill.png') }}"
-                                     data-inactive-src="{{ Vite::asset('/resources/images/heart.png') }}"
-                                     src="{{ Vite::asset('/resources/images/heart.png') }}">
+                            <button id="follow-heart"
+                                    data-active-src="{{ Vite::asset('/resources/images/heart-fill.png') }}"
+                                    data-inactive-src="{{ Vite::asset('/resources/images/heart.png') }}"
+                                    class="mr-8 p-0 font-medium text-[14px] border-none flex flex-wrap text-white text-center align-middle leading-[1.35]" style="background: none; box-shadow: none">
+                                <img src="{{ Vite::asset('/resources/images/heart.png') }}">
                                 <span class="ml-2 font-medium text-[14px] text-white pt-1">Follow</span>
                             </button>
                             <button class="p-0 font-medium text-[14px] border-none flex flex-wrap text-white text-center align-middle leading-[1.35]" style="background: none; box-shadow: none">

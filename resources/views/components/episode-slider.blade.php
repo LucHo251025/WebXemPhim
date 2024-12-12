@@ -1,4 +1,4 @@
-@props(['name' => 'episodes', 'films', 'episodes' => null])
+@props(['name' => 'episodes', 'episodes' => null])
 
 
 <div class="swiper {{ $name }}-swiper" style="width: 100%; position: relative;">

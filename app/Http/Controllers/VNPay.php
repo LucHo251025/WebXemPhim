@@ -13,7 +13,7 @@ class VNPay extends Controller
         $vnp_TmnCode = "RN9DBPK7";//Mã website tại VNPAY
         $vnp_HashSecret = "TW447RCZQGP77KGYLXNUBGON9ETR888H"; //Chuỗi bí mật
 
-        $vnp_TxnRef = '4242'; //Mã đơn hàng. Trong thực tế Merchant cần insert đơn hàng vào DB và gửi mã nàsang VNPAY
+        $vnp_TxnRef = rand(10000,9999); //Mã đơn hàng. Trong thực tế Merchant cần insert đơn hàng vào DB và gửi mã nàsang VNPAY
     $vnp_OrderInfo = "Payment" .$request->name;
     $vnp_OrderType = 'billpayment';
     $vnp_Amount = $request->amount * 100;
