@@ -5,13 +5,13 @@ import "choices.js/public/assets/styles/choices.css";
 document.addEventListener('DOMContentLoaded', function() {
     const genresSelect = document.getElementById('genres');
 
-    genresSelect.addEventListener('change', function() {
+    genresSelect?.addEventListener('change', function() {
         const selectedOptions = genresSelect.selectedOptions;
         document.getElementById('clear-selection').style.display = selectedOptions.length > 0 ? 'block' : 'none';
     });
 
     const sortBy = document.getElementById('sortBy');
-    sortBy.addEventListener('change', function() {
+    sortBy?.addEventListener('change', function() {
         document.getElementById('clear-sort').style.display = sortBy.value ? 'block' : 'none';
     });
 });
@@ -19,6 +19,9 @@ document.addEventListener('DOMContentLoaded', function() {
 document.addEventListener('DOMContentLoaded', function () {
     // Khởi tạo Choices.js
     const genresSelect = document.getElementById('genres');
+
+    if(!genresSelect) return;
+
     const choices = new Choices(genresSelect, {
         noChoicesText: 'No genres found',
         noResultsText: 'No results found',
@@ -28,6 +31,9 @@ document.addEventListener('DOMContentLoaded', function () {
         searchPlaceholderValue: '',
     });
     const sortBy = document.getElementById('sortBy');
+
+    if(!sortBy) return;
+    
     const choice2 = new Choices(sortBy, {
         searchEnabled: false,
         noChoicesText: 'No option found',

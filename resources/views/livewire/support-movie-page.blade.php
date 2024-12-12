@@ -63,9 +63,9 @@
                             <div class="flex justify-start items-center gap-[10px]">
                                 <div class="w-[94px] p-[12px] rounded-[8px] border-2 border-[#8A3BFF] flex justify-between items-center cursor-pointer"
                                     style="    width: 25%;">
-                                    <img src="{{ Vite::asset(" resources/images/support-images/flag.png") }}" alt=""
+                                    <img src="{{ Vite::asset("resources/images/support-images/flag.png") }}" alt=""
                                         style="    width: 70%;">
-                                    <img src="{{ Vite::asset(" resources/images/support-images/Vector3.png") }}" alt=""
+                                    <img src="{{ Vite::asset("resources/images/support-images/Vector3.png") }}" alt=""
                                         style="    width: 20%;">
                                 </div>
                                 <div
