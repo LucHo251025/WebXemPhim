@@ -20,7 +20,6 @@ class FilmFactory extends Factory
     {
         return [
             'title' => $this->faker->company,
-            'director' => $this->faker->name,
             'description' => $this->faker->paragraph,
             'release_date' => $this->faker->dateTimeBetween('1975-01-01', 'now'),
             'type' => $this->faker->randomElement(['movie', 'show']),

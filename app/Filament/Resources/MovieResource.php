@@ -52,7 +52,7 @@ class MovieResource extends Resource
                                         ->maxLength(255)
                                         ->columnSpan(1)
                                         ->live(onBlur: true)
-                                    ->afterStateUpdated(fn(string $operation,$state,Forms\Set $set)=>$operation==='create'? $set('slug',Str::slug($state)):null),
+                                    ->afterStateUpdated(fn(string $operation,$state,Forms\Set $set)=>$operation==='create'? $set('slug',Str::slug($state) . '-' . Str::random(5)):null),
                                     TextInput::make('slug')
             ->disabled()
             ->maxLength(255)
@@ -61,11 +61,6 @@ class MovieResource extends Resource
             ->unique(Film::class,'slug',ignoreRecord: true),
 
 
-                                    TextInput::make('director')
-                                        ->label('Director')
-                                        ->required()
-                                        ->maxLength(255)
-                                        ->columnSpan(1),
                                     DatePicker::make('release_date')
                                         ->label('Release Year')
                                         ->required()
@@ -139,27 +134,34 @@ class MovieResource extends Resource
                                     Forms\Components\Repeater::make('film_images')
                                         ->relationship('filmImages')  // Liên kết với FilmImage
                                         ->schema([
-                                            // Tải nhiều ảnh cho backgrounds
-                                            Forms\Components\FileUpload::make('backgrounds')
-                                                ->multiple()  // Cho phép tải nhiều ảnh
-                                                ->directory('backgrounds')
-                                                ->image()
-                                                ->maxSize(1024)
+                                            // Nhập nhiều link ảnh cho backgrounds
+                                            Forms\Components\TextInput::make('backgrounds')
+                                                ->label('Background Image Links')
+                                                ->placeholder('Enter image URLs separated by commas')
                                                 ->required()
+                                                ->columnSpan(1)
+                                                ->dehydrateStateUsing(fn ($state) => json_encode(explode(',', $state))),  // Encode the state to JSON
+                                            // Hiển thị ảnh từ link đã nhập
+                                            Forms\Components\View::make('backgrounds_preview')
+                                                ->label('Backgrounds Preview')
+                                                ->view('components.backgrounds-preview')
                                                 ->columnSpan(1),
 
-                                            // Tải nhiều ảnh cho posters
-                                            Forms\Components\FileUpload::make('posters')
-                                                ->multiple()  // Cho phép tải nhiều ảnh
-                                                ->directory('posters')
-                                                ->image()
-                                                ->maxSize(1024)
+                                            // Nhập nhiều link ảnh cho posters
+                                            Forms\Components\TextInput::make('posters')
+                                                ->label('Poster Image Links')
+                                                ->placeholder('Enter image URLs separated by commas')
                                                 ->required()
+                                                ->columnSpan(1)
+                                                ->dehydrateStateUsing(fn ($state) => json_encode(explode(',', $state))),  // Encode the state to JSON
+                                            // Hiển thị ảnh từ link đã nhập
+                                            Forms\Components\View::make('posters_preview')
+                                                ->label('Posters Preview')
+                                                ->view('components.posters-preview')
                                                 ->columnSpan(1),
-
                                         ])
                                         ->collapsible()  // Cho phép gập lại mỗi mục
-                                    ->columnSpan(2),
+                                        ->columnSpan(2),
                                 ]),
 
 
@@ -221,7 +223,6 @@ class MovieResource extends Resource
                 TextColumn::make('release_date'),
                 TextColumn::make('duration')->sortable(),
                 TextColumn::make('rating'),
-                TextColumn::make('director')->searchable(),
                 TextColumn::make('video_path')
                     ->formatStateUsing(function ($record) {
                         $links = json_decode($record->links, true);
@@ -237,12 +238,13 @@ class MovieResource extends Resource
                 ImageColumn::make('backgrounds')
                     ->label('Background Images')
                     ->getStateUsing(function ($record) {
-                        $backgrounds = json_decode($record->backgrounds, true);
+                        $backgrounds = json_decode($record->filmImages->backgrounds, true);
                         return is_array($backgrounds) && count($backgrounds) > 0 ? $backgrounds[0] : null;
                     })
                     ->size(50)
                     ->circular()
-                    ->hidden(fn () => true),
+//                    ->hidden(fn () => true)
+                ,
 
 
 
