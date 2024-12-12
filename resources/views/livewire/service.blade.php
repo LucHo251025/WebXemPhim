@@ -2,7 +2,7 @@
         <div class="w-full  md:grid-cols-2 gap-8">
 
             <div class="space-y-4 w-full">
-                <h2 class="text-xl font-bold mb-4">Tháng</h2>
+                <h2 class="text-xl font-bold mb-4">Month</h2>
 
                 <!-- Payment Option 1 -->
                 <div class="p-4 rounded-md flex items-center gap-3 w-full cursor-pointer" style="background-color: #161616;">
@@ -17,9 +17,7 @@
                         </div>
                     </label>
 
-                    <div class="">
-                        <p>$12.66</p>
-                    </div>
+
                 </div>
 
 
@@ -31,12 +29,10 @@
                         <!-- Inner active state -->
                         <span class="absolute bg-[#ff6500] w-3 h-3 rounded-full opacity-0 peer-checked:opacity-100 transition-opacity duration-200 top-1/2 left-2.5 transform -translate-x-1/2 -translate-y-1/2"></span>
                         <div class="ml-3">
-                            <span class="font-bold text-white">3 Tháng</span>
+                            <span class="font-bold text-white">3 Month</span>
                         </div>
                     </label>
-                    <div class="">
-                        <p>$12.66</p>
-                    </div>
+
                 </div>
 
                 <div class="p-4 rounded-md flex justify-self-start items-center gap-3 w-full cursor-pointer" style="background-color: #161616;">
@@ -47,12 +43,10 @@
                         <!-- Inner active state -->
                         <span class="absolute bg-[#ff6500] w-3 h-3 rounded-full opacity-0 peer-checked:opacity-100 transition-opacity duration-200 top-1/2 left-2.5 transform -translate-x-1/2 -translate-y-1/2"></span>
                         <div class="ml-3">
-                            <span class="font-bold text-white">6 Tháng</span>
+                            <span class="font-bold text-white">6 Month</span>
                         </div>
                     </label>
-                    <div class="">
-                        <p>$12.66</p>
-                    </div>
+
                 </div>
 
                 <div class="p-4 rounded-md flex justify-self-start items-center gap-3 w-full cursor-pointer" style="background-color: #161616;">
@@ -63,18 +57,16 @@
                         <!-- Inner active state -->
                         <span class="absolute bg-[#ff6500] w-3 h-3 rounded-full opacity-0 peer-checked:opacity-100 transition-opacity duration-200 top-1/2 left-2.5 transform -translate-x-1/2 -translate-y-1/2"></span>
                         <div class="ml-3">
-                            <span class="font-bold text-white">12 Tháng</span>
+                            <span class="font-bold text-white">12 Month</span>
                         </div>
                     </label>
-                    <div class="">
-                        <p>$12.66</p>
-                    </div>
+
                 </div>
 
             </div>
             <!-- Left Section - Payment Methods -->
             <div class="space-y-4 w-full">
-                <h2 class="text-xl font-bold mb-4">Chọn hình thức thanh toán</h2>
+                <h2 class="text-xl font-bold mb-4">Select Payment Method</h2>
 
                 <!-- Payment Option 1 -->
                 <div class="p-4 rounded-md flex justify-self-start items-center gap-3 w-full cursor-pointer" style="background-color: #161616;">
@@ -114,47 +106,48 @@
 
         <!-- Right Section - Payment Details -->
         <div class="w-full rounded-md min-h-full" style="background-color: #161616;">
-            <h2 class="text-xl font-bold mb-6">Thông tin thanh toán</h2>
+            <h2 class="text-xl font-bold mb-6">Payment Details</h2>
             <div class="space-y-4 p-5">
                 <div class="flex justify-between">
-                    <span>Tài khoản:</span>
+                    <span>Email:</span>
                     <span>{{$emailUser}}</span>
                 </div>
                 <div class="flex justify-between">
-                    <span>Tên gói:</span>
+                    <span>Package Name:</span>
                     <span class="uppercase">{{$name}}</span>
                 </div>
                 <div class="flex justify-between">
-                    <span>Thời hạn gói:</span>
+                    <span>Duration:</span>
                     <span>{{$month}}</span>
                 </div>
                 <div class="flex justify-between">
-                    <span>Dịch vụ:</span>
-                    <span>Gói dịch vụ FPT Play</span>
+                    <span>Service:</span>
+                    <span>Service Package</span>
                 </div>
                 <div class="flex justify-between">
-                    <span>Giá gói:</span>
+                    <span>Package Price:</span>
                     <span>{{$price}}</span>
                 </div>
                 <div class="flex justify-between">
-                    <span>Giảm giá:</span>
+                    <span>Discount:</span>
                     <span>{{$discountAmount}}</span>
                 </div>
                 <div class="flex justify-between">
-                    <span class="font-bold text-lg">Tổng thanh toán:</span>
+                    <span class="font-bold text-lg">Total Payment:</span>
                     <span class="font-bold text-lg">{{$this->getTotalPrice()}}</span>
                 </div>
 
                 <!-- Apply promo code section -->
                 <div class="mt-4 flex relative w-[100%]">
-                    <input wire:model="discountCode" type="text" placeholder="Mã khuyến mãi" class="p-[14px_16px] placeholder:font-bold  text-gray-400 w-[68%]"
+                    <input wire:model="discountCode" type="text" placeholder="Promo Code" class="p-[14px_16px] placeholder:font-bold  text-gray-400 w-[68%]"
                            style="border-radius:8px;border: none !important; outline: none !important;box-shadow: none !important;font-weight: 300; line-height: 150%;color: #fff;background: #0f0f0f;">
-                    <button wire:click="applyDiscount" class="absolute right-0 p-[12px_24px] bg-orange-500 text-white rounded-md " style="background-color: #2c2c2e !important; border-radius: 8px;color: #616161;font-weight: 500;font-size: 16px;line-height: 150%;white-space: nowrap;">Áp dụng</button>
+                    <button wire:click="applyDiscount" class="absolute right-0 p-[12px_24px] bg-orange-500 text-white rounded-md " style="background-color: #2c2c2e !important; border-radius: 8px;color: #616161;font-weight: 500;font-size: 16px;line-height: 150%;white-space: nowrap;">Apply</button>
                 </div>
 
                 <!-- Payment Button -->
-                <form action="{{url('vnpay')}}" method="POST">
+                <form action="{{url('vnpay')}}" onsubmit="handlePaymentAndSubmit(this);" method="POST">
                     @csrf
+                    <input type="hidden" name="id" value="{{ $id_user }}">
                     <input type="hidden" name="name" value="{{ $name }}">
                     <input type="hidden" name="amount" value="{{ $this->getTotalPrice() }}">
                     <input type="hidden" name="option" value="{{$option}}">
@@ -163,10 +156,15 @@
                 </form>
                 <script>
                     function handlePaymentAndSubmit(form) {
-                        @this.call('handlePayment').then(() => {
-                            form.submit();
-                        });
+                        @this.call('handlePayment')
+                            .then(() => {
+                                form.submit();
+                            })
+                            .catch((error) => {
+                                console.error('Lỗi trong quá trình xử lý thanh toán:', error);
+                            });
                     }
+
                 </script>
 
             </div>

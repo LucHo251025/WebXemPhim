@@ -12,7 +12,7 @@ class Service extends Component
 {
     #[Url]
     public $name;
-
+    public $id_user;
     public $month;
     public $price;
     public $emailUser;
@@ -53,6 +53,7 @@ class Service extends Component
     public function mount($month = '1 month')
     {
         $this->month = $month;
+        $this->id_user = auth()->id();
         $this->emailUser = auth()->user()->email;
         $this->updatePrice();
     }

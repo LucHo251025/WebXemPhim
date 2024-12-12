@@ -1,6 +1,6 @@
 @if($getRecord())
     @php
-        $images = json_decode($getRecord()->backgrounds, true);
+        $images = json_decode($getRecord()->posters, true);
     @endphp
     <div class="grid grid-cols-3 gap-4">
         @foreach ($images as $image)

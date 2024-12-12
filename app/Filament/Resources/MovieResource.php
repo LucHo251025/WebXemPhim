@@ -54,13 +54,14 @@ class MovieResource extends Resource
                                         ->maxLength(255)
                                         ->columnSpan(1)
                                         ->live(onBlur: true)
-                                    ->afterStateUpdated(fn(string $operation,$state,Forms\Set $set)=>$operation==='create'? $set('slug',Str::slug($state)):null),
+                                        ->afterStateUpdated(fn(string $operation,$state,Forms\Set $set)=>$operation==='create'? $set('slug',Str::slug($state)):null),
                                     TextInput::make('slug')
                                         ->disabled()
                                         ->maxLength(255)
                                         ->required()
                                         ->dehydrated()
                                         ->unique(Film::class,'slug',ignoreRecord: true),
+
                                     DatePicker::make('release_date')
                                         ->label('Release Year')
                                         ->required()
@@ -135,25 +136,20 @@ class MovieResource extends Resource
                                         ->relationship('filmImages')  // Liên kết với FilmImage
                                         ->schema([
 
-                                            Repeater::make('backgrounds')
-                                                ->schema([
-                                                    TextInput::make('url')
-                                                        ->label('Image URL')
-                                                        ->required()
-                                                ]),
-
+                                            TextInput::make('backgrounds')
+                                                ->required()
+                                                ->label('Backgrounds')
+                                                // Tiêu đề cho trường
+                                            ,
                                             Forms\Components\View::make('components.backgrounds-preview')
                                                 ->label('Preview'),
 
-                                            Repeater::make('posters')
-                                                ->label('Posters')
-                                                ->schema([
-                                                    TextInput::make('url')
-                                                        ->label('Image URL')
-                                                        ->required()
-                                                ])
-                                                ->defaultItems(1) // Bạn có thể đặt mặc định là 1 item
-                                                ->columnSpan(2),
+                                            TextInput::make('posters')
+                                                ->required()
+                                                ->label('Posters') // Tiêu đề cho trường
+                                               ,
+                                            Forms\Components\View::make('components.poster-preview')
+                                                ->label('Preview'),
 
                                         ])
                                         ->collapsible()  // Cho phép gập lại mỗi mục
@@ -168,21 +164,47 @@ class MovieResource extends Resource
             ]);
     }
 
-    protected function mutateFormDataBeforeSave(array $data): array
+    public static function mutateFormDataBeforeCreate(array $data): array
     {
-        // Kiểm tra và chuyển đổi 'backgrounds' thành chuỗi JSON
-        if (isset($data['backgrounds']) && is_array($data['backgrounds'])) {
-            $data['backgrounds'] = json_encode(array_column($data['backgrounds'], 'url'));
-        }
+        $film = Film::create($data);
 
-        // Kiểm tra và chuyển đổi 'posters' thành chuỗi JSON
-        if (isset($data['posters']) && is_array($data['posters'])) {
-            $data['posters'] = json_encode(array_column($data['posters'], 'url'));
-        }
+        // Sau khi tạo phim xong, lấy ID của phim vừa tạo
+        // và tạo bản ghi mới trong bảng film_images
+        FilmImages::create([
+            'film_id' => $film->id, // Gán ID của phim vào cột film_id
+            'backgrounds' => $data['backgrounds'], // Lưu backgrounds từ $data
+            'posters' => $data['posters'],         // Lưu posters từ $data
+        ]);
 
+        // Trả về $data
         return $data;
     }
+    public static function mutateFormDataBeforeSave(array $data): array
+    {
+        // Tìm phim hiện tại dựa trên ID trong $data
+        $film = Film::find($data['id']);
 
+        // Kiểm tra xem đã có bản ghi trong bảng film_images chưa
+        $filmImages = $film->filmImages()->first();
+
+        // Nếu đã có, thì cập nhật backgrounds và posters
+        if ($filmImages) {
+            $filmImages->update([
+                'backgrounds' => $data['backgrounds'], // Cập nhật backgrounds
+                'posters' => $data['posters'],         // Cập nhật posters
+            ]);
+        } else {
+            // Nếu chưa có, thì tạo bản ghi mới
+            FilmImages::create([
+                'film_id' => $film->id,   // Gán ID của phim
+                'backgrounds' => $data['backgrounds'],
+                'posters' => $data['posters'],
+            ]);
+        }
+
+        // Trả về $data
+        return $data;
+    }
 
 
     public static function table(Table $table): Table
@@ -208,27 +230,23 @@ class MovieResource extends Resource
                 ImageColumn::make('backgrounds')
                     ->label('Background Images')
                     ->getStateUsing(function ($record) {
-                        // Giải mã chuỗi JSON thành mảng
                         $backgrounds = json_decode($record->filmImages->backgrounds, true);
-
-                        // Kiểm tra mảng và trả về URL đầu tiên
                         return is_array($backgrounds) && count($backgrounds) > 0 ? $backgrounds[0] : null;
                     })
                     ->size(50)
-                    ->circular(),
-
+                    ->circular()
+                ,
 
                 ImageColumn::make('posters')
                     ->label('Poster Images')
+                    ->size(50)
                     ->getStateUsing(function ($record) {
-                        // Giải mã chuỗi JSON thành mảng
                         $posters = json_decode($record->filmImages->posters, true);
 
-                        // Kiểm tra mảng và trả về URL đầu tiên (hoặc bất kỳ logic nào bạn muốn)
                         return is_array($posters) && count($posters) > 0 ? $posters[0] : null;
                     })
-                    ->size(50)
-                    ->circular(),
+                    ->circular()
+                    ,
 
                 TextColumn::make('genres')
                     ->label('Genres')
