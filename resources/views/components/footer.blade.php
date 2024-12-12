@@ -11,9 +11,9 @@
     </div>
 
     <div class="footer-section flex w-full pb-20 justify-center  content-start gap-24 flex-wrap" style="background:#000;">
-        <div class="sub-c flex w-full h-[652px] p-[134px_95px] items-start justify-around content-start gap-52 flex-shrink-0 flex-wrap" style="border-bottom: 1px solid #C0A6FF;">
-            <div class="heading flex w-[285px] flex-col items-start gap-12 flex-shrink-0">
-                <div class="title flex w-[187px] h-[57px] justify-center items-center">
+        <div class="sub-c flex w-full h-full p-[134px_95px] items-start justify-around content-start flex-shrink-0 flex-wrap" style="border-bottom: 1px solid #C0A6FF;">
+            <div class="heading flex w-full lg:w-[40%] flex-col  flex-shrink-0 p-[26px] justify-center items-center gap-3">
+                <div class="title flex w-full h-[57px] p-[6px] justify-center items-center">
                     <p
                     style="color:#7300FF;font-family: BlackChancery;font-size: 60px;font-style: normal;font-weight: 5;line-height: 57px;text-transform: capitalize;">C<p
                     style="color: #FFF;font-family: BlackChancery;font-size: 32px;font-style: normal;font-weight: 5;line-height: 57px;text-transform: capitalize;">ine</p>
@@ -21,7 +21,7 @@
                     style="color: #FFF;font-family: BlackChancery;font-size: 40px;font-style: normal;font-weight: 5;line-height: 57px;text-transform: capitalize;">S</p> <p
                     style="color: #FFF;font-family: BlackChancery;font-size: 32px;font-style: normal;font-weight: 5;line-height: 57px;text-transform: capitalize;">phere</p></p>
                 </div>
-                <div class="icons flex w-[282px] flex-col items-start gap-9">
+                <div class="icons flex w-full p-[6px] flex-col items-start gap-9 max-w-[285px]">
                     <p class="self-stretch" style="color: #FFF;font-family: Poppins;font-size: 19px;font-style: normal;font-weight: 400;line-height: 178%; /* 33.82px */">CineSphere is your go-to platform for a world of entertainment, offering a vast library of films, TV shows, and exclusive content.  </p>
                      <div class="social flex items-center gap-4">
                         <svg width="38" height="38" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -52,9 +52,9 @@
                 </div>
             </div>
 
-            <div class="company flex w-[148px] flex-col items-start gap-12 flex-shrink-0">
+            <div class="company flex  w-full lg:w-[20%] flex-col items-start gap-12 flex-shrink-0 p-[26px] text-center">
                 <p class="self-stretch" style="color: #FFF;font-family: Poppins;font-size: 29px;font-style: normal;font-weight: 600;line-height: 120%;">Company</p>
-                <div class="links flex w-[148px] flex-col items-start gap-14">
+                <div class="links flex w-full flex-col items-start gap-14">
                     <p class="self-stretch" style="color: #FFF;font-family: Poppins;font-size: 23px;font-style: normal;font-weight: 400;line-height: 120%; /* 27.6px */text-decoration-line: underline;">About Us</p>
                     <p class="self-stretch" style="color: #FFF;font-family: Poppins;font-size: 23px;font-style: normal;font-weight: 400;line-height: 120%; /* 27.6px */text-decoration-line: underline;">Careers</p>
                     <p class="self-stretch" style="color: #FFF;font-family: Poppins;font-size: 23px;font-style: normal;font-weight: 400;line-height: 120%; /* 27.6px */text-decoration-line: underline;">Press</p>
@@ -62,9 +62,9 @@
 
                 </div>
             </div>
-            <div class="company flex w-[148px] flex-col items-start gap-12 flex-shrink-0">
+            <div class="company flex  w-full lg:w-[20%] flex-col items-start gap-12 flex-shrink-0 p-[26px] text-center">
                 <p class="self-stretch" style="color: #FFF;font-family: Poppins;font-size: 29px;font-style: normal;font-weight: 600;line-height: 120%;">Help&Support</p>
-                <div class="links flex w-[148px] flex-col items-start gap-14">
+                <div class="links flex w-full flex-col items-start gap-14">
                     <p class="self-stretch" style="color: #FFF;font-family: Poppins;font-size: 23px;font-style: normal;font-weight: 400;line-height: 120%; /* 27.6px */text-decoration-line: underline;">Help Center</p>
                     <p class="self-stretch" style="color: #FFF;font-family: Poppins;font-size: 23px;font-style: normal;font-weight: 400;line-height: 120%; /* 27.6px */text-decoration-line: underline;">FAQs</p>
                     <p class="self-stretch" style="color: #FFF;font-family: Poppins;font-size: 23px;font-style: normal;font-weight: 400;line-height: 120%; /* 27.6px */text-decoration-line: underline;">Support</p>
@@ -72,9 +72,9 @@
 
                 </div>
             </div>
-            <div class="company flex w-[148px] flex-col items-start gap-12 flex-shrink-0">
+            <div class="ccompany flex  w-full lg:w-[20%] flex-col items-start gap-12 flex-shrink-0 p-[26px] text-center">
                 <p class="self-stretch" style="color: #FFF;font-family: Poppins;font-size: 29px;font-style: normal;font-weight: 600;line-height: 120%;">Legal</p>
-                <div class="links flex w-[148px] flex-col items-start gap-14">
+                <div class="links flex w-full flex-col items-start gap-14">
                     <p class="self-stretch" style="color: #FFF;font-family: Poppins;font-size: 23px;font-style: normal;font-weight: 400;line-height: 120%; /* 27.6px */text-decoration-line: underline;">Terms of Service</p>
                     <p class="self-stretch" style="color: #FFF;font-family: Poppins;font-size: 23px;font-style: normal;font-weight: 400;line-height: 120%; /* 27.6px */text-decoration-line: underline;">Privacy Policy</p>
                     <p class="self-stretch" style="color: #FFF;font-family: Poppins;font-size: 23px;font-style: normal;font-weight: 400;line-height: 120%; /* 27.6px */text-decoration-line: underline;">Cookie Preferences</p>
