@@ -31,7 +31,7 @@
             </div>
             <div class="bg-black lg:w-[50%] w-full ">
                 <form wire:submit.prevent="sendEmail">
-                <div class="mr-10 ml-10 p-[50px] rounded-tl-[60px] rounded-br-[60px] border-2 border-[#7300FF] inline-flex flex-col justify-start items-start"> 
+                <div class="mr-10 ml-10 p-[50px] rounded-tl-[60px] rounded-br-[60px] border-2 border-[#7300FF] inline-flex flex-col justify-start items-start mt-[115px] "> 
                     @if($errors->any())
                      <x-toast-errors-message :errors="$errors" />
 
