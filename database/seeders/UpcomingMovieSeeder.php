@@ -15,6 +15,6 @@ class UpcomingMovieSeeder extends Seeder
     public function run(): void
     {
         //UpcomingMovie::factory(30)->create();
-        UpcomingMovieGenre::factory(60)->create();
+        UpcomingMovieGenre::factory(35)->create();
     }
 }

@@ -166,7 +166,6 @@
 }
 
 .card-support {
-    width: 115px;
     border-top-left-radius: 12px;
     border-top-right-radius: 12px;
 }
@@ -231,8 +230,8 @@ video:hover {
 }
 
 video {
-    max-width: 100%;
-    max-height: 100%;
+    max-width: 100% !important;
+    max-height: 100% !important;
 }
 
 /* Basic video styling */
@@ -399,3 +398,4 @@ video {
 .film-diff:hover {
     background: linear-gradient(0deg, rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35));
  }
+
