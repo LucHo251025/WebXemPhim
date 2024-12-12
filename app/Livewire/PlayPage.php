@@ -14,7 +14,9 @@ class PlayPage extends Component
     public $isCollapsed = true;
     public $text;
     public $limit;
+    public $slug;
     public function mount($slug, $text, $limit = 100){
+        $this->slug = $slug;
         $this->films = Film::take(20)->get();
         // get film by slug
         $this->film = Film::get()->where('slug', $slug)->first();

@@ -23,4 +23,9 @@ class Episode extends Model
     {
         return $this->belongsTo(Season::class);
     }
+
+    public function season_number()
+    {
+        return $this->season()->season_number;
+    }
 }

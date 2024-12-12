@@ -1,7 +1,7 @@
 @props(['film' => null])
 <div class="swiper-slide" style="width: fit-content">
     <div class="item-play flex flex-col items-start gap-4 sm:gap-6 md:gap-9 w-fit">
-        <a href="{{ '/watch/' . $film->slug }}">
+        <a href="{{ '/film/' . $film->slug }}">
             <img src="{{ $film->backgrounds[0] }}"
                  class="w-full h-[269px] rounded-[23px] bg-cover"
                  alt="{{ $film->title }}">

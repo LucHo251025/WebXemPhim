@@ -18,13 +18,8 @@
                     </p>
 
                     <div class="watch flex flex-col sm:flex-row items-center gap-4">
-                        <button class="w-full sm:w-auto md:w-auto flex items-center justify-center py-2 px-4 bg-purple-700 text-white rounded-md">
-                            <span class="text-sm font-semibold">Continue Watching</span>
-                        </button>
-
-                        <button class="w-full sm:w-auto md:w-auto flex items-center justify-center py-2 px-4 border border-white bg-purple-900/30 text-white rounded-md">
-                            <span class="text-sm font-semibold">Add to Wishlist</span>
-                        </button>
+                        <x-button type="watch" url="{{ $film->isMovie() ? '/watch/' . $this->slug : ($film->hasManySeasons() ? '/watch/'.$this->slug.'/season/1/episode/1' : '/watch/'.$this->slug.'/episode/1') }}">Watch Now</x-button>
+                        <x-button type="wishlist">Add to Wishlist</x-button>
                     </div>
                 </div>
 
@@ -73,7 +68,7 @@
             <div class="swiper actor-swiper w-full">
                 <div class="swiper-wrapper w-full">
                     <!-- Cast Item -->
-                    <x-actor-cart :actors="$actors"></x-actor-cart>
+                    <x-actor-card :actors="$actors"></x-actor-card>
                 </div>
             </div>
         </div>

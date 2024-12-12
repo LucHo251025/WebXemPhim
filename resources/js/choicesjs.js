@@ -1,5 +1,6 @@
 import Choices from "choices.js";
-
+import 'choices.js/public/assets/styles/choices.min.css';
+import "choices.js/public/assets/styles/choices.css";
 //hidden clear button
 document.addEventListener('DOMContentLoaded', function() {
     const genresSelect = document.getElementById('genres');

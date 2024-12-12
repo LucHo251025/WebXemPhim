@@ -180,7 +180,7 @@ class FetchTrendingShows implements ShouldQueue
                 $actor = Actor::updateOrCreate(
                     [
                         'name' => $actorData['name'],
-                        'images' => 'https://media.themoviedb.org/t/p/w138_and_h175_face' . $actorData['profile_path'],
+                        'images' => json_encode(['https://media.themoviedb.org/t/p/w138_and_h175_face' . $actorData['profile_path']]),
                     ]
                 );
 

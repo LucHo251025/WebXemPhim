@@ -22,4 +22,6 @@ class Actor extends Model
     {
         return $this->belongsToMany(Film::class, 'film_actors', 'actor_id', 'film_id'); // Chú ý thứ tự tham số
     }
+
+
 }
