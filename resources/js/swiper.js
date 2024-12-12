@@ -1,6 +1,6 @@
 import Swiper from "swiper/bundle";
 import "swiper/css/bundle";
-import {Livewire, Alpine} from "../../public/vendor/livewire/livewire.esm";
+
 
 
 const homeSwiper = new Swiper(".home-swiper", {
@@ -210,30 +210,12 @@ const  relativeMovieSwiper = new Swiper(".relative-movie-swiper", {
 
 
 const  seriesMovieSwiper = new Swiper(".series-movie-swiper", {
-    slidesPerView: 6,
-    spaceBetween: 40,
+    slidesPerView: "auto",
+    spaceBetween: 20,
     loop: false,
     navigation: {
         nextEl: "#series-movie-swiper-button-next",
         prevEl: "#series-movie-swiper-button-prev",
     },
-    slidesPerGroup:3,
-    breakpoints: {
-        320: {
-            slidesPerView: 3,
-            spaceBetween: 10,
-        },
-        1300: {
-            slidesPerView: 5,
-            spaceBetween: 15,
-        },
-        1600: {
-            slidesPerView: 6,
-            spaceBetween: 20,
-        },
-        1800: {
-            slidesPerView: 7,
-            spaceBetween: 20,
-        },
-    },
+
 });

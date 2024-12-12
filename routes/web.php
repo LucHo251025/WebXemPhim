@@ -13,6 +13,7 @@ use App\Livewire\ProfilePage;
 
 use App\Livewire\SubscriptionPage;
 use  App\Livewire\Explore;
+use App\Livewire\Watching;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', HomePage::class);
