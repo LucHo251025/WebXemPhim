@@ -12,6 +12,14 @@
             <a href="">Plans</a>
             <a href="">Community</a>
             <a href="/support-page">Account</a>
+            @auth
+                <a href="/profile-page/{{Auth::user()->id}}" >Profile</a>
+            @endauth
+            
+            <!-- Check if the user is a guest (not logged in) -->
+            @guest
+                <a href="/login">Login</a>
+            @endguest
         </div>
         <div class="flex items-center gap-8">
             <img src="{{ Vite::asset('resources/images/search-interaction.svg') }}"
@@ -40,8 +48,15 @@
         <a href="" class="w-full text-center py-3 px-6 mb-3 hover:bg-gray-700 rounded-md">Fanart</a>
         <a href="" class="w-full text-center py-3 px-6 mb-3 hover:bg-gray-700 rounded-md">Plans</a>
         <a href="" class="w-full text-center py-3 px-6 mb-3 hover:bg-gray-700 rounded-md">Community</a>
-        <a href="/support-page" class="w-full text-center py-3 px-6 mb-3 hover:bg-gray-700 rounded-md">Account</a>
-       
+        <a href="/support-page" class="w-full text-center py-3 px-6 mb-3 hover:bg-gray-700 rounded-md">Account</a>        
+        @auth
+            <a href="/profile-page/{{Auth::user()->id}}" class="w-full text-center py-3 px-6 mb-3 hover:bg-gray-700 rounded-md">Profile</a>
+        @endauth
+        
+        <!-- Check if the user is a guest (not logged in) -->
+        @guest
+            <a href="/login" class="w-full text-center py-3 px-6 mb-3 hover:bg-gray-700 rounded-md">Login</a>
+        @endguest
         
     </div>
     
