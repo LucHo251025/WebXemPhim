@@ -8,6 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class UserSubscriptions extends Model
 {
     use HasFactory;
+    public $timestamps = false; // Tắt tính năng timestamps của Eloquent
+
+    protected $fillable = [
+        'user_id',
+        'subscription_id',
+        'subscribed_at',
+        'expiry_date',
+    ];
 
     public function user()
     {
@@ -18,4 +26,5 @@ class UserSubscriptions extends Model
     {
         return $this->belongsTo(Subscription::class);
     }
+
 }

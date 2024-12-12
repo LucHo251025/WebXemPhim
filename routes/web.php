@@ -29,6 +29,11 @@ Route::get('/explore', function () {
     return redirect('/explore/movie');
 });
 
+Route::get('/logout', function () {
+    auth()->logout();
+    return redirect('/');
+});
+
 
 Route::get('/UpcomingMoves-page', HomeUpcomingMovies::class);
 Route::get('/support-page', SupportMoviePage::class);
@@ -41,13 +46,18 @@ Route::get('/profile-page/{id}',ProfilePage::class);
 Route::match(['get', 'post'],'/subscription-page/{name}',\App\Livewire\Service::class);
 
 
-//Route::middleware('guest')->group(function () {
+Route::middleware('guest')->group(function () {
     Route::get('/login',\App\Livewire\LoginPage::class)->name('login');
     Route::get('/register',\App\Livewire\RegisterPage::class)->name('register');
     Route::get('/forgot-password',\App\Livewire\ForgotPassword::class)->name('password.request');
     Route::get('/reset/{token}/{email}',\App\Livewire\ResetPassword::class)->name('password.reset');
-//});
+});
 
+Route::middleware(['role'=>'admin'])->group(function () {
+    Route::get('/filament', function () {
+        return \Filament\Facades\Filament::render();
+    });
+});
 
 //Route::middleware('auth')->group(function () {
 //

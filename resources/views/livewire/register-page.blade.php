@@ -70,7 +70,7 @@
                                      style="border-radius: 8px; border: 1px solid var(--Electric-Violet-400, #A473FF); background: rgba(48, 0, 119, 0.10);">
                                     <div class="flex justify-between items-center self-stretch">
                                         <input type="password" id="password" wire:model="password"
-                                               class="text-white font-poppins leading-[120%] bg-transparent border-none focus:outline-none"
+                                               class="flex-grow text-white font-poppins leading-[120%] bg-transparent border-none focus:outline-none"
                                                style="font-size: 18px; font-weight: 400;" placeholder="Password">
                                         <img src="{{ Vite::asset('resources/images/play_image/tabler_lock-filled.svg') }}" alt="">
                                     </div>
@@ -87,7 +87,7 @@
                                      style="border-radius: 8px; border: 1px solid var(--Electric-Violet-400, #A473FF); background: rgba(48, 0, 119, 0.10);">
                                     <div class="flex justify-between items-center self-stretch">
                                         <input type="password" id="password_confirmation" wire:model="password_confirmation"
-                                               class="text-white font-poppins leading-[120%] bg-transparent border-none focus:outline-none"
+                                               class="flex-grow text-white font-poppins leading-[120%] bg-transparent border-none focus:outline-none"
                                                style="font-size: 18px; font-weight: 400;" placeholder="Confirm Password">
                                         <img src="{{ Vite::asset('resources/images/play_image/tabler_lock-filled.svg') }}" alt="">
                                     </div>

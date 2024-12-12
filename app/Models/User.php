@@ -24,6 +24,7 @@ class User extends Authenticatable implements FilamentUser
         'name',
         'email',
         'password',
+        'role',
         'avatar',
         'sex',
         'date_of_birth',
@@ -55,10 +56,15 @@ class User extends Authenticatable implements FilamentUser
 
     public function subscription()
     {
-        return $this->belongsTo(UserSubscriptions::class)->subscription;
+        return $this->hasOne(UserSubscriptions::class);
     }
+
     public function canAccessPanel(Panel $panel): bool
     {
-        return $this->email === 'lucht.23itb@vku.udn.vn';
+        return $this->role === 'admin';
+    }
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
     }
 }

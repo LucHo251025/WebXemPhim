@@ -35,7 +35,7 @@
 
                         <div class="justify-between email-login flex p-3 sm:p-4 md:p-[15px_30px] items-center gap-3 w-full" style="border-radius: 8px;border: 1px solid #A473FF;background: rgba(48, 0, 119, 0.10);">
                             <input type="password" id="password" wire:model ='password'
-                                   class="text-white font-poppins leading-[120%] bg-transparent border-none focus:outline-none"
+                                   class="flex-grow text-white font-poppins leading-[120%] bg-transparent border-none focus:outline-none"
                                    style="font-size: 20px; font-weight: 400;"
                                    placeholder="Password"
                                    required>
@@ -50,7 +50,7 @@
                         <div class="password-login justify-between flex p-3 sm:p-4 md:p-[15px_30px] items-center gap-3 w-full" style="border-radius: 8px;border: 1px solid #A473FF;background: rgba(48, 0, 119, 0.10);">
                             <input type="hidden" wire:model="email" />
                             <input type="password" id="password_confirmation" wire:model="password_confirmation"
-                                   class="text-white font-poppins leading-[120%] bg-transparent border-none focus:outline-none"
+                                   class="flex-grow text-white font-poppins leading-[120%] bg-transparent border-none focus:outline-none"
                                    style="font-size: 20px; font-weight: 400;"
                                    placeholder="Confirm Password"
                                    required>

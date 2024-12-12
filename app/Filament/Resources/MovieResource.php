@@ -6,6 +6,7 @@ use App\Filament\Resources\MovieResource\Pages;
 use App\Filament\Resources\MovieResource\RelationManagers;
 use App\Models\Film;
 use App\Models\FilmImages;
+use App\Models\View;
 use Faker\Provider\ar_EG\Text;
 use Filament\Actions\CreateAction;
 use Filament\Forms;
@@ -27,6 +28,7 @@ use Filament\Tables\Table;
 use Hamcrest\Core\Set;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class MovieResource extends Resource
@@ -52,20 +54,14 @@ class MovieResource extends Resource
                                         ->maxLength(255)
                                         ->columnSpan(1)
                                         ->live(onBlur: true)
-                                    ->afterStateUpdated(fn(string $operation,$state,Forms\Set $set)=>$operation==='create'? $set('slug',Str::slug($state)):null),
+                                        ->afterStateUpdated(fn(string $operation,$state,Forms\Set $set)=>$operation==='create'? $set('slug',Str::slug($state)):null),
                                     TextInput::make('slug')
-            ->disabled()
-            ->maxLength(255)
-            ->required()
-            ->dehydrated()
-            ->unique(Film::class,'slug',ignoreRecord: true),
-
-
-                                    TextInput::make('director')
-                                        ->label('Director')
-                                        ->required()
+                                        ->disabled()
                                         ->maxLength(255)
-                                        ->columnSpan(1),
+                                        ->required()
+                                        ->dehydrated()
+                                        ->unique(Film::class,'slug',ignoreRecord: true),
+
                                     DatePicker::make('release_date')
                                         ->label('Release Year')
                                         ->required()
@@ -136,26 +132,24 @@ class MovieResource extends Resource
                                         ])
                                         ->defaultItems(1)
                                         ->columnSpan(2),
-                                    Forms\Components\Repeater::make('film_images')
+                                    Forms\Components\Section::make('film_images')
                                         ->relationship('filmImages')  // Liên kết với FilmImage
                                         ->schema([
-                                            // Tải nhiều ảnh cho backgrounds
-                                            Forms\Components\FileUpload::make('backgrounds')
-                                                ->multiple()  // Cho phép tải nhiều ảnh
-                                                ->directory('backgrounds')
-                                                ->image()
-                                                ->maxSize(1024)
-                                                ->required()
-                                                ->columnSpan(1),
 
-                                            // Tải nhiều ảnh cho posters
-                                            Forms\Components\FileUpload::make('posters')
-                                                ->multiple()  // Cho phép tải nhiều ảnh
-                                                ->directory('posters')
-                                                ->image()
-                                                ->maxSize(1024)
+                                            TextInput::make('backgrounds')
                                                 ->required()
-                                                ->columnSpan(1),
+                                                ->label('Backgrounds')
+                                                // Tiêu đề cho trường
+                                            ,
+                                            Forms\Components\View::make('components.backgrounds-preview')
+                                                ->label('Preview'),
+
+                                            TextInput::make('posters')
+                                                ->required()
+                                                ->label('Posters') // Tiêu đề cho trường
+                                               ,
+                                            Forms\Components\View::make('components.poster-preview')
+                                                ->label('Preview'),
 
                                         ])
                                         ->collapsible()  // Cho phép gập lại mỗi mục
@@ -221,7 +215,6 @@ class MovieResource extends Resource
                 TextColumn::make('release_date'),
                 TextColumn::make('duration')->sortable(),
                 TextColumn::make('rating'),
-                TextColumn::make('director')->searchable(),
                 TextColumn::make('video_path')
                     ->formatStateUsing(function ($record) {
                         $links = json_decode($record->links, true);
@@ -237,25 +230,23 @@ class MovieResource extends Resource
                 ImageColumn::make('backgrounds')
                     ->label('Background Images')
                     ->getStateUsing(function ($record) {
-                        $backgrounds = json_decode($record->backgrounds, true);
+                        $backgrounds = json_decode($record->filmImages->backgrounds, true);
                         return is_array($backgrounds) && count($backgrounds) > 0 ? $backgrounds[0] : null;
                     })
                     ->size(50)
                     ->circular()
-                    ->hidden(fn () => true),
-
-
+                ,
 
                 ImageColumn::make('posters')
                     ->label('Poster Images')
                     ->size(50)
                     ->getStateUsing(function ($record) {
-                        $posters = json_decode($record->posters, true);
+                        $posters = json_decode($record->filmImages->posters, true);
 
                         return is_array($posters) && count($posters) > 0 ? $posters[0] : null;
                     })
                     ->circular()
-                    ->hidden(fn () => true),
+                    ,
 
                 TextColumn::make('genres')
                     ->label('Genres')

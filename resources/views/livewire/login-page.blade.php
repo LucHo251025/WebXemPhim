@@ -55,9 +55,9 @@
                             <!-- Password -->
                             <div class="password-login justify-between flex p-3 sm:p-4 md:p-[15px_30px] items-center gap-3 w-full" style="border-radius: 8px;border: 1px solid #A473FF;background: rgba(48, 0, 119, 0.10);">
                                 <input type="password" id="password" wire:model="password"
-                                       class="text-white font-poppins leading-[120%] bg-transparent border-none focus:outline-none text-sm sm:text-base md:text-lg"
+                                       class="flex-grow text-white font-poppins leading-[120%] bg-transparent border-none focus:outline-none text-sm sm:text-base md:text-lg"
                                        placeholder="Password">
-                                <img src="{{ Vite::asset('resources/images/play_image/ic_baseline-email.svg') }}" alt="">
+                                <img src="{{ Vite::asset('resources/images/play_image/tabler_lock-filled.svg') }}" alt="">
                             </div>
                             @error('password')
                             <div class="p-1 mb-1 text-sm text-red-800 bg-red-50 rounded-lg" role="alert">
