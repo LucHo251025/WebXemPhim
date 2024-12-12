@@ -1,6 +1,6 @@
 <!-- resources/views/components/posters-preview.blade.php -->
 @php
-    $posters = $getState();
+    $posters = json_decode($getState()['posters'], true);
 @endphp
 
 @if(is_array($posters))

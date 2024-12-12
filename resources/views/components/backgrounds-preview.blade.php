@@ -1,12 +1,14 @@
-<!-- resources/views/components/backgrounds-preview.blade.php -->
-@php
-    $backgrounds = $getState();
-@endphp
+@if($getRecord())
 
-@if(is_array($backgrounds))
-    <div class="flex space-x-2">
-        @foreach($backgrounds as $background)
-            <img src="{{ $background }}" alt="Background Image" class="w-16 h-16 rounded-lg">
+    @php
+        // Kiểm tra xem $getRecord()->backgrounds có phải là chuỗi JSON không
+        $images = is_array($getRecord()->backgrounds) ? $getRecord()->backgrounds : json_decode($getRecord()->backgrounds, true);
+    @endphp
+
+    <div class="grid grid-cols-3 gap-4">
+        @foreach ($images as $image)
+            <img src="{{ htmlspecialchars(is_array($image) ? implode(',', $image) : $image) }}" alt="Background Image" class="rounded-lg shadow-md">
         @endforeach
     </div>
+
 @endif
