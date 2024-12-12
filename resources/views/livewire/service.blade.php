@@ -161,6 +161,14 @@
 
                     <button type="submit" name="redirect" class="bg-orange-600 text-white w-full mt-4 py-2 rounded-md">Thanh toán</button>
                 </form>
+                <script>
+                    function handlePaymentAndSubmit(form) {
+                        @this.call('handlePayment').then(() => {
+                            form.submit();
+                        });
+                    }
+                </script>
+
             </div>
         </div>
     </div>

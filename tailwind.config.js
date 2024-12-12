@@ -7,6 +7,12 @@ export default {
         'C:/laragon/www/web/vendor/awcodes/filament-quick-create/resources/**/*.blade.php',
 
     ],
+    variants: {
+        extend: {
+            maxHeight: ['peer-checked'],
+            display: ['peer-checked'],
+        },
+    },
     theme: {
         extend: {
             colors: {

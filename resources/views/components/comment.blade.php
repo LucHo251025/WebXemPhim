@@ -18,7 +18,6 @@
             </button>
         </form>
 
-
         @foreach($comments as $comment)
 
         <article class="p-6 text-base bg-white rounded-lg dark:bg-gray-900">

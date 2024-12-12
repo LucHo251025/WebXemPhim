@@ -57,19 +57,29 @@
 {{-- Container --}}
     <div class="inline-flex w-full flex-col gap-20 px-[103px] pb-[50px]">
         <!-- Synopsis Section -->
-        <div class="synopsis flex flex-col items-start gap-8">
+        <div class="synopsis flex flex-col items-start gap-4">
             <h4 class="self-stretch text-white font-poppins text-[37px] font-semibold leading-[120%] md:text-[25px]">Synopsis</h4>
+
+            <!-- Checkbox ẩn để điều khiển hiển thị -->
             <input type="checkbox" id="toggle" class="hidden peer" />
 
-            <p class="max-h-20 overflow-hidden transition-all duration-500 peer-checked:max-h-screen">
+            <!-- Nội dung phần mô tả -->
+            <p class="relative overflow-hidden transition-all duration-500 max-h-[80px] peer-checked:max-h-screen">
                 {{ $film->description }}
+                <!-- Gradient chỉ hiển thị khi checkbox chưa được chọn (trạng thái More) -->
+                <span class="absolute bottom-0 left-0 w-full h-8 bg-gradient-to-t from-black to-transparent peer-checked:hidden"></span>
             </p>
 
-            <label for="toggle" class="text-[#7300ff] font-semibold cursor-pointer block mt-2 text-right">
+            <!-- Nút điều khiển "More/Less" -->
+            <label for="toggle" class="text-[#7300ff] font-semibold cursor-pointer mt-2 self-end">
+                <!-- More sẽ chỉ hiển thị khi checkbox chưa được chọn -->
                 <span class="peer-checked:hidden">More</span>
+                <!-- Less sẽ chỉ hiển thị khi checkbox được chọn -->
                 <span class="hidden peer-checked:inline">Less</span>
             </label>
         </div>
+
+
 
 
         <!-- Cast Section -->
