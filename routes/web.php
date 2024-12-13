@@ -42,7 +42,7 @@ Route::post('/vnpay',[\App\Http\Controllers\VNPay::class,'payment'])->name('vnpa
 
 
 Route::get('/subscription-page',SubscriptionPage::class);
-Route::get('/profile-page/{id}',ProfilePage::class);
+Route::get('/profile-page',[ProfilePage::class, 'id' => auth()->id()]);
 Route::match(['get', 'post'],'/subscription-page/{name}',\App\Livewire\Service::class);
 
 

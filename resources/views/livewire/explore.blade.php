@@ -1,5 +1,5 @@
 <div>
-    <div class="pr-5 pt-24 mx-auto max-w-[1200px] w-full min-h-[700px]" >
+    <div class="pr-5 pt-32 mx-auto max-w-[1200px] w-full min-h-[700px]" >
         <div class="flex justify-between max-md:flex-col mb-6">
             <div class="text-[24px] leading-8 text-white max-md:mb-5">Explore {{ $type === 'show' ? 'Shows' : 'Movies'}}</div>
             <div class="flex gap-2.5 shrink-0 flex-row max-md:flex-col items-center" wire:ignore>

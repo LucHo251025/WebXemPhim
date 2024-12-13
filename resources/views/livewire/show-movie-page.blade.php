@@ -3,7 +3,7 @@
 
         <div class="video-container aspect-video relative w-full h-auto mb-7">
             <video class="w-full h-full object-cover m-0" controls style="transform: none; border: none; border-radius: 0">
-                <source src="https://share.nplayervn.workers.dev/0:/08.%20J2TEAM%20MOVIE/Bumblebee/Bumblebee .mp4" type="video/mp4">
+                <source src="https://share.nplayervn.workers.dev/0:/08.%20J2TEAM%20MOVIE/Bumblebee/Bumblebee.mp4" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
         </div>

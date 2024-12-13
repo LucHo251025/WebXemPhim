@@ -3,6 +3,8 @@
 namespace App\Livewire;
 
 use App\Models\Film;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
 class ShowMoviePage extends Component
@@ -15,6 +17,8 @@ class ShowMoviePage extends Component
 
     public function mount($slug, $season = null, $episode = null)
     {
+        if (!Auth::check() )
+            $this->redirect('/login');
         // Lấy film theo slug
         $this->film = Film::where('slug', $slug)->firstOrFail();
 
@@ -83,13 +87,14 @@ class ShowMoviePage extends Component
 
     public function selectRating($rating)
     {
-        $this->rating = $rating;
-        $this->averageRating = $rating;
-        $this->totalReviews = 1;
+        $this->film->update([
+            'average_rating' => $rating
+        ]);
     }
 
     public function render()
     {
+
         return view('livewire.show-movie-page');
     }
 }

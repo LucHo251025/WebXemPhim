@@ -9,11 +9,11 @@
 
 </head>
 <body class="bg-black-theme text-white w-full" >
-{{--   <x-header/>--}}
+   <x-header/>
         <main class="">
             {{ $slot }}
         </main>
-{{--        <x-footer/>--}}
+        <x-footer/>
     @livewireScripts
 
 </body>

@@ -16,9 +16,9 @@
                 <div class="flex w-full flex-col items-center gap-3">
                     <div class="flex flex-col items-center self-stretch gap-4">
                         <div class="login-signup flex items-center gap-3 justify-center">
-                            <p class="text-white font-poppins text-base sm:text-lg md:text-[24px] font-bold">Login</p>
+                            <a href="/login" class="decoration-0 text-white font-poppins font-light text-base sm:text-lg md:text-[24px] font-bold">Login</a>
                             <div class="w-[1px] h-[24px] sm:h-[32px] md:h-[42px]" style="background: #FFF;"></div>
-                            <p class="font-poppins font-light text-base sm:text-lg md:text-[22px]" style="color:#A473FF;">Signup</p>
+                            <p class="font-poppins font-bold text-base sm:text-lg md:text-[22px] " style="color:#A473FF;">Signup</p>
                         </div>
                         <p class="self-stretch text-center font-poppins text-xs sm:text-sm md:text-base text-white opacity-70">
                             Register Now to watch your favourite shows
