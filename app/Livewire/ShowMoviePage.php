@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use App\Models\Film;
+use App\Models\Rating;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
@@ -17,7 +18,7 @@ class ShowMoviePage extends Component
 
     public function mount($slug, $season = null, $episode = null)
     {
-        if (!Auth::check() )
+        if (!Auth::check())
             $this->redirect('/login');
         // Lấy film theo slug
         $this->film = Film::where('slug', $slug)->firstOrFail();
@@ -87,9 +88,19 @@ class ShowMoviePage extends Component
 
     public function selectRating($rating)
     {
-        $this->film->update([
-            'average_rating' => $rating
-        ]);
+        //add rating to film by user
+        Rating::updateOrCreate(
+            ['user_id' => Auth::id(), 'film_id' => $this->film->id],
+            ['rating' => $rating]
+        );
+        //update film average rating
+        $this->film->updateOrCreate(
+            ['id' => $this->film->id],
+            ['average_rating' => Rating::where('film_id', $this->film->id)->avg('rating')]
+        );
+        $this->film->refresh();
+
+        $this->dispatch('init-swiper');
     }
 
     public function render()

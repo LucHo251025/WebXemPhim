@@ -3,7 +3,6 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\ActorResource\Pages;
-use App\Filament\Resources\ActorResource\RelationManagers;
 use App\Models\Actor;
 use Filament\Forms;
 use Filament\Forms\Components\FileUpload;
@@ -47,7 +46,12 @@ class ActorResource extends Resource
                 TextColumn::make('name')
                     ->searchable(),
                 ImageColumn::make('images')
+                    ->getStateUsing(function ($record) {
+                        $image = json_decode($record->image, true);
+                        return is_array($image) && count($image) > 0 ? $image[0] : null;
+                    })
                     ->circular()
+                    ->url(fn ($record) => $record->image)
             ])
             ->filters([
                 //

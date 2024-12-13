@@ -8,7 +8,6 @@
             </video>
         </div>
 
-
         <div>
             <div class="relative mt-0 mb-6">
                 <div class="flex flex-wrap">
@@ -57,5 +56,7 @@
         <x-series-slider :films="$films" title="Related content"/>
 
         <x-actor-slider :actors="$film->actors" />
+
+
     </div>
 </div>

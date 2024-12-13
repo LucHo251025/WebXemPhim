@@ -46,6 +46,8 @@ class PlayPage extends Component
             ->get();
     }
 
+
+
     public function render()
     {
         return view('livewire.play-page');
