@@ -1,7 +1,7 @@
 @props(['comments'=>null])
 
 <section class="bg-white dark:bg-gray-900 py-8 lg:py-16 antialiased">
-    <div class="max-w-2xl mx-auto px-4 md:px-6">
+    <div class="max-w-[75rem] mx-auto px-4 md:px-6">
         <div class="flex justify-between items-center mb-6">
             <h2 class="text-lg lg:text-2xl font-bold text-gray-900 dark:text-white">Discussion</h2>
         </div>
@@ -23,7 +23,7 @@
                     <div class="flex items-center">
                         <p class="inline-flex items-center mr-3 text-sm text-gray-900 dark:text-white font-semibold md:text-base">
                             <img class="mr-2 w-6 h-6 rounded-full md:w-8 md:h-8"
-                                 src="{{asset('storage/' . $comment->user->avatar)}}"
+                                 src="{{ Vite::asset($comment->user->avatar) }}"
                                  alt="Michael Gough">{{$comment->user->name}}
                         </p>
                         <p class="text-sm text-gray-600 dark:text-gray-400 md:text-base">

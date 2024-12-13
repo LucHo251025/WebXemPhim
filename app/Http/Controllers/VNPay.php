@@ -11,12 +11,12 @@ class VNPay extends Controller
         $vnp_Url = "https://sandbox.vnpayment.vn/paymentv2/vpcpay.html";
         $vnp_Returnurl = "http://127.0.0.1:8000/profile-page/$request->id";
         $vnp_TmnCode = "RN9DBPK7";//Mã website tại VNPAY
-        $vnp_HashSecret = "TW447RCZQGP77KGYLXNUBGON9ETR888H"; //Chuỗi bí mật
+        $vnp_HashSecret = "SJYVI1JQTQ3BM0ZFSUYL3HT5PH18HBXI"; //Chuỗi bí mật
 
-        $vnp_TxnRef = rand(10000,9999); //Mã đơn hàng. Trong thực tế Merchant cần insert đơn hàng vào DB và gửi mã nàsang VNPAY
+        $vnp_TxnRef = \Str::random(12); //Mã đơn hàng. Trong thực tế Merchant cần insert đơn hàng vào DB và gửi mã nàsang VNPAY
     $vnp_OrderInfo = "Payment" .$request->name;
     $vnp_OrderType = 'billpayment';
-    $vnp_Amount = $request->amount * 1000 +42342376;
+    $vnp_Amount = $request->amount * 2500000;
     $vnp_Locale = 'VND';
     $vnp_BankCode = $request->option;
     $vnp_IpAddr = $_SERVER['REMOTE_ADDR'];
