@@ -7,6 +7,8 @@ use App\Models\Rating;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
+use App\Models\Comment;
+
 
 class ShowMoviePage extends Component
 {
@@ -15,6 +17,8 @@ class ShowMoviePage extends Component
     public $episode = null;
     public $episodes = null;
     public $selectedSeason;
+    public $comments;
+    public $comment_content='';
 
     public function mount($slug, $season = null, $episode = null)
     {
@@ -22,6 +26,8 @@ class ShowMoviePage extends Component
             $this->redirect('/login');
         // Lấy film theo slug
         $this->film = Film::where('slug', $slug)->firstOrFail();
+        $this->comments = Comment::where('film_id', $this->film->id)->get() ?? null;
+
 
         // Nếu là show và không có season/episode, điều hướng đúng URL
         if ($this->film->type === 'show' && !$season && !$episode) {
@@ -101,6 +107,37 @@ class ShowMoviePage extends Component
         $this->film->refresh();
 
         $this->dispatch('init-swiper');
+    }
+
+    public function play()
+    {
+        if (!auth()->check()) {
+            return redirect()->route('login');
+        }
+        $user = auth()->user();
+        $user->load('subscription.subscription');
+
+        // Kiểm tra nếu subscription tồn tại và kiểm tra tên gói
+        if ($user->subscription && $user->subscription->subscription && $user->subscription->subscription->name == 'free') {
+            return redirect('/subscription-page');
+        }
+        return redirect('/show-movie-page');
+    }
+
+    public function postComment()
+    {
+        if (!auth()->check()) {
+            return redirect()->route('login');
+        }
+        $user = auth()->user();
+        Comment::create([
+            'user_id' => $user->id,
+            'film_id' => $this->film->id,
+            'comment' => $this->comment_content
+        ]);
+        $this->comment_content = '';
+        $this->comments = Comment::where('film_id', $this->film->id)->get();
+
     }
 
     public function render()

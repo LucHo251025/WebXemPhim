@@ -1,7 +1,7 @@
 @props(['film' => null, 'episode' => null])
 @php($rating = \App\Models\Rating::where('film_id', $film->id)->where('user_id', Auth::id())->first() ? \App\Models\Rating::where('film_id', $film->id)->where('user_id', Auth::id())->first()->rating : 0)
 <div
-    class="p-0 lg:max-w-[58.33333333%] lg:flex-[0_0_58.33333333%] md:max-w-full md:flex-[0_0_100%] sm:max-w-full sm:flex-[0_0_100%]">
+    class="p-0 lg:max-w-[58.33333333%] lg:flex-[0_0_58.33333333%] md:max-w-full md:flex-[0_0_100%] sm:max-w-full sm:flex-[0_0_100%]" wire:ignore>
     {{-- title --}}
     <div>
         <h1 class="text-2xl text-white font-semibold">

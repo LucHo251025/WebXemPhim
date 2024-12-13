@@ -57,6 +57,6 @@
 
         <x-actor-slider :actors="$film->actors" />
 
-
+        <x-comment :comments="$comments"/>
     </div>
 </div>
