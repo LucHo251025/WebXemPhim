@@ -27,7 +27,7 @@ public function save()
         'name' => $this->name,
         'email' => $this->email,
         'password' => Hash::make($this->password),
-        'avatar' => 'resources/images/avatar.png',
+        'avatar' => 'https://www.pphfoundation.ca/wp-content/uploads/2018/05/default-avatar.png',
         'role' => 'user',
         'sex' => 'male',
         'remember_token' => Str::random(10),
