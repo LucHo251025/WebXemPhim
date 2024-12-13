@@ -41,24 +41,26 @@ Ensure you have the following installed on your system:
    - Create a new database for the project.  
    - Configure the `.env` file with your database credentials.  
 
-3. **Run Migrations and Seed Data**  
+3. **Import database OR Run Migrations and Seed Data**  
+   - Import DB from webxx.sql OR Run Migrations:
    ```bash  
    php artisan migrate --seed  
    ```  
    *Note*: Seeded data may not be complete.  
 
-4. **Install Dependencies**  
+    
+5. **Install Dependencies**  
    ```bash  
    composer install  
    npm install  
    ```  
 
-5. **Compile Assets**  
+6. **Compile Assets**  
    ```bash  
    npm run dev  
    ```  
 
-6. **Run the Application**  
+7. **Run the Application**  
    ```bash  
    php artisan serve  
    ```  
