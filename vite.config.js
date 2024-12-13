@@ -8,6 +8,9 @@ export default defineConfig({
             refresh: true,
         }),
     ],
+    optimizeDeps: {
+        include: ['choices.js']
+    },
     // Cấu hình để xử lý file SVG
     assetsInclude: ['**/*.svg'],
 });

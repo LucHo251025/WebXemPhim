@@ -8,65 +8,37 @@ const homeSwiper = new Swiper(".home-swiper", {
     },
 });
 const latestSwiper = new Swiper(".latest-swiper", {
-    slidesPerView: 6,
-    spaceBetween: 20,
+    slidesPerView: 'auto',
+    spaceBetween: 40,
     loop: true,
     navigation: {
         nextEl: ".swiper-button-next-latest",
         prevEl: ".swiper-button-prev-latest",
     },
     breakpoints: {
-        320: {
-            slidesPerView: 3,
-            spaceBetween: 10,
-        },
-        1300: {
-            slidesPerView: 4,
-            spaceBetween: 15,
-        },
-        1600: {
-            slidesPerView: 5,
+        0: {
             spaceBetween: 20,
         },
-        1800: {
-            slidesPerView: 6,
-            spaceBetween: 20,
-        },
-        2000: {
-            slidesPerView: 7,
-            spaceBetween: 20,
-        },
+        920: {
+            spaceBetween: 40,
+        }
     },
 });
 const trendingSwiper = new Swiper(".trending-swiper", {
-    slidesPerView: 6,
-    spaceBetween: 20,
+    slidesPerView: 'auto',
+    spaceBetween: 40,
     loop: true,
     navigation: {
         nextEl: ".swiper-button-next-trending",
         prevEl: ".swiper-button-prev-trending",
     },
     breakpoints: {
-        320: {
-            slidesPerView: 3,
-            spaceBetween: 10,
-        },
-        1300: {
-            slidesPerView: 4,
-            spaceBetween: 15,
-        },
-        1600: {
-            slidesPerView: 5,
+        0: {
             spaceBetween: 20,
         },
-        1800: {
-            slidesPerView: 6,
-            spaceBetween: 20,
-        },
-        2000: {
-            slidesPerView: 7,
-            spaceBetween: 20,
-        },
+        920: {
+            spaceBetween: 40,
+        }
     },
 });
 const mostWatchedSwiper = new Swiper(".most-watched-swiper", {
@@ -77,28 +49,6 @@ const mostWatchedSwiper = new Swiper(".most-watched-swiper", {
     navigation: {
         nextEl: ".swiper-button-next-most-watched",
         prevEl: ".swiper-button-prev-most-watched",
-    },
-    breakpoints: {
-        320: {
-            slidesPerView: 1,
-            spaceBetween: 10,
-        },
-        1300: {
-            slidesPerView: 2,
-            spaceBetween: 15,
-        },
-        1600: {
-            slidesPerView: 2,
-            spaceBetween: 20,
-        },
-        1800: {
-            slidesPerView: 2.1,
-            spaceBetween: 20,
-        },
-        2000: {
-            slidesPerView: 2.2,
-            spaceBetween: 20,
-        },
     },
     on: {
         slideChange: function () {

@@ -13,8 +13,8 @@ class HomePage extends Component
     public function mount()
     {
         $this->films = Film::take(20)->get();;
-        $this->movies = $this->films->where('type', 'movie');
-        $this->shows = $this->films->where('type', 'show');
+        $this->movies = Film::where('type', 'movie')->orderBy('average_rating', 'desc')->take(12)->get();
+        $this->shows = Film::where('type', 'show')->orderBy('average_rating', 'desc')->take(12)->get();
     }
     public function render()
     {

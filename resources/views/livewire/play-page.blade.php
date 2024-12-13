@@ -2,7 +2,9 @@
     <div class="relative">
         <div class="h-full bg-cover bg-no-repeat bg-center sm:bg-lightgray sm:bg-50% md:bg-lightgray md:bg-50% custom-gradient"
              style="background: url({{ $film->backgrounds[0] }}) lightgray 50% / cover no-repeat;">
-            <div class="flex flex-col sm:flex-row p-8 sm:p-[606px_139px_56px_103px] md:p-[606px_139px_56px_103px] items-end justify-between bg-gradient-to-r from-black via-black/70 to-transparent sm:bg-none md:bg-none">
+            <div class="flex flex-col sm:flex-row
+             p-8  items-end justify-between bg-gradient-to-r from-black
+              via-black/70 to-transparent pt-[36%]">
                 <div name='content' class="flex flex-col gap-4 w-full sm:w-[500px] md:w-[757px]">
                     <div class="info1 flex flex-col items-start gap-[-24px]">
                         <p class="text-white text-base sm:text-lg md:text-lg font-light leading-[2]">
@@ -17,13 +19,13 @@
                         {{ $film->genres->pluck('name')->join(' • ') }}
                     </p>
 
-                    <div class="watch flex flex-col sm:flex-row items-center gap-4">
+                    <div class="watch flex flex-row sm:flex-row items-center gap-4 max-sm:items-start">
                         <x-button type="watch" url="{{ $film->isMovie() ? '/watch/' . $film->slug: ($film->hasManySeasons() ? '/watch/'.$film->slug.'/season/1/episode/1' : '/watch/'.$film->slug.'/episode/1') }}">Watch Now</x-button>
                         <x-button type="wishlist">Add to Wishlist</x-button>
                     </div>
                 </div>
 
-                <div class="link flex flex-col sm:flex-row md:flex-row items-center gap-4 mt-4 md:mt-0">
+                <div class="link flex flex-col sm:flex-row md:flex-row items-center gap-4 mt-4 md:mt-0 max-[860px]:hidden">
                     <x-button class="w-full sm:w-auto md:w-auto flex items-center justify-center py-2 px-4 text-white rounded-md">
                         <svg width="21" height="20" class="mr-2" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <g id="akar-icons:download">
@@ -49,7 +51,7 @@
 
 
 {{-- Container --}}
-    <div class="inline-flex w-full flex-col gap-20 px-[103px] pb-[50px]">
+    <div class="inline-flex w-full flex-col gap-20 pl-10 pr-[20px] pb-[50px]">
         <!-- Synopsis Section -->
         <div class="synopsis flex flex-col items-start gap-8 text-container">
             <h4 class="self-stretch text-white font-poppins text-[37px] font-semibold leading-[120%] md:text-[25px] mt-6">Synopsis</h4>
