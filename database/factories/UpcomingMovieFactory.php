@@ -17,11 +17,11 @@ class UpcomingMovieFactory extends Factory
      */
     public function definition(): array
     {
-        return [
+        return [    
             'title_upcoming' => $this->faker->company,
             'release_month_upcoming' => $this->faker->numberBetween(1, 12),
             'release_day_upcoming' => $this->faker->numberBetween(1, 30),
-            'release_year_upcoming' => $this->faker->numberBetween(2026, 2026),
+            'release_year_upcoming' => $this->faker->numberBetween(2025, 2025),
             'links' => 'resources/images/upcoming_image/movie'.$this->faker->numberBetween(1, 11).'.png',
             
         ];
