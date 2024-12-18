@@ -41,8 +41,7 @@ Route::get('/show-movie-page', ShowMoviePage::class);
 Route::post('/vnpay',[\App\Http\Controllers\VNPay::class,'payment'])->name('vnpay');
 
 
-Route::get('/subscription-page',SubscriptionPage::class);
-Route::get('/profile-page',[ProfilePage::class, 'id' => auth()->id()]);
+Route::get('/profile-page/{id}', ProfilePage::class);
 Route::match(['get', 'post'],'/subscription-page/{name}',\App\Livewire\Service::class);
 
 
@@ -59,6 +58,10 @@ Route::middleware(['role'=>'admin'])->group(function () {
     });
 });
 
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/subscription', SubscriptionPage::class)->name('subscription');
+});
 //Route::middleware('auth')->group(function () {
 //
 //});

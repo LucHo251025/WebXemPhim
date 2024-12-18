@@ -59,10 +59,18 @@ const mostWatchedSwiper = new Swiper(".most-watched-swiper", {
 const moviesSwiper = new Swiper(".movies-swiper", {
     slidesPerView: "auto",
     spaceBetween: 20,
+    navigation: {
+        nextEl: ".swiper-button-next-movies",
+        prevEl: ".swiper-button-prev-movies",
+    },
 });
 const showsSwiper = new Swiper(".shows-swiper", {
     slidesPerView: "auto",
     spaceBetween: 20,
+    navigation: {
+        nextEl: ".swiper-button-next-shows",
+        prevEl: ".swiper-button-prev-shows",
+    },
 });
 const genresSwiper = new Swiper(".genres-swiper", {
     slidesPerView: 'auto',

@@ -8,9 +8,8 @@
         <div class="font-bold text-xl flex items-center gap-16">
             <a href="/UpcomingMoves-page">Upcoming</a>
             <a href="/explore/movie">Explore Movie</a>
-            <a href="/explore/film">Explore Film</a>
-            <a href="/subscription-page">Subscription</a>
-            <a href="/profile-page">Account</a>
+            <a href="/explore/show">Explore Show</a>
+            <a href="/subscription">Subscription</a>
             @auth
                 <a href="/profile-page/{{Auth::user()->id}}" >Profile</a>
             @endauth

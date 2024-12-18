@@ -3,10 +3,10 @@
     $film = $episode->season->film;
     $selectedSeason = $episode->season->season_number;
 @endphp
-<div class="swiper-slide max-md:!w-[28%] max-sm:!w-[43%]" style="width: calc(19% - 20px)">
+<div class="swiper-slide max-md:!w-[28%] max-sm:!w-[43%]" style="width: calc(19% - 20px);">
     <a href="{{ '/watch/' . $film->slug . ($film->hasManySeasons() ? '/season/' . $selectedSeason : '') . '/episode/' . $episode->episode_number }}">
         <div style="width: 100%;position: relative;">
-            <img src="{{ $episode->image }}" style="width: 100%;border-radius: 8px;"
+            <img src="{{ $episode->image }}" class="aspect-video" style="width: 100%;border-radius: 8px;object-fit: cover"
                  alt="{{ $episode->title . 'image' }}">
             <div class="film-diff">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" class=" film-icon" width="50" height="50">

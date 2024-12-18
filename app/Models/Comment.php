@@ -9,9 +9,9 @@ class Comment extends Model
 {
     /** @use HasFactory<\Database\Factories\CommentFactory> */
     use HasFactory;
-
+    protected $table = 'comments';
     protected $fillable = [
-        'user_id', 'film_id', 'comment'
+        'user_id', 'film_id', 'comment',
     ];
 
     // Quan hệ với người dùng (một bình luận thuộc về một người dùng)

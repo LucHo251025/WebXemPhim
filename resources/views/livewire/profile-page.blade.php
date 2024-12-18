@@ -86,6 +86,9 @@
 
                         <button class="text-red-500 font-bold">Delete</button>
                     </div>
+                    <div class="flex justify-end p-3" style="border-bottom: 1px solid rgba(255, 255, 255, 0.15);">
+                        <a href="/logout" class="text-red-500 font-bold">Logout</a>
+                    </div>
                 </div>
             </div>
         </div>
