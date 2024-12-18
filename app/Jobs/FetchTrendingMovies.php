@@ -110,7 +110,7 @@ class FetchTrendingMovies implements ShouldQueue
                     ['id' => $actorData['id']], // Unique ID from TMDb
                     [
                         'name' => $actorData['name'],
-                        'images' => 'https://media.themoviedb.org/t/p/w138_and_h175_face' . $actorData['profile_path'],
+                        'images' => json_encode(['https://media.themoviedb.org/t/p/w138_and_h175_face' . $actorData['profile_path']]),
                     ]
                 );
 

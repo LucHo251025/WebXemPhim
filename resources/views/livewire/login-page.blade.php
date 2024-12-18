@@ -19,7 +19,7 @@
                         <div class="login-signup flex items-center gap-3 justify-center">
                             <p class="text-white font-poppins text-base sm:text-lg md:text-[24px] font-bold">Login</p>
                             <div class="w-[1px] h-[24px] sm:h-[32px] md:h-[42px]" style="background: #FFF;"></div>
-                            <p class="font-poppins font-light text-base sm:text-lg md:text-[22px]" style="color:#A473FF;">Signup</p>
+                            <a href="/register" class="font-poppins font-light text-base sm:text-lg md:text-[22px] decoration-0" style="color:#A473FF;">Signup</a>
                         </div>
                         <p class="self-stretch text-center font-poppins text-xs sm:text-sm md:text-base text-white opacity-70">
                             Register Now to watch your favourite shows
@@ -55,9 +55,9 @@
                             <!-- Password -->
                             <div class="password-login justify-between flex p-3 sm:p-4 md:p-[15px_30px] items-center gap-3 w-full" style="border-radius: 8px;border: 1px solid #A473FF;background: rgba(48, 0, 119, 0.10);">
                                 <input type="password" id="password" wire:model="password"
-                                       class="text-white font-poppins leading-[120%] bg-transparent border-none focus:outline-none text-sm sm:text-base md:text-lg"
+                                       class="flex-grow text-white font-poppins leading-[120%] bg-transparent border-none focus:outline-none text-sm sm:text-base md:text-lg"
                                        placeholder="Password">
-                                <img src="{{ Vite::asset('resources/images/play_image/ic_baseline-email.svg') }}" alt="">
+                                <img src="{{ Vite::asset('resources/images/play_image/tabler_lock-filled.svg') }}" alt="">
                             </div>
                             @error('password')
                             <div class="p-1 mb-1 text-sm text-red-800 bg-red-50 rounded-lg" role="alert">

@@ -22,7 +22,7 @@
         </p>
     </div>
     <div class="flex gap-8">
-        <x-button type="watch" >Play Now</x-button>
+        <x-button type="watch" url="{{ '/watch/' . $film->slug }}" >Play Now</x-button>
         <x-button type="trailer">Watch Trailer</x-button>
         <x-button type="wishlist">Add to Wishlist</x-button>
     </div>

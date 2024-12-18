@@ -16,9 +16,9 @@
                 <div class="flex w-full flex-col items-center gap-3">
                     <div class="flex flex-col items-center self-stretch gap-4">
                         <div class="login-signup flex items-center gap-3 justify-center">
-                            <p class="text-white font-poppins text-base sm:text-lg md:text-[24px] font-bold">Login</p>
+                            <a href="/login" class="decoration-0 text-white font-poppins font-light text-base sm:text-lg md:text-[24px] font-bold">Login</a>
                             <div class="w-[1px] h-[24px] sm:h-[32px] md:h-[42px]" style="background: #FFF;"></div>
-                            <p class="font-poppins font-light text-base sm:text-lg md:text-[22px]" style="color:#A473FF;">Signup</p>
+                            <p class="font-poppins font-bold text-base sm:text-lg md:text-[22px] " style="color:#A473FF;">Signup</p>
                         </div>
                         <p class="self-stretch text-center font-poppins text-xs sm:text-sm md:text-base text-white opacity-70">
                             Register Now to watch your favourite shows
@@ -70,7 +70,7 @@
                                      style="border-radius: 8px; border: 1px solid var(--Electric-Violet-400, #A473FF); background: rgba(48, 0, 119, 0.10);">
                                     <div class="flex justify-between items-center self-stretch">
                                         <input type="password" id="password" wire:model="password"
-                                               class="text-white font-poppins leading-[120%] bg-transparent border-none focus:outline-none"
+                                               class="flex-grow text-white font-poppins leading-[120%] bg-transparent border-none focus:outline-none"
                                                style="font-size: 18px; font-weight: 400;" placeholder="Password">
                                         <img src="{{ Vite::asset('resources/images/play_image/tabler_lock-filled.svg') }}" alt="">
                                     </div>
@@ -87,7 +87,7 @@
                                      style="border-radius: 8px; border: 1px solid var(--Electric-Violet-400, #A473FF); background: rgba(48, 0, 119, 0.10);">
                                     <div class="flex justify-between items-center self-stretch">
                                         <input type="password" id="password_confirmation" wire:model="password_confirmation"
-                                               class="text-white font-poppins leading-[120%] bg-transparent border-none focus:outline-none"
+                                               class="flex-grow text-white font-poppins leading-[120%] bg-transparent border-none focus:outline-none"
                                                style="font-size: 18px; font-weight: 400;" placeholder="Confirm Password">
                                         <img src="{{ Vite::asset('resources/images/play_image/tabler_lock-filled.svg') }}" alt="">
                                     </div>

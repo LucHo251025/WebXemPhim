@@ -3,7 +3,6 @@
 namespace App\Livewire;
 
 use App\Models\Actor;
-use App\Models\Comment;
 use App\Models\Film;
 use Livewire\Component;
 
@@ -12,61 +11,43 @@ class PlayPage extends Component
     public $films;
     public $film;
     public $actors;
-    public $isCollapsed = true;
-    public $text;
-    public $limit;
-    public $comments;
-    public $comment_content='';
-    public function mount($slug, $text, $limit = 100){
-        $this->comments = Comment::query()->where('film_id', 1)->get(); // Lấy tất cả bình luận cho film_id = 1
-
-        $this->films = Film::take(20)->get();
-        // get film by slug
-        $this->film = Film::where('slug', $slug)->first();
-        if (!$this->film) {
-            abort(404);
-        }
+    public $episodes = null;
+    public $selectedSeason = 1;
+    public function mount($slug){
+        $this->film = Film::where('slug', $slug)->firstOrFail();
+        $this->films = $this->getSuggestedFilms();
         $this->actors =$this->film->actors;
-        $this->text = $text;
-        $this->limit = $limit;
+        if ($this->film->type === 'show')
+            $this->episodes = $this->getEpisodesForSeason($this->selectedSeason);
     }
 
-    public  function toggle()
+    public function updatedSelectedSeason(): void
     {
-        $this->isCollapsed = !$this->isCollapsed;
+        $this->episodes = $this->getEpisodesForSeason($this->selectedSeason);
+        $this->dispatch('init-swiper'); // Gửi sự kiện tới browser
     }
+
+    private function getEpisodesForSeason($season)
+    {
+        return $this->film->seasons()
+            ->where('season_number', $season)
+            ->firstOrFail()
+            ->episodes()
+            ->get();
+    }
+
+    private function getSuggestedFilms()
+    {
+        return Film::whereHas('genres', function ($query) {
+            $query->whereIn('genre_id', $this->film->genres->pluck('id'));
+        })->where('id', '!=', $this->film->id)
+            ->orderBy('average_rating', 'desc')
+            ->take(12)
+            ->get();
+    }
+
     public function render()
     {
         return view('livewire.play-page');
-    }
-    public function play()
-    {
-        if (!auth()->check()) {
-            return redirect()->route('login');
-        }
-        $user = auth()->user();
-        $user->load('subscription.subscription');
-
-        // Kiểm tra nếu subscription tồn tại và kiểm tra tên gói
-        if ($user->subscription && $user->subscription->subscription && $user->subscription->subscription->name == 'free') {
-            return redirect('/subscription-page');
-        }
-        return redirect('/show-movie-page');
-    }
-
-    public function postComment()
-    {
-        if (!auth()->check()) {
-            return redirect()->route('login');
-        }
-        $user = auth()->user();
-        Comment::create([
-            'user_id' => $user->id,
-            'film_id' => $this->film->id,
-            'comment' => $this->comment_content
-        ]);
-        $this->comment_content = '';
-        $this->comments = Comment::where('film_id', $this->film->id)->get();
-
     }
 }

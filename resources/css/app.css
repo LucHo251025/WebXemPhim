@@ -1,16 +1,17 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
+/*add css from outside*/
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-.homeSlider{
+.homeSlider {
     background: var(--Grad-black, linear-gradient(89deg, #000 9.23%, rgba(0, 0, 0, 0.47) 49.67%, rgba(0, 0, 0, 0.00) 61.08%));
 }
+
 .choices {
     width: 100%;
     min-width: 200px;
@@ -36,38 +37,54 @@
 }
 
 .choices__item--selectable:hover {
-    /*background-color: #5a006e !important;*/
+    background-color: #5a006e !important;
+}
+
+.choices__item--choice {
+    background-color: #2d0036; /* Thay đổi màu nền */
+}
+
+.choices__list--dropdown .choices__item--selectable.is-highlighted, .choices__list[aria-expanded] .choices__item--selectable.is-highlighted {
+    background-color: #5a006e !important;
+}
+
+.choices__list--dropdown, .choices__list[aria-expanded] {
+    background-color: #5a006e !important;
 }
 
 .choices__button {
     color: white !important;
     border: none !important;
 }
+
 .choices__input {
     padding: 4px !important;
     margin: 0 !important;
     background: transparent !important;
 }
-.choices__list--multiple .choices__item{
+
+.choices__list--multiple .choices__item {
     margin: 0 !important;
 }
+
 .choices__inner input::placeholder, .choices__placeholder {
     color: white !important;
     opacity: 1 !important;
 }
-.choices__input .choices__input--cloned{
+
+.choices__input .choices__input--cloned {
     width: 100ch !important;
 }
 
 /* explore-movie */
-.movieCard{
+.movieCard {
     width: calc(50% - 5px);
     margin-bottom: 25px;
     cursor: pointer;
     flex-shrink: 0;
 }
 
-.movieCard .title{
+.movieCard .title {
     font-size: 16px;
     margin-bottom: 10px;
     line-height: 24px;
@@ -117,7 +134,7 @@
     transition: stroke-dashoffset 0.3s ease;
 }
 
-.movieCard .genres .genre{
+.movieCard .genres .genre {
     background-color: #3C0753;
     width: fit-content;
     padding: 3px 5px;
@@ -127,6 +144,7 @@
     white-space: nowrap;
     box-shadow: 0 0 10px 1px #fff9;
 }
+
 @media only screen and (min-width: 768px) {
     .movieCard .title {
         font-size: 20px;
@@ -147,13 +165,14 @@
         width: calc(20% - 16px);
     }
 }
+
 /* Hover */
 .posterBlock:hover {
     transform: translateY(-5px);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
 }
 
-.posterBlock:hover  {
+.posterBlock:hover {
     transform: scale(1.05); /* Phóng to nội dung bên trong card khi hover */
 }
 
@@ -166,10 +185,10 @@
 }
 
 .card-support {
-    width: 115px;
     border-top-left-radius: 12px;
     border-top-right-radius: 12px;
 }
+
 /* General styling for checkbox */
 .custom-checkbox {
     -webkit-appearance: none;
@@ -231,8 +250,8 @@ video:hover {
 }
 
 video {
-    max-width: 100%;
-    max-height: 100%;
+    max-width: 100% !important;
+    max-height: 100% !important;
 }
 
 /* Basic video styling */
@@ -339,7 +358,7 @@ video {
     height: 150px !important;
     position: absolute !important;
     left: 0px !important;
-    border-radius:0px 0px 0px 0px !important;
+    border-radius: 0px 0px 0px 0px !important;
     border-width: 0px !important;
     background: linear-gradient(90deg, #000000 62%, rgba(0, 0, 0, 0.5) 100%) !important;
     opacity: 0; /* Initially hidden */
@@ -355,8 +374,8 @@ video {
 }
 
 
-.fade-box-right{
-    top: 150px  !important;
+.fade-box-right {
+    top: 150px !important;
     width: 70px !important;
     height: 150px !important;
     position: absolute !important;
@@ -364,11 +383,11 @@ video {
     border-radius: 0px 0px 0px 0px !important;
     border-width: 0px !important;
     background: linear-gradient(270deg, #000000 62%, rgba(0, 0, 0, 0.5) 100%) !important;
-    opacity: 0 ; /* Initially hidden */
-    transition: opacity 0.3s ease ; /* Smooth transition */
+    opacity: 0; /* Initially hidden */
+    transition: opacity 0.3s ease; /* Smooth transition */
 }
 
-.film-diff{
+.film-diff {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -381,7 +400,8 @@ video {
     align-items: center;
     justify-content: center;
 }
-.film-icon{
+
+.film-icon {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -394,8 +414,9 @@ video {
 
 .film-diff:hover .film-icon {
     opacity: 1;
-  }
+}
 
 .film-diff:hover {
     background: linear-gradient(0deg, rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35));
- }
+}
+

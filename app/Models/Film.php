@@ -70,4 +70,24 @@ class Film extends Model
         return $this->hasMany(Comment::class);
     }
 
+    public function hasManySeasons(): bool
+    {
+        return $this->hasMany(Season::class)->count() > 1;
+    }
+
+    public function isMovie(): bool
+    {
+        return $this->type === 'movie';
+    }
+
+    public function isShow(): bool
+    {
+        return $this->type === 'show';
+    }
+
+    public function total_ratings()
+    {
+        return $this->hasMany(Rating::class)->count();
+    }
+
 }

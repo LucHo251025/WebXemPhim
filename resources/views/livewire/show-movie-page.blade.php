@@ -1,152 +1,61 @@
 <div>
-    {{-- Because she competes with no one, no one can compete with her. --}}
+    <div class="mx-auto lg:max-w-[960px] min-[1280px]:max-w-[1180px] min-[1024px]:max-w-[960px] min-[1600px]:max-w-[75%] mt-10 px-[15px]">
 
-    <div class="bg-black">
-
-        <div class="video-container">
-            <video controls>
-                <source src="path-to-your-video.mp4" type="video/mp4">
+        <div class="video-container aspect-video relative w-full h-auto mb-7">
+            <video class="w-full h-full object-cover m-0" controls style="transform: none; border: none; border-radius: 0">
+                <source src="https://share.nplayervn.workers.dev/0:/08.%20J2TEAM%20MOVIE/Bumblebee/Bumblebee.mp4" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
         </div>
 
-        <div class="flex w-full">
 
-            <div class="w-7/10 ml-[170px] mt-[50px]">
-                <div class="pb-2 text-3xl font-semibold font-poppins">
-                    Linh Lung Công Chúa
-                </div>
-                <div class="pb-2">The Wolf Princess</div>
-                <div class="rating">
-                    <span class="star active">★</span>
-                    <span class="text">Chưa có đánh giá</span>
-                    <span class="stars">
-                        <span>★</span>
-                        <span>★</span>
-                        <span>★</span>
-                        <span>★</span>
-                    </span>
-                </div>
-                <div class="info-line pt-5">
-                    <span class="status new">Mới</span>
-                    <span class="separator">•</span>
-                    <span>2021</span>
-                    <span class="separator">•</span>
-                    <span>T13</span>
-                    <span class="separator">•</span>
-                    <span>24/24 tập</span>
-                    <span class="separator">•</span>
-                    <span>Trung Quốc</span>
-                </div>
-                <div class="pt-2">
-                    Bạo lực
-                </div>
-                <div class="pt-2">
-                    Linh Lung Công Chúa lấy bối cảnh tại Nam Sở, ở dãy núi giao giữa hai nước Tây - Quyết có bộ lạc Lang
-                    tộc sinh sống từ xa xưa. Phim kể về câu chuyện tình yêu lãng mạn, không đánh không quen biết giữa
-                    công chúa Linh Lung, người mang trong mình hai linh hồn người và sói, với con trai Lang vương là
-                    Viêm Thanh.
-                </div>
-
-            </div>
-            <div class="w-3/10 mr-[170px] mt-[50px]" class="info-box">
-                <div class="actions">
-                    <span class="action text-white font-sans">
-                        <img src="{{ Vite::asset('resources/images/movie-image/heart.png') }}" alt="" class="w-1/5 mr-2">Theo dõi
-                    </span>
-                    <span class="action text-white font-sans">
-                        <img src="{{ Vite::asset('resources/images/movie-image/share.png') }}" alt="" class="w-1/5 mr-3"> Chia sẻ
-                    </span>
-                </div>
-                <div class="details">
-                    <p class="text-gray-400"><span class="label text-gray-400 font-sans">Diễn viên:</span> Cốc Gia Thành, Khang Ninh, Cao Cơ Tài</p>
-                    <p class="text-gray-400"><span class="label text-gray-400 font-sans">Đạo diễn:</span> Cao Lâm Báo</p>
-                    <p class="text-gray-400"><span class="label text-gray-400 font-sans">Thể loại:</span> Cổ trang, Tình cảm</p>
-                </div>
-
-            </div>
-        </div>
-
-        <x-series-slider :movies="$movies" />
-
-        <div class="flex flex-col items-center gap-16 shrink-0 relative mx-[170px] mt-[50px]">
-            <div class="flex flex-col justify-center mt-14 gap-9 self-stretch hover:opacity-100">
-                <h2 class="font-bold text-3xl">Nội Dung Liên Quan</h2>
-                <div class="swiper relative-movie-swiper w-full relative">
-                    <div class="swiper-wrapper">
-                        @foreach($movies as $movie)
-                        <x-film-diff :movie="$movie" />
-                        @endforeach
-                    </div>
-                </div>
-                <div href="javascript:void(0);" id="relative-movie-swiper-button-prev"
-                    class="swiper-button-prev rounded-full fade-box-left hover:opacity-100">
-                </div>
-                <div href="javascript:void(0);" id="relative-movie-swiper-button-next"
-                    class="swiper-button-next rounded-full fade-box-right hover:opacity-100"></div>
-            </div>
-            <div class="flex justify-end items-end w-fit px-44 items-center absolute -right-4 -bottom-16">
-            </div>
-        </div>
-
-        <div id="rounded-slider" class="mb-3 gap-9 mx-[170px]">
-            <h2 class="mb-3 text-2xl font-bold pb-5 pt-7">Diễn viên</h2>
-
-            <div class="flex flex-wrap">
-                @foreach($movies as $movie)
-                <div class="mr-5 mb-11">
-                    <div>
-                        <a>
-                            <img src="{{ Vite::asset($movie->links)}}" alt="" class="w-52 h-52 rounded-full mb-5">
-                        </a>
-                    </div>
-                    <h3>
-                        <a href="#" class="pl-12">
-                            Yoo Seung Ho
-                        </a>
-                    </h3>
-                </div>
-                @endforeach
-
-            </div>
-            <div class="swiper-button-next standing-button-next hidden swiper-button-disabled" role="button" aria-disabled="true"></div>
-            <div class="swiper-button-prev standing-button-prev hidden swiper-button-disabled" role="button" aria-disabled="true"></div><span
-                    class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
-        </div>
-
-        <div class="mx-[170px] w-full h-[400px]">
-            <div class="flex w-full" style="    width: 100%;">
-                <div class="w-3/10 text-3xl font-bold" style="    width: 40%;">
-                    Bình luận (0)
-                </div>
-                <div class="flex justify-center w-7/10">
-                    <div class="relative w-fit">
-                        <!-- Dropdown Trigger -->
-                        <div id="dropdownButtonOptionforComment" class="text-white px-4 py-2 rounded focus:outline-none text-lg font-semibold flex w-full">
-                            <div>
-                                Mới Nhất
-                            </div>
-
-                            <svg class="-mr-1 size-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                                <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
-                            </svg>
+        <div>
+            <div class="relative mt-0 mb-6">
+                <div class="flex flex-wrap">
+                    <x-film-detail :film="$film" :episode="$episode" />
+                    <div class="relative flex-1 px-4"></div>
+                    <div class="text-white p-0 sm:max-w-full sm:flex-[0_0_100%] md:flex-[0_0_100%] md:max-w-full lg:flex-[0_0_33.33333333%] lg:max-w-[33.33333333%] ">
+                        <div class="text-xs leading-5 mb-4 flex flex-wrap" style="color: #d2d2d2">
+                            <button id="follow-heart"
+                                    data-active-src="{{ Vite::asset('/resources/images/heart-fill.png') }}"
+                                    data-inactive-src="{{ Vite::asset('/resources/images/heart.png') }}"
+                                    class="mr-8 p-0 font-medium text-[14px] border-none flex flex-wrap text-white text-center align-middle leading-[1.35]" style="background: none; box-shadow: none">
+                                <img src="{{ Vite::asset('/resources/images/heart.png') }}">
+                                <span class="ml-2 font-medium text-[14px] text-white pt-1">Follow</span>
+                            </button>
+                            <button class="p-0 font-medium text-[14px] border-none flex flex-wrap text-white text-center align-middle leading-[1.35]" style="background: none; box-shadow: none">
+                                <img class="pt-1" src="{{ Vite::asset('/resources/images/share.png') }}" lazy="loaded">
+                                <span class="ml-2 font-medium text-[14px] text-white pt-1">Share</span>
+                            </button>
                         </div>
-
-                        <!-- Dropdown Menu -->
-                        <div id="dropdownMenuOptionforComment" class="absolute right-0 mt-0 w-48 rounded shadow-lg hidden bg-black-800">
-                            <a href="#" class="block px-4 py-2 text-white">Nhiều like nhất</a>
-                            <a href="#" class="block px-4 py-2 text-white">Mới nhất</a>
-                            <a href="#" class="block px-4 py-2 text-white">Cũ nhất</a>
+                        <div class="flex flex-wrap ">
+                            <div class="w-1/4 font-light text-[14px] leading-[17px] py-1" style="color: #d2d2d2">Actors:</div>
+                            <div class="w-3/4 font-light text-[14px] leading-[17px] py-1">{{ $film->actors->pluck('name')->join(', ') }}</div>
+                            <div class="w-1/4 font-light text-[14px] leading-[17px] py-1" style="color: #d2d2d2">Genres:</div>
+                            <div class="w-3/4 font-light text-[14px] leading-[17px] py-1">{{ $film->genres->pluck('name')->join(' • ') }}</div>
                         </div>
                     </div>
-                </div>       
+                </div>
 
             </div>
+        </div>
 
+        @if($this->film->isShow() )
             <div>
-                Vui lòng <a href="#">Đăng nhập</a> tài khoản FPT Play để sử dụng Bình luận
+                <div class="flex justify-between">
+                    @if($this->film->hasManySeasons())
+                        <h2 class="font-medium text-[1.53125rem] mb-6">Seasons</h2>
+                        <x-dropdown-button :season_number="$film->seasons()->count()"/>
+                    @else
+                        <h2 class="font-medium text-[1.53125rem] mb-6">Episode</h2>
+                    @endif
+                </div>
+                <x-episode-slider :films="$films" :episodes="$episodes" title="Related Content" />
             </div>
-        </div>
+        @endif
 
+        <x-series-slider :films="$films" title="Related content"/>
+
+        <x-actor-slider :actors="$film->actors" />
     </div>
 </div>
