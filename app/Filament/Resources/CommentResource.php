@@ -17,7 +17,7 @@ class CommentResource extends Resource
 {
     protected static ?string $model = Comment::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-chat-bubble-left-ellipsis';
 
     public static function form(Form $form): Form
     {
@@ -47,7 +47,8 @@ class CommentResource extends Resource
                     ->label('User'),
 
                 Tables\Columns\TextColumn::make('film.title')
-                    ->label('Film'),
+                    ->label('Film')
+                ->searchable(),
 
                 Tables\Columns\TextColumn::make('comment')
                     ->label('Comment')

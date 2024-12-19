@@ -35,7 +35,9 @@ class MovieResource extends Resource
 {
     protected static ?string $model = Film::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-film';
+
+
 
     public static function form(Form $form): Form
     {
@@ -289,7 +291,7 @@ class MovieResource extends Resource
                     ->circular(),
 
 
-                TextColumn::make('genres')
+                TextColumn::make('genres.name')
                     ->label('Genres')
                     ->formatStateUsing(function ($record) {
                         return $record->genres->pluck('name')->join(', ');
