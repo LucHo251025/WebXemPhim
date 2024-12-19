@@ -12,7 +12,7 @@
                     <div class="flex items-center space-x-4">
                         <!-- Avatar -->
                         <div class="w-16 h-16 rounded-full flex items-center justify-center text-2xl font-bold">
-                            <img class="rounded-full" src="{{url('storage/' ,$user->avatar)}}" alt="">
+                            <img class="rounded-full" src="{{$user->avatar}}" alt="">
                         </div>
                         <!-- Detailed info -->
                         <div>
@@ -58,7 +58,7 @@
                     <div class="flex justify-between p-3" style="border-bottom: 1px solid rgba(255, 255, 255, 0.15);">
                         <div class="">
                             <span class="text-gray-400">Phone Number</span>
-                            <span class="text-white font-bold ml-2.5">Not set</span>
+                            <span class="text-white font-bold ml-2.5">{{$user->phone}}</span>
                         </div>
 
                         <button class="text-white font-bold">Settings</button>
@@ -69,13 +69,6 @@
                             <span class="text-white font-bold ml-2.5">Not set</span></div>
 
                         <button class="text-white font-bold">Settings</button>
-                    </div>
-                    <div class="flex justify-between p-3" style="border-bottom: 1px solid rgba(255, 255, 255, 0.15);">
-                        <div class="">
-                            <span class="mr-2.5 text-gray-400">Manage Auto Renewal</span>
-                            <span class="text-white font-bold ml-2.5">You haven't activated auto renewal</span>
-                        </div>
-                        <button class="text-white font-bold">Edit</button>
                     </div>
                     <div class="flex justify-between p-3" style="border-bottom: 1px solid rgba(255, 255, 255, 0.15);">
                         <div class="">

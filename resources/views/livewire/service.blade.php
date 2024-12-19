@@ -145,27 +145,17 @@
                 </div>
 
                 <!-- Payment Button -->
-                <form action="{{url('vnpay')}}" onsubmit="handlePaymentAndSubmit(this);" method="POST">
+                <form action="{{url('vnpay')}}"  method="POST">
                     @csrf
                     <input type="hidden" name="id" value="{{ $id_user }}">
                     <input type="hidden" name="name" value="{{ $name }}">
                     <input type="hidden" name="amount" value="{{ $this->getTotalPrice() }}">
                     <input type="hidden" name="option" value="{{$option}}">
+                    <input type="hidden" name="month" value="{{$month}}">
 
                     <button type="submit" name="redirect" class="bg-orange-600 text-white w-full mt-4 py-2 rounded-md">Thanh toán</button>
                 </form>
-                <script>
-                    function handlePaymentAndSubmit(form) {
-                        @this.call('handlePayment')
-                            .then(() => {
-                                form.submit();
-                            })
-                            .catch((error) => {
-                                console.error('Lỗi trong quá trình xử lý thanh toán:', error);
-                            });
-                    }
 
-                </script>
 
             </div>
         </div>

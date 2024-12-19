@@ -39,9 +39,9 @@ Route::get('/UpcomingMoves-page', HomeUpcomingMovies::class);
 Route::get('/support-page', SupportMoviePage::class);
 Route::get('/show-movie-page', ShowMoviePage::class);
 Route::post('/vnpay',[\App\Http\Controllers\VNPay::class,'payment'])->name('vnpay');
+Route::get('/vnpay-return', [\App\Http\Controllers\VNPay::class, 'vnpayReturn'])->name('vnpay.return');
 
-
-Route::get('/profile-page/{id}', ProfilePage::class);
+Route::get('/profile-page/{id}', ProfilePage::class)->name('profile.page');
 Route::match(['get', 'post'],'/subscription-page/{name}',\App\Livewire\Service::class);
 
 
