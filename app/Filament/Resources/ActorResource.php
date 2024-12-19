@@ -29,12 +29,25 @@ class ActorResource extends Resource
                 [
                     TextInput::make('name')
                         ->label("Name")->columnSpanFull(),
-                    FileUpload::make('images')
-                        ->directory('actors')
-                        ->image()
-                        ->label("Image")->columnSpanFull()
+                    TextInput::make('images')
+                        ->label("Image URL")
+                        ->afterStateHydrated(function ($component, $state) {
+                            // Decode JSON from 'images' field
+                            $images = json_decode($state, true);
+                            // Set the first URL or an empty string
+                            $component->state(is_array($images) && count($images) > 0 ? $images[0] : '');
+                        })
+                        ->dehydrateStateUsing(function ($state) {
+                            // Ensure the state is a JSON-encoded array
+                            return json_encode([$state], JSON_UNESCAPED_SLASHES);
+                        })
 
-                ]
+                        ->columnSpanFull(),
+
+
+
+
+        ]
             );
     }
 
@@ -46,13 +59,17 @@ class ActorResource extends Resource
                 TextColumn::make('name')
                     ->searchable(),
                 ImageColumn::make('images')
+                    ->label("Image")
                     ->getStateUsing(function ($record) {
-                        $image = json_decode($record->image, true);
-                        return is_array($image) && count($image) > 0 ? $image[0] : null;
+                        // Decode JSON from 'images' field
+                        $images = json_decode($record->images, true);
+                        // Return the first URL or an empty string
+                        return is_array($images) && count($images) > 0 ? $images[0] : '';
                     })
                     ->circular()
-                    ->url(fn ($record) => $record->image)
-            ])
+                    ->columnSpanFull(),
+
+        ])
             ->filters([
                 //
             ])

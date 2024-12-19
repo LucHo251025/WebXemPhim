@@ -137,17 +137,36 @@ class MovieResource extends Resource
                                         ->schema([
 
                                             TextInput::make('backgrounds')
-                                                ->required()
                                                 ->label('Backgrounds')
-                                                // Tiêu đề cho trường
-                                            ,
+                                                ->afterStateHydrated(function ($component, $state) {
+                                                    // Decode JSON from 'images' field
+                                                    $backgrounds = json_decode($state, true);
+                                                    // Set the first URL or an empty string
+                                                    $component->state(is_array($backgrounds) && count($backgrounds) > 0 ? $backgrounds[0] : '');
+                                                })
+                                                ->dehydrateStateUsing(function ($state) {
+                                                    // Ensure the state is a JSON-encoded array
+                                                    return json_encode([$state], JSON_UNESCAPED_SLASHES);
+                                                })
+
+                                                ->columnSpanFull(),
                                             Forms\Components\View::make('components.backgrounds-preview')
                                                 ->label('Preview'),
 
                                             TextInput::make('posters')
+                                                ->label('Posters')
                                                 ->required()
-                                                ->label('Posters') // Tiêu đề cho trường
-                                               ,
+                                                ->afterStateHydrated(function ($component, $state) {
+                                                    // Decode JSON from 'images' field
+                                                    $backgrounds = json_decode($state, true);
+                                                    // Set the first URL or an empty string
+                                                    $component->state(is_array($backgrounds) && count($backgrounds) > 0 ? $backgrounds[0] : '');
+                                                })
+                                                ->dehydrateStateUsing(function ($state) {
+                                                    // Ensure the state is a JSON-encoded array
+                                                    return json_encode([$state], JSON_UNESCAPED_SLASHES);
+                                                })
+                                            ,
                                             Forms\Components\View::make('components.poster-preview')
                                                 ->label('Preview'),
 
@@ -164,47 +183,60 @@ class MovieResource extends Resource
             ]);
     }
 
-    public static function mutateFormDataBeforeCreate(array $data): array
-    {
-        $film = Film::create($data);
+//    public static function mutateFormDataBeforeFill(array $data): array
+//    {
+//        if (isset($data['filmImages']['backgrounds'])) {
+//            $backgrounds = json_decode($data['filmImages']['backgrounds'], true);
+//            $data['backgrounds'] = is_array($backgrounds) && !empty($backgrounds) ? $backgrounds[0] : '';
+//        }
+//
+//        if (isset($data['filmImages']['posters'])) {
+//            $posters = json_decode($data['filmImages']['posters'], true);
+//            $data['posters'] = is_array($posters) && !empty($posters) ? $posters[0] : '';
+//        }
+//
+//        return $data;
+//    }
 
-        // Sau khi tạo phim xong, lấy ID của phim vừa tạo
-        // và tạo bản ghi mới trong bảng film_images
-        FilmImages::create([
-            'film_id' => $film->id, // Gán ID của phim vào cột film_id
-            'backgrounds' => $data['backgrounds'], // Lưu backgrounds từ $data
-            'posters' => $data['posters'],         // Lưu posters từ $data
-        ]);
 
-        // Trả về $data
-        return $data;
-    }
-    public static function mutateFormDataBeforeSave(array $data): array
-    {
-        // Tìm phim hiện tại dựa trên ID trong $data
-        $film = Film::find($data['id']);
 
-        // Kiểm tra xem đã có bản ghi trong bảng film_images chưa
-        $filmImages = $film->filmImages()->first();
 
-        // Nếu đã có, thì cập nhật backgrounds và posters
-        if ($filmImages) {
-            $filmImages->update([
-                'backgrounds' => $data['backgrounds'], // Cập nhật backgrounds
-                'posters' => $data['posters'],         // Cập nhật posters
-            ]);
-        } else {
-            // Nếu chưa có, thì tạo bản ghi mới
-            FilmImages::create([
-                'film_id' => $film->id,   // Gán ID của phim
-                'backgrounds' => $data['backgrounds'],
-                'posters' => $data['posters'],
-            ]);
-        }
-
-        // Trả về $data
-        return $data;
-    }
+//    public static function mutateFormDataBeforeSave(array $data): array
+//    {
+//        $data['backgrounds'] = is_array($data['backgrounds'])
+//            ? json_encode($data['backgrounds'], JSON_UNESCAPED_SLASHES)
+//            : json_decode($data['backgrounds'], true);
+//
+//        $data['posters'] = is_array($data['posters'])
+//            ? json_encode($data['posters'], JSON_UNESCAPED_SLASHES)
+//            : json_decode($data['posters'], true);
+//
+//        return $data;
+//    }
+//
+//    public static function mutateFormDataBeforeCreate(array $data): array
+//    {
+//        $data['backgrounds'] = is_array($data['backgrounds'])
+//            ? json_encode($data['backgrounds'], JSON_UNESCAPED_SLASHES)
+//            : json_decode($data['backgrounds'], true);
+//
+//        $data['posters'] = is_array($data['posters'])
+//            ? json_encode($data['posters'], JSON_UNESCAPED_SLASHES)
+//            : json_decode($data['posters'], true);
+//
+//        return $data;
+//    }
+//
+//    private static function ensureJsonEncoded($data)
+//    {
+//        // Kiểm tra nếu dữ liệu đã là chuỗi JSON hợp lệ
+//        if (is_string($data) && json_decode($data) !== null) {
+//            return $data; // Trả về dữ liệu nếu đã là JSON
+//        }
+//
+//        // Nếu dữ liệu là mảng hoặc chuỗi chưa JSON, thì mã hóa lại
+//        return json_encode((array) $data, JSON_UNESCAPED_SLASHES);
+//    }
 
 
     public static function table(Table $table): Table
@@ -230,23 +262,32 @@ class MovieResource extends Resource
                 ImageColumn::make('backgrounds')
                     ->label('Background Images')
                     ->getStateUsing(function ($record) {
+                        // Giải mã JSON và lấy phần tử đầu tiên
                         $backgrounds = json_decode($record->filmImages->backgrounds, true);
-                        return is_array($backgrounds) && count($backgrounds) > 0 ? $backgrounds[0] : null;
+
+                        if (is_array($backgrounds) && !empty($backgrounds)) {
+                            return $backgrounds[0]; // Trả về phần tử đầu tiên
+                        }
+
+                        return null; // Trả về null nếu không có dữ liệu
                     })
                     ->size(50)
-                    ->circular()
-                ,
+                    ->circular(),
 
                 ImageColumn::make('posters')
                     ->label('Poster Images')
-                    ->size(50)
                     ->getStateUsing(function ($record) {
                         $posters = json_decode($record->filmImages->posters, true);
 
-                        return is_array($posters) && count($posters) > 0 ? $posters[0] : null;
+                        if (is_array($posters) && !empty($posters)) {
+                            return $posters[0]; // Trả về phần tử đầu tiên
+                        }
+
+                        return null; // Trả về null nếu không có dữ liệu
                     })
-                    ->circular()
-                    ,
+                    ->size(50)
+                    ->circular(),
+
 
                 TextColumn::make('genres')
                     ->label('Genres')
