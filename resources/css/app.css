@@ -8,6 +8,10 @@
     box-sizing: border-box;
 }
 
+.nav-background {
+    background-color: rgb(10, 12, 15) !important;
+}
+
 .homeSlider {
     background: var(--Grad-black, linear-gradient(89deg, #000 9.23%, rgba(0, 0, 0, 0.47) 49.67%, rgba(0, 0, 0, 0.00) 61.08%));
 }

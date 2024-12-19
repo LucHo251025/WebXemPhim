@@ -6,7 +6,6 @@
     <title>{{ $title ?? 'Page Title' }}</title>
     @vite(['resources/css/app.css', 'resources/js/app.js', 'resources/js/swiper.js',  'resources/js/watch.js','resources/css/swiper.css'])
     @livewireStyles
-
 </head>
 <body class="bg-black-theme text-white w-full" >
    <x-header/>
@@ -16,5 +15,6 @@
         <x-footer/>
     @livewireScripts
 
+    @stack('scripts')
 </body>
 </html>

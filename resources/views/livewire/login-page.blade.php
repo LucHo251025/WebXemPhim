@@ -89,7 +89,7 @@
                         <!-- Nút Sign Up -->
                         <div class="flex flex-col items-center gap-6 mt-6">
                             <button type="submit" class="w-full h-[48px] sm:h-[53px] flex justify-center items-center gap-3" style="border-radius: 8px;background: #7300FF;">
-                                <p class="text-white font-poppins font-bold text-sm sm:text-lg">Sign Up</p>
+                                <p class="text-white font-poppins font-bold text-sm sm:text-lg">Log in</p>
                             </button>
                             <div class="flex items-center gap-3">
                                 <img src="{{ Vite::asset('resources/images/play_image/ri_facebook-fill.svg') }}" alt="">
