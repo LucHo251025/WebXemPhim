@@ -181,6 +181,6 @@ document.addEventListener("livewire:afterDomUpdate", () => {
 document.addEventListener("init-swiper", () => {
     setTimeout(initEpisodeSwiper, 250); // Sử dụng cùng hàm và thời gian chờ
 });
-;
+
 
 

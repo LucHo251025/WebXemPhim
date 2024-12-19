@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const sortBy = document.getElementById('sortBy');
 
     if(!sortBy) return;
-    
+
     const choice2 = new Choices(sortBy, {
         searchEnabled: false,
         noChoicesText: 'No option found',
@@ -107,16 +107,16 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 // Circle rating
-document.addEventListener("alpine:init", () => {
-    Alpine.data('initRatingCard', () => ({
-        init() {
-            // Khởi tạo tất cả các thẻ .rating-card khi Alpine được tải
-            document.querySelectorAll('.rating-card').forEach(initRatingCard);
-        }
-    }));
-});
+// document.addEventListener("alpine:init", () => {
+//     Alpine.data('initRatingCard', () => ({
+//         init() {
+//             // Khởi tạo tất cả các thẻ .rating-card khi Alpine được tải
+//             document.querySelectorAll('.rating-card').forEach(initRatingCard);
+//         }
+//     }));
+// });
 
-function initRatingCard(card) {
+window.initRatingCard = function(card) {
     const rating = parseFloat(card.getAttribute("data-rating"));
     const progressBar = card.querySelector(".CircularProgressbar-path");
     const ratingText = card.querySelector(".rating-text");
@@ -133,7 +133,7 @@ function initRatingCard(card) {
     }
 
     ratingText.textContent = rating;
-}
+};
 
 
 const observer = new MutationObserver(() => {
