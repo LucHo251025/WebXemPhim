@@ -12,8 +12,7 @@
                     <div class="flex items-center space-x-4">
                         <!-- Avatar -->
                         <div class="w-16 h-16 rounded-full flex items-center justify-center text-2xl font-bold">
-                            <img class="rounded-full" src="{{$user->avatar}}" alt="">
-                        </div>
+                            <img class="rounded-full" src="{{ url('storage/' . $user->avatar)}}" alt="">                        </div>
                         <!-- Detailed info -->
                         <div>
                             <div class="font-semibold text-lg">{{ $user->name }}</div>
