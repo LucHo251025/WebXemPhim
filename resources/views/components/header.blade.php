@@ -1,4 +1,4 @@
-<nav class="w-full h-0 sticky top-0 z-50">
+<nav class="w-full sm:h-0 sticky top-0 z-50">
     <div class="bg-transparent mx-auto w-full align-middle "
          style="transition: background-color 0.5s linear;" x-data="{ openMenu: false }">
         <div class="mx-auto w-full flex items-center sm:px-10 lg:px-12 h-full mt-0 relative align-top px-14 justify-between">

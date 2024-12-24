@@ -7,5 +7,5 @@
     </div>
 
     <!-- Pagination -->
-    <div class="swiper-pagination swiper-pagination-home mb-12"></div>
+    <div class="swiper-pagination swiper-pagination-home"></div>
 </div>

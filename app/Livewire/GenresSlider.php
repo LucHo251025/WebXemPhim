@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use App\Models\Film;
 use App\Models\Genre;
 use Livewire\Component;
 
@@ -11,14 +12,12 @@ class GenresSlider extends Component
     public $name = 'genres';
     public $genres;
     public $selectedFilms = [];
-
     protected $listeners = ['setCurrentFilmByIndexGenres'];
 
     public function mount()
     {
         $this->genres = Genre::all();
         $existingFilmIds = [];
-
         foreach ($this->genres as $genre) {
             $film = $this->getUniqueFilmForGenre($genre, $existingFilmIds);
 
