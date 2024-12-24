@@ -1,5 +1,6 @@
 import Swiper from "swiper/bundle";
 import "swiper/css/bundle";
+
 const homeSwiper = new Swiper(".home-swiper", {
     loop: true,
     pagination: {
@@ -43,7 +44,6 @@ const trendingSwiper = new Swiper(".trending-swiper", {
 });
 const mostWatchedSwiper = new Swiper(".most-watched-swiper", {
     slidesPerView: 'auto',
-    spaceBetween: 40,
     speed: 1000,
     loop: false,
     navigation: {
@@ -52,7 +52,7 @@ const mostWatchedSwiper = new Swiper(".most-watched-swiper", {
     },
     on: {
         slideChange: function () {
-            Livewire.dispatch('setCurrentFilmByIndex', { index: this.realIndex });
+            Livewire.dispatch('setCurrentFilmByIndex', {index: this.realIndex});
         }
     },
 });
@@ -73,21 +73,49 @@ const showsSwiper = new Swiper(".shows-swiper", {
     },
 });
 const genresSwiper = new Swiper(".genres-swiper", {
-    slidesPerView: 'auto',
-    spaceBetween: 67,
+    slidesPerView: "auto",
     speed: 1000,
     loop: true,
     navigation: {
         nextEl: ".swiper-button-next-genres",
         prevEl: ".swiper-button-prev-genres",
     },
+    breakpoints: {
+        250: {
+            spaceBetween: 20,
+            slidesPerView: 2.7
+        },
+        320: {
+            spaceBetween: 20,
+            slidesPerView: 3
+        },
+        375: {
+            spaceBetween: 20,
+            slidesPerView: 3.5
+        },
+        425: {
+            spaceBetween: 20,
+            slidesPerView: 4
+        },
+        768: {
+            spaceBetween: 40,
+            slidesPerView: 4.5
+        },
+        1080: {
+            spaceBetween: 40,
+            slidesPerView: 4.5
+        },
+        1920: {
+            spaceBetween: 67,
+            slidesPerView: 5.2
+        }
+    },
     on: {
         slideChange: function () {
-            Livewire.dispatch('setCurrentFilmByIndexGenres', { index: this.realIndex });
+            Livewire.dispatch('setCurrentFilmByIndexGenres', {index: this.realIndex});
         }
     },
 });
-
 function addButtonDelay(buttonClass) {
     const button = document.querySelector(buttonClass);
     if (button) {
@@ -112,7 +140,7 @@ const cartItem = new Swiper(".similarShows-swiper", {
     slidesPerView: "auto",
     spaceBetween: 20,
 });
-const  relativeMovieSwiper = new Swiper(".relative-movie-swiper", {
+const relativeMovieSwiper = new Swiper(".relative-movie-swiper", {
     slidesPerView: 6,
     spaceBetween: 40,
     loop: false,
@@ -120,7 +148,7 @@ const  relativeMovieSwiper = new Swiper(".relative-movie-swiper", {
         nextEl: "#relative-movie-swiper-button-next",
         prevEl: "#relative-movie-swiper-button-prev",
     },
-    slidesPerGroup:3,
+    slidesPerGroup: 3,
     breakpoints: {
         320: {
             slidesPerView: 3,
@@ -142,8 +170,6 @@ const  relativeMovieSwiper = new Swiper(".relative-movie-swiper", {
 });
 
 
-
-
 const seriesSwiper = new Swiper(".series-movie-swiper", {
     slidesPerView: "auto",
     spaceBetween: 20,
@@ -152,6 +178,7 @@ const seriesSwiper = new Swiper(".series-movie-swiper", {
 
 let episodeSwiper; // Biến toàn cục lưu trữ Swiper instance
 initEpisodeSwiper();
+
 function initEpisodeSwiper() {
     const swiperElement = document.querySelector(".episodes-swiper");
     if (swiperElement) {
@@ -181,6 +208,6 @@ document.addEventListener("livewire:afterDomUpdate", () => {
 document.addEventListener("init-swiper", () => {
     setTimeout(initEpisodeSwiper, 250); // Sử dụng cùng hàm và thời gian chờ
 });
-;
+
 
 

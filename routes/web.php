@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\VNPay;
 use App\Livewire\ForgotPassword;
 use App\Livewire\HomePage;
 use App\Livewire\LoginPage;
@@ -7,13 +8,13 @@ use App\Livewire\PlayPage;
 use App\Livewire\RegisterPage;
 use App\Livewire\ResetPassword;
 use App\Livewire\HomeUpcomingMovies;
+use App\Livewire\Search;
 use App\Livewire\ShowMoviePage;
 use App\Livewire\SupportMoviePage;
 use App\Livewire\ProfilePage;
 
 use App\Livewire\SubscriptionPage;
 use  App\Livewire\Explore;
-use App\Livewire\Watching;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', HomePage::class);
@@ -21,7 +22,8 @@ Route::get('/film/{slug}', PlayPage::class);
 Route::get('/watch/{slug}', ShowMoviePage::class);
 Route::get('/watch/{slug}/season/{season}/episode/{episode}', ShowMoviePage::class);
 Route::get('/watch/{slug}/episode/{episode}', ShowMoviePage::class);
-Route::get('/play-page', PlayPage::class)->defaults('slug', 'sawayn-llc');
+Route::get('/search', Search::class);
+Route::get('/search/{search}', Search::class);
 Route::get('/explore/{type}', Explore::class)
     ->where('type', 'movie|show')
     ->name('{type}');
@@ -29,12 +31,13 @@ Route::get('/explore', function () {
     return redirect('/explore/movie');
 });
 
-Route::get('/logout', function () {
+Route::post('/logout', function () {
     auth()->logout();
     return redirect('/');
 });
 
 
+Route::get('/subscription', SubscriptionPage::class)->name('subscription');
 Route::get('/UpcomingMoves-page', HomeUpcomingMovies::class);
 Route::get('/support-page', SupportMoviePage::class);
 Route::get('/show-movie-page', ShowMoviePage::class);
@@ -60,7 +63,7 @@ Route::middleware(['role'=>'admin'])->group(function () {
 
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('/subscription', SubscriptionPage::class)->name('subscription');
+    Route::match(['get', 'post'],'/subscription-page/{name}',\App\Livewire\Service::class);
 });
 //Route::middleware('auth')->group(function () {
 //

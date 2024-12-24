@@ -15,6 +15,10 @@ export default {
     },
     theme: {
         extend: {
+            screens: {
+                'xxl': '1440px',
+                '2k' : '2048px',
+            },
             colors: {
                 'borderBlue': '#228EE5',
                 'black-theme': '#030A1B',

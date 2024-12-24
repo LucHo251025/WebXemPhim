@@ -49,7 +49,7 @@
                     </div>
                     <div class="items-center flex shrink-0 self-stretch">
                         <!-- SVG dấu "x" để xóa các mục đã chọn -->
-                        <div x-show="genres.getValue(true).length > 0" class="p-2 cursor-pointer hover:opacity-80 duration-150 ease-out" id="clear-selection">
+                        <div x-show="Array.from(document.getElementById('genres').selectedOptions).length > 0" class="p-2 cursor-pointer hover:opacity-80 duration-150 ease-out" id="clear-selection">
                             <svg height="20" width="20" viewBox="0 0 20 20" class="fill-current text-white">
                                 <path d="M14.348 14.849c-0.469 0.469-1.229 0.469-1.697 0l-2.651-3.03-2.651 3.029c-0.469 0.469-1.229 0.469-1.697 0-0.469-0.469-0.469-1.229 0-1.697l2.758-3.15-2.759-3.152c-0.469-0.469-0.469-1.228 0-1.697s1.228-0.469 1.697 0l2.652 3.031 2.651-3.031c0.469-0.469 1.228-0.469 1.697 0s0.469 1.229 0 1.697l-2.758 3.152 2.758 3.15c0.469 0.469 0.469 1.229 0 1.698z"></path>
                             </svg>

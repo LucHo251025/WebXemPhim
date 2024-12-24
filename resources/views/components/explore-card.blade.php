@@ -1,5 +1,5 @@
 @props(['film'])
-<div class="movieCard rating-card" data-rating="{{$film->average_rating}}" x-init="initRatingCard($el)" >
+<div class="movieCard rating-card" wire:ignore.self data-rating="{{$film->average_rating}}" x-init="initRatingCard($el)" >
     <a href="{{ '/watch/' . $film->slug }}">
         <div class="posterBlock relative w-full bg-cover bg-center flex items-end justify-between p-2.5 mb-7 e" style="aspect-ratio: 1/1.5;transition: transform .5s ease-out;">
         <span class="text-transparent inline-block absolute top-0 left-0 w-full h-full rounded-xl overflow-hidden transition blur-0" style="transition: transform .5s ease-out;">
