@@ -12,6 +12,7 @@ class LoginPage extends Component
 {
     public $email;
     public $password;
+    public $remember = false;
 
     public function save(){
         $this->validate([
@@ -19,7 +20,7 @@ class LoginPage extends Component
             'password' => 'required',
         ]);
 
-        if (Auth::attempt(['email' => $this->email, 'password' => $this->password])) {
+        if (Auth::attempt(['email' => $this->email, 'password' => $this->password], $this->remember)) {
             $user = Auth::user();
 
             if ($user->role === 'admin') {
@@ -37,7 +38,6 @@ class LoginPage extends Component
 
     public function render()
     {
-        return view('livewire.login-page')->layout('components.layouts.log-res');  // Chỉ định layout thông qua phương thức render()
-
+        return view('livewire.login-page')->layout('components.layouts.log-res');
     }
 }

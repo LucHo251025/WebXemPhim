@@ -70,18 +70,16 @@
                                 <!-- Radio button tùy chỉnh -->
                                 <div class="flex items-center relative">
                                     <!-- Radio button -->
-                                    <input type="radio" id="rememberMe" name="remember" class="peer appearance-none w-6 h-6 rounded-full border border-white focus:outline-none" />
+                                    <input type="radio" id="rememberMe" wire:model ="remember" name="remember" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
 
                                     <!-- Vòng tròn với chấm bên trong khi radio được chọn -->
-                                    <div class="absolute inset-0 flex items-center justify-center">
-                                        <div class="w-3 h-3 bg-white rounded-full scale-0 peer-checked:scale-100 transition-transform duration-200"></div>
-                                    </div>
+                                    <label for="rememberMe" class="text-white font-poppins text-xs sm:text-sm font-normal ml-2">Remember Me</label>
+
                                 </div>
 
-                                <label for="rememberMe" class="text-white font-poppins text-xs sm:text-sm font-normal ml-2">Remember Me</label>
 
                                 <!-- Forgot password -->
-                                <a href="{{ route('password.request') }}" class="sm:ml-[120px] md:ml-[170px] text-white font-poppins text-xs font-normal">Forgot password</a>
+                                <a href="{{ route('password.request') }}" class="sm:ml-[120px] sm:text-sm md:ml-[140px] text-white font-poppins text-xs font-normal">Forgot password</a>
                             </div>
 
                         </div>
