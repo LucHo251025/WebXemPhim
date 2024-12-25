@@ -49,20 +49,20 @@ class MovieResource extends Resource
                         Section::make('Movie Information')
                             ->schema([
                                 Grid::make(2)
-                                ->schema([
-                                    TextInput::make('title')
-                                        ->label('Title')
-                                        ->required()
-                                        ->maxLength(255)
-                                        ->columnSpan(1)
-                                        ->live(onBlur: true)
-                                        ->afterStateUpdated(fn(string $operation,$state,Forms\Set $set)=>$operation==='create'? $set('slug',Str::slug($state)):null),
-                                    TextInput::make('slug')
-                                        ->disabled()
-                                        ->maxLength(255)
-                                        ->required()
-                                        ->dehydrated()
-                                        ->unique(Film::class,'slug',ignoreRecord: true),
+                                    ->schema([
+                                        TextInput::make('title')
+                                            ->label('Title')
+                                            ->required()
+                                            ->maxLength(255)
+                                            ->columnSpan(1)
+                                            ->live(onBlur: true)
+                                            ->afterStateUpdated(fn(string $operation, $state, Forms\Set $set) => $operation === 'create' ? $set('slug', Str::slug($state) . '-' . Str::random(6)) : null),
+                                        TextInput::make('slug')
+                                            ->disabled()
+                                            ->maxLength(255)
+                                            ->required()
+                                            ->dehydrated()
+                                            ->unique(Film::class, 'slug', ignoreRecord: true),
 
                                     DatePicker::make('release_date')
                                         ->label('Release Year')
@@ -85,7 +85,7 @@ class MovieResource extends Resource
                                         ->maxValue(600)
                                         ->columnSpan(1),
 
-                                    TextInput::make('rating')
+                                    TextInput::make('average_rating')
                                         ->label('Rating')
                                         ->required()
                                         ->columnSpan(1),
@@ -110,6 +110,7 @@ class MovieResource extends Resource
                                         ->columnSpan(1),
                                     MarkdownEditor::make('description')
                                         ->label('Description')
+                                        ->required()
                                         ->columnSpanFull(),
                                 ]),
                             ])
@@ -124,15 +125,19 @@ class MovieResource extends Resource
                             ->schema([
                                 Grid::make(2)
                                 ->schema([
-                                    Repeater::make('video_path')
-                                        ->label('Path')
-                                        ->schema([
-                                            TextInput::make('url')
-                                                ->label('Video Link')
-                                                ->required()
-                                                ->url(),
-                                        ])
-                                        ->defaultItems(1)
+                                    TextInput::make('video_path')
+                                        ->label('Video Link')
+                                        ->required()
+                                        ->afterStateHydrated(function ($component, $state) {
+                                            // Decode JSON from 'video_path' field
+                                            $videoPath = json_decode($state, true);
+                                            // Set the first URL or an empty string
+                                            $component->state(is_array($videoPath) && count($videoPath) > 0 ? $videoPath[0] : '');
+                                        })
+                                        ->dehydrateStateUsing(function ($state) {
+                                            // Ensure the state is a JSON-encoded array with escaped slashes
+                                            return json_encode([$state]);
+                                        })
                                         ->columnSpan(2),
                                     Forms\Components\Section::make('film_images')
                                         ->relationship('filmImages')  // Liên kết với FilmImage

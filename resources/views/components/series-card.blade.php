@@ -1,6 +1,6 @@
 @props(['film' => null])
 <div class="swiper-slide max-md:!w-[28%] max-sm:!w-[43%]" style="width: calc(19% - 20px)">
-    <a href="javascript:void(0);">
+    <a href="/watch/{{ $film->slug }}">
         <div style="width: 100%;position: relative;">
             <img src="{{ $film->backgrounds[0] }}" style="width: 100%;border-radius: 8px;"
                  alt="{{ $film->title . 'image' }}">

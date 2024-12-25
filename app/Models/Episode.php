@@ -19,6 +19,11 @@ class Episode extends Model
         'image',
     ];
 
+    protected $casts = [
+        'video_path' => 'array',
+        'release_date' => 'date',
+    ];
+
     public function season()
     {
         return $this->belongsTo(Season::class);

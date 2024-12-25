@@ -31,6 +31,12 @@ class Film extends Model
         return $this->hasOne(FilmImages::class);
     }
 
+    //decode video_path
+    public function video()
+    {
+        return $this->video_path ? json_decode($this->video_path) : [];
+    }
+
     public function getBackgroundsAttribute()
     {
         return $this->filmImages ? json_decode($this->filmImages->backgrounds, true) : [];
